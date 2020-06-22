@@ -1,0 +1,216 @@
+<!DOCTYPE html><html lang="cn"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0" type="image/png" sizes="32x32"><meta name="description" content="1. CPU是什么">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程序是怎样跑起来的">
+<meta property="og:url" content="http://yoursite.com/2020/05/21/%E7%A8%8B%E5%BA%8F%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/index.html">
+<meta property="og:site_name" content="节能主义">
+<meta property="og:description" content="1. CPU是什么">
+<meta property="og:locale" content="cn">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/5WvkOqwmgcSjR3J.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/SpfOwdbUZ97QB28.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/SWKHnJQ9G5ezfLx.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/Stdr9AHxkcCEPbn.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/HUyCbo4PjMTG5Nl.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/EToV5ftkazAygK8.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/Iurel9ax6mvzGji.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/Gzy3cEWMkqBYRjl.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/3V2qaXgCYfrTIKB.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/FhcJ6DKB5bYMoEa.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/HJkVIhG8ANCzSRB.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/PCfZVaWJRIcLNlY.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/apPSblHxjTyX4Cm.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/Kv2c5VaDoZm61Ge.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/9CVWJSiPegXUl5H.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/sXvq8yu2YWdB7Fe.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/LPljf5QTrJ2BzZM.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/nCfG12BuLS53dYm.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/Hvm7UwAGQnTjMOJ.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/okhlb7pMEnXaF6j.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/laqT89U5B4mbF3K.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/W7r4bF6SAEYsN2H.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/C1OzLbwQANUvrKF.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/dxqfIbZn17gwKj3.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/WXRPxak6zQ3rGCw.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/22/I5iYbd2teqmzFGy.png">
+<meta property="article:published_time" content="2020-05-21T14:37:49.000Z">
+<meta property="article:modified_time" content="2020-05-23T02:40:03.727Z">
+<meta property="article:author" content="Pawnbrokers">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/22/5WvkOqwmgcSjR3J.png"><meta name="keywords" content="Pawnbrokers, 节能主义"><meta name="description" content=""><title>程序是怎样跑起来的 | 节能主义</title><link ref="canonical" href="http://yoursite.com/2020/05/21/%E7%A8%8B%E5%BA%8F%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="节能主义" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">节能主义</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">程序是怎样跑起来的</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-05-21</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-05-23</span></span></div></header><div class="post-body">
+        <h1 id="1-CPU是什么"   >
+          <a href="#1-CPU是什么" class="heading-link"><i class="fas fa-link"></i></a>1. CPU是什么</h1>
+      <a id="more"></a>
+
+<p>1.  程序是什么？<br>2.  程序是由什么组成的？<br>3.  什么是机器语言？<br>4.  正在运行的程序存储在什么位置？<br>5.  什么是内存地址？<br>6.  计算机的构成元件中，负责程序的解释和运行的是哪个？  </p>
+<blockquote>
+<p>1.  指示计算机每一步动作的一组指令<br>2.  <strong>指令和数据</strong><br>3.  CPU 可以直接识别并使用的语言<br>4.  内存<br>5.  内存中，用来表示<strong>命令和数据</strong>存储位置的数值<br>6.  <strong>CPU</strong>  </p>
+</blockquote>
+<p><strong>解析：</strong></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. 一般所说的程序， 譬如运动会、 音乐会的程序等， 指的是“行事的先后次序”。 计算机程序也是一样的道理。</span><br><span class="line"><span class="number">2</span>. 程序是指令和数据的组合体。 例如， C 语言“printf (<span class="string">" 你好 "</span>);”这个简单的程序中， printf 是指令， <span class="string">" 你	好 "</span> 是数据。</span><br><span class="line"><span class="number">3</span>. CPU 能够直接识别和执行的只有机器语言。 使用 C、 Java 等语言编写的程序， 最后都会转化成机器语言。</span><br><span class="line"><span class="number">4</span>. 硬盘和磁盘等媒介上保存的程序被复制到内存后才能运行。</span><br><span class="line"><span class="number">5</span>. 内存中保存命令和数据的场所， 通过地址来标记和指定。 地址由整数值表示。</span><br><span class="line"><span class="number">6</span>. 计算机的构成元件中， 根据程序的指令来进行数据运算， 并控制整个计算机的设备称作 CPU。 大家熟知的奔腾（ 		Pentium） 就是 CPU 的一种。</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="1-1-程序运行的一般流程"   >
+          <a href="#1-1-程序运行的一般流程" class="heading-link"><i class="fas fa-link"></i></a>1.1 程序运行的一般流程</h2>
+      <p><img src="https://i.loli.net/2020/05/22/5WvkOqwmgcSjR3J.png" alt="image-20200521224356093"></p>
+
+        <h2 id="1-2-CPU的组成"   >
+          <a href="#1-2-CPU的组成" class="heading-link"><i class="fas fa-link"></i></a>1.2 CPU的组成</h2>
+      <p>CPU的内部由<strong>寄存器、 控制器、 运算器和时钟</strong>四个部分构成， 各部分之间<br>由电流信号相互连通。</p>
+<ul>
+<li><strong>寄存器</strong>可用来<strong>暂存</strong>指令、 数据等处理对象， 可以将其看作是内存的一种。 根据种类的不同， 一个 CPU 内部会有20～100 个寄存器。   </li>
+<li><strong>控制器</strong>负责把内存上的指令、 数据等<strong>读入寄存器</strong>，并根据指令的执行结果来控制整个计算机。   </li>
+<li><strong>运算器</strong>负责<strong>运算</strong>从内存读入寄存器的数据。  </li>
+<li><strong>时钟</strong>负责发出 CPU 开始计时的时钟信号 。  </li>
+</ul>
+<p><img src="https://i.loli.net/2020/05/22/SpfOwdbUZ97QB28.png" alt="image-20200521224426355"></p>
+
+        <h2 id="1-3-CPU是寄存器的集合体"   >
+          <a href="#1-3-CPU是寄存器的集合体" class="heading-link"><i class="fas fa-link"></i></a>1.3 CPU是寄存器的集合体</h2>
+      <p>CPU 的四个构成部分中， 程序员只需要了解寄存器即可， 其余三个都不用太过关注。 那么， 为什么必须要了解寄存器呢？ 这是因为<strong>程序是把寄存器作为对象来描述的</strong>。  </p>
+<p> 汇编语言采用<strong>助记符</strong>（ memonic） 来编写程序， <strong>每一个原本是电气信号的机器语言指令都会有一个与其相应的助记符</strong>，助记符通常为指令功能的英语单词的简写。  </p>
+<p><img src="https://i.loli.net/2020/05/22/SWKHnJQ9G5ezfLx.png" alt="image-20200521224720991"></p>
+<p><strong>机器语言级别的程序是通过寄存器来处理的</strong>。 也就是说， 在程序员看来“CPU 是寄存器的集合体”。  </p>
+<p><strong>寄存器的主要种类：</strong></p>
+<p><img src="https://i.loli.net/2020/05/22/Stdr9AHxkcCEPbn.png" alt="image-20200521224914893"></p>
+<p><img src="https://i.loli.net/2020/05/22/HUyCbo4PjMTG5Nl.png" alt="image-20200521224929205"></p>
+
+        <h2 id="1-4-决定程序流程的程序计数器"   >
+          <a href="#1-4-决定程序流程的程序计数器" class="heading-link"><i class="fas fa-link"></i></a>1.4 决定程序流程的程序计数器</h2>
+      <p>示例中的程序实现的是将 123 和 456 两个数值相加， 并将结果输出到显示器上。   </p>
+<p>由于使用机器语言难以清晰地表明各地址存储的内容， 因此这里我们对各地址的存储内容添加了注释。 <strong>实际上， 一个命令和数据通常被存储在多个地址上</strong>， 但为了便于说明， 图 1-4 中把指令、 数据分配到了一个地址中。</p>
+<p><code>命令也是存储在地址上的！！！</code></p>
+<p>地址 0100 是程序运行的开始位置。 Windows 等操作系统把程序从硬盘复制到内存后，会将程序计数器（ CPU 寄存器的一种） 设定为0100，然后程序便开始运行。CPU 每执行一个指令，程序计数器的值就会自动加1。 然后， <strong>CPU 的控制器就会参照程序计数器的数值， 从内存中读取命令并执行</strong>。 <strong>也就是说， 程序计数器决定着程序的流程。</strong>   </p>
+<p><img src="https://i.loli.net/2020/05/22/EToV5ftkazAygK8.png" alt="image-20200521225327577"></p>
+
+        <h2 id="1-5-条件分支与循环分支"   >
+          <a href="#1-5-条件分支与循环分支" class="heading-link"><i class="fas fa-link"></i></a>1.5 条件分支与循环分支</h2>
+      <p><strong>顺序执行</strong>是指按照地址内容的顺序执行指令。<strong>条件分支</strong>是指根据条件执行任意地址的指令。<strong>循环</strong>是指重复执行同一地址的指令。   </p>
+<p><strong>但若程序中存在条件分支和循环， 机器语言的指令就可以将程序计数器的值设定为任意地址（ 不是 +1）</strong>。这样一来， 程序便可以返回到上一个地址来重复执行同一个指令，或者跳转到任意地址。   </p>
+<p>图 1-5 表示把内存中存储的数值（ 示例中是 123） 的绝对值输出到显示器的程序的内存状态。  </p>
+<p><img src="https://i.loli.net/2020/05/22/Iurel9ax6mvzGji.png" alt="image-20200521225454292"></p>
+
+        <h2 id="1-6-标志寄存器"   >
+          <a href="#1-6-标志寄存器" class="heading-link"><i class="fas fa-link"></i></a>1.6 标志寄存器</h2>
+      <p>无论当前累加寄存器的运算结果是负数、零还是正数，标志寄存器都会将其保存（ 也负责存放溢出和奇偶校验的结果 )。  </p>
+<p>图 1-6 是 32 位 CPU（ 寄存器的长度是 32 位）的标志寄存器的示例。 标志寄存器的第一个字节位、 第二个字节位和第三个字节位的值为 1 时， 表示运算结果分别为正数、零和负数 。</p>
+<p><img src="https://i.loli.net/2020/05/22/Gzy3cEWMkqBYRjl.png" alt="image-20200521225639101"></p>
+<p><strong>程序中的比较指令，就是在CPU内部做减法运算。</strong>   </p>
+
+        <h2 id="1-7-函数的调用机制"   >
+          <a href="#1-7-函数的调用机制" class="heading-link"><i class="fas fa-link"></i></a>1.7 函数的调用机制</h2>
+      <p>函数调用使用的是 call 指令， 而不是跳转指令。如果使用跳转指令，在我们的函数执行完毕后，是无法回到之前的执行位置之后去执行下一条指令的。</p>
+<p><strong>call 和 return</strong></p>
+<p><strong>函数调用使用的是 call 指令，而不是跳转指令</strong>。在将函数的入口地址设定到程序计数器之前，call 指令会把调用函数后要执行的指令地址存储在名为栈的主存内。函数处理完毕后，再通过函数的出口来执行 return 命令。<strong>return 命令的功能是把保存在栈中的地址设定到程序计数器中</strong>。 </p>
+<p><img src="https://i.loli.net/2020/05/22/3V2qaXgCYfrTIKB.png" alt="image-20200521230025851"></p>
+<p><img src="https://i.loli.net/2020/05/22/FhcJ6DKB5bYMoEa.png" alt="image-20200521230032660"></p>
+<p>即当发生函数调用时：</p>
+<p><strong>call指令主要做两件事</strong>：</p>
+<ul>
+<li>将<strong>调用函数后</strong>要执行的指令地址存放在名为<strong>栈的主存</strong>内</li>
+<li>将<strong>函数的入口地址</strong>设置到程序计数器中</li>
+</ul>
+<p><strong>return指令也做两件事：</strong></p>
+<ul>
+<li><strong>获得保存在栈中的下条指令的地址</strong></li>
+<li><strong>将地址设定到程序计数器中</strong></li>
+</ul>
+
+        <h2 id="1-8-通过地址和索引实现数组"   >
+          <a href="#1-8-通过地址和索引实现数组" class="heading-link"><i class="fas fa-link"></i></a>1.8 通过地址和索引实现数组</h2>
+      <p>CPU 则会把基址寄存器＋ 变址寄存器的值解释为实际查看的内存地址。 <strong>变址寄存器的值就相当于高级编程语言程序中数组的索引功能。</strong>  </p>
+<p><img src="https://i.loli.net/2020/05/22/HJkVIhG8ANCzSRB.png" alt="image-20200521230506002"></p>
+
+        <h2 id="1-9-CPU的处理其实很简单"   >
+          <a href="#1-9-CPU的处理其实很简单" class="heading-link"><i class="fas fa-link"></i></a>1.9 CPU的处理其实很简单</h2>
+      <p>表 1-2 按照功能对 CPU能执行的机器语言指令进行了大体<strong>分类</strong>。 这里<strong>没有列出指令的具体名称</strong>（ 汇编语言的助记符）。   </p>
+<p><img src="https://i.loli.net/2020/05/22/PCfZVaWJRIcLNlY.png" alt="image-20200521230554356"></p>
+
+        <h1 id="2-数据是用二进制数表示的"   >
+          <a href="#2-数据是用二进制数表示的" class="heading-link"><i class="fas fa-link"></i></a>2. 数据是用二进制数表示的</h1>
+      <p>1.  32 位是几个字节 ?<br>2.  二进制数 01011100 转换成十进制数是多少？<br>3.  二进制数 00001111 左移两位后，会变成原数的几倍？<br>4.   补码形式表示的 8 位二进制数 11111111，用十进制数表示<br>的话是多少？<br>5.   补码形式表示的 8 位二进制数 10101010，用 16 位的二进<br>制数表示的话是多少？<br>6.  反转<strong>部分图形模式</strong>时，使用的是什么逻辑运算？  </p>
+<blockquote>
+<p>1.  4 字节<br>2.  92<br>3.  4 倍<br>4.  -1<br>5.  1111111110101010<br>6.  XOR 运算  </p>
+</blockquote>
+<p>解析:</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. 因为 <span class="number">8</span> 位 = <span class="number">1</span> 字节， 所以 <span class="number">32</span> 位就是 <span class="number">32</span>÷ <span class="number">8</span> = <span class="number">4</span> 字节。</span><br><span class="line"><span class="number">2</span>. 将二进制数的各数位的值和位权相乘后再相加， 即可转换成十进制数。</span><br><span class="line"><span class="number">3</span>. 二进制数左移 <span class="number">1</span> 位后会变成原来的值的 <span class="number">2</span> 倍。 左移两位后，就是<span class="number">2</span>倍的<span class="number">2</span>倍，即<span class="number">4</span>倍。</span><br><span class="line"><span class="number">4</span>. 所有位都是 <span class="number">1</span> 的二进制数， 用十进制数表示的话就是－<span class="number">1</span>。</span><br><span class="line"><span class="number">5</span>. 使用原数的最高位 <span class="number">1</span> 来填充高位。</span><br><span class="line"><span class="number">6</span>. XOR 运算只反转与 <span class="number">1</span> 相对应的位。 NOT 运算是反转所有的位</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="2-1-用二进制表示计算机信息的原因"   >
+          <a href="#2-1-用二进制表示计算机信息的原因" class="heading-link"><i class="fas fa-link"></i></a>2.1 用二进制表示计算机信息的原因</h2>
+      <p>计算机内部是由<code>IC(集成电路)</code>这种电子部件构成的。IC 的所有引脚， 只有直流电压0V 或 5V两个状态。 也就是说， <strong>IC 的一个引脚， 只能表示两个状态</strong>。    </p>
+<p>计算机处理信息的<strong>最小单位——位</strong>， 就相当于二进制中的一位。 位的英文 bit 是二进制数位（ binary digit） 的缩写。</p>
+<p><img src="https://i.loli.net/2020/05/22/apPSblHxjTyX4Cm.png" alt="image-20200522101137317"></p>
+<p>二进制数的位数一般是 8 位、 16 位、 32 位……也就是 8 的倍数，这是因为<strong>计算机所处理的信息的基本单位是 8 位二进制数。</strong> 8 位二进制数被称为一个字节。字节是最基本的信息计量单位。 位是最小单位，<strong>字节是基本单位</strong>。   </p>
+<p>用字节单位处理数据时， 如果数字小于存储数据的字节数（ = 二进制数的位数）， <strong>那么高位上就用 0 填补</strong>。例如， 100111 这个 6 位二进制数， 用 8 位（ =1 字节） 表示时为 00100111， 用 16 位（ = 2 字节） 表示时为 0000000000100111。   </p>
+<p><img src="https://i.loli.net/2020/05/22/Kv2c5VaDoZm61Ge.png" alt="image-20200522101329724"></p>
+
+        <h2 id="2-2-移位运算"   >
+          <a href="#2-2-移位运算" class="heading-link"><i class="fas fa-link"></i></a>2.2 移位运算</h2>
+      <p><strong>十进制数左移后会变成原来的 10 倍、 100 倍、 1000 倍……同样， 二进制数左移后就会变成原来的 2 倍、 4 倍、 8 倍……</strong> 反之， 二进制数右移后则会变成原来的1/2、 1/4、 1/8  。</p>
+<p><img src="https://i.loli.net/2020/05/22/9CVWJSiPegXUl5H.png" alt="image-20200522101444384"></p>
+
+        <h2 id="2-3-便于计算机计算的补数"   >
+          <a href="#2-3-便于计算机计算的补数" class="heading-link"><i class="fas fa-link"></i></a>2.3 便于计算机计算的补数</h2>
+      <p>二进制数中表示负数值时， 一般会把最高位作为符号来使用， 因此我们把这个最高位称为符号位。符号位是 0 时表示正数 ， 符号位是1 时表示负数。   </p>
+<p><strong>计算机在做减法运算时， 实际上内部是在做加法运算。</strong> 用加法运算来实现减法运算， 是不是很新奇呢？ 为此， 在表示负数时就需要使用“二进制的补数”。<strong>补数就是用正数来表示负数</strong>， 很不可思议吧。  </p>
+<p><strong>补数：就是将各数位的 0 取反成 1，1 取反成 0， 然后再将取反的结果加 1，</strong>   </p>
+<p><img src="https://i.loli.net/2020/05/22/sXvq8yu2YWdB7Fe.png" alt="image-20200522101636926"></p>
+<p>如果我们不采用补数，而是直接把高位变成1：</p>
+<p><img src="https://i.loli.net/2020/05/22/LPljf5QTrJ2BzZM.png" alt="image-20200522101714831"></p>
+<p><strong>使用补数表示负数的情况：</strong></p>
+<p><img src="https://i.loli.net/2020/05/22/nCfG12BuLS53dYm.png" alt="image-20200522101743573"></p>
+<p><img src="https://i.loli.net/2020/05/22/Hvm7UwAGQnTjMOJ.png" alt="image-20200522101814894"></p>
+
+        <h2 id="2-4-逻辑右移与算术右移的区别"   >
+          <a href="#2-4-逻辑右移与算术右移的区别" class="heading-link"><i class="fas fa-link"></i></a>2.4 逻辑右移与算术右移的区别</h2>
+      <p><img src="https://i.loli.net/2020/05/22/okhlb7pMEnXaF6j.png" alt="image-20200522101853688"></p>
+<p><img src="https://i.loli.net/2020/05/22/laqT89U5B4mbF3K.png" alt="image-20200522101859993"></p>
+<p><img src="https://i.loli.net/2020/05/22/W7r4bF6SAEYsN2H.png" alt="image-20200522101936827"></p>
+<p><img src="https://i.loli.net/2020/05/22/C1OzLbwQANUvrKF.png" alt="image-20200522101946867"></p>
+<p><img src="https://i.loli.net/2020/05/22/dxqfIbZn17gwKj3.png" alt="image-20200522101955767"></p>
+<p><strong>符号扩充：</strong></p>
+<p><img src="https://i.loli.net/2020/05/22/WXRPxak6zQ3rGCw.png" alt="image-20200522102006364"></p>
+<p><img src="https://i.loli.net/2020/05/22/I5iYbd2teqmzFGy.png" alt="image-20200522102021337"></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://yoursite.com">Pawnbrokers</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://yoursite.com/2020/05/21/%E7%A8%8B%E5%BA%8F%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/">http://yoursite.com/2020/05/21/%E7%A8%8B%E5%BA%8F%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/05/22/ebolg%E6%90%AD%E5%BB%BA2/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">ebolg搭建2</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/05/21/RabbitMQ%E5%AD%A6%E4%B9%A0/"><span class="paginator-prev__text">RabbitMQ学习</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-CPU是什么"><span class="toc-number">1.</span> <span class="toc-text">
+          1. CPU是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-程序运行的一般流程"><span class="toc-number">1.1.</span> <span class="toc-text">
+          1.1 程序运行的一般流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-CPU的组成"><span class="toc-number">1.2.</span> <span class="toc-text">
+          1.2 CPU的组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-CPU是寄存器的集合体"><span class="toc-number">1.3.</span> <span class="toc-text">
+          1.3 CPU是寄存器的集合体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-决定程序流程的程序计数器"><span class="toc-number">1.4.</span> <span class="toc-text">
+          1.4 决定程序流程的程序计数器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-条件分支与循环分支"><span class="toc-number">1.5.</span> <span class="toc-text">
+          1.5 条件分支与循环分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-标志寄存器"><span class="toc-number">1.6.</span> <span class="toc-text">
+          1.6 标志寄存器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-函数的调用机制"><span class="toc-number">1.7.</span> <span class="toc-text">
+          1.7 函数的调用机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8-通过地址和索引实现数组"><span class="toc-number">1.8.</span> <span class="toc-text">
+          1.8 通过地址和索引实现数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-9-CPU的处理其实很简单"><span class="toc-number">1.9.</span> <span class="toc-text">
+          1.9 CPU的处理其实很简单</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-数据是用二进制数表示的"><span class="toc-number">2.</span> <span class="toc-text">
+          2. 数据是用二进制数表示的</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-用二进制表示计算机信息的原因"><span class="toc-number">2.1.</span> <span class="toc-text">
+          2.1 用二进制表示计算机信息的原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-移位运算"><span class="toc-number">2.2.</span> <span class="toc-text">
+          2.2 移位运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-便于计算机计算的补数"><span class="toc-number">2.3.</span> <span class="toc-text">
+          2.3 便于计算机计算的补数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-逻辑右移与算术右移的区别"><span class="toc-number">2.4.</span> <span class="toc-text">
+          2.4 逻辑右移与算术右移的区别</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/me.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">我们必须习惯，站在人生的交叉路口，却没有红绿灯的事实。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/pawnbrokers" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/mu-rong-xue-hen-46" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="assets/wechat.jpg" target="_blank" rel="noopener" data-popover="微信" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="assets/qq.jpg" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">37</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">33</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">43</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Pawnbrokers</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v4.2.1</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script></body></html>

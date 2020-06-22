@@ -1,0 +1,375 @@
+<!DOCTYPE html><html lang="cn"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0" type="image/png" sizes="32x32"><meta name="description" content="参考公众号： 小林coding                     1. HTTP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计网回顾">
+<meta property="og:url" content="http://yoursite.com/2020/05/27/%E8%AE%A1%E7%BD%91%E5%9B%9E%E9%A1%BE/index.html">
+<meta property="og:site_name" content="节能主义">
+<meta property="og:description" content="参考公众号： 小林coding                     1. HTTP">
+<meta property="og:locale" content="cn">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124906.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124915.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124916.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124917.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124918.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124919.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124920.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124921.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124922.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124923.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124924.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124925.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124926.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124927.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124928.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124929.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124930.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124931.png">
+<meta property="article:published_time" content="2020-05-27T04:43:54.000Z">
+<meta property="article:modified_time" content="2020-05-28T04:49:57.615Z">
+<meta property="article:author" content="Pawnbrokers">
+<meta property="article:tag" content="HTTP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124906.png"><meta name="keywords" content="Pawnbrokers, 节能主义"><meta name="description" content=""><title>计网回顾 | 节能主义</title><link ref="canonical" href="http://yoursite.com/2020/05/27/%E8%AE%A1%E7%BD%91%E5%9B%9E%E9%A1%BE/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="节能主义" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">节能主义</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">计网回顾</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-05-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-05-28</span></span></div></header><div class="post-body"><p>参考公众号： 小林coding</p>
+
+        <h1 id="1-HTTP"   >
+          <a href="#1-HTTP" class="heading-link"><i class="fas fa-link"></i></a>1. HTTP</h1>
+      <a id="more"></a>
+
+
+        <h2 id="1-1-GET和POST方法是安全与幂等的吗？"   >
+          <a href="#1-1-GET和POST方法是安全与幂等的吗？" class="heading-link"><i class="fas fa-link"></i></a>1.1 GET和POST方法是安全与幂等的吗？</h2>
+      <blockquote>
+<ol>
+<li>安全： 请求方法<strong>不会破坏服务器的资源</strong></li>
+<li>幂等： <strong>多次执行相同的操作</strong>，结果是一致的</li>
+</ol>
+</blockquote>
+<p>那么很明显 <strong>GET 方法就是安全且幂等的</strong>，因为它是「只读」操作，无论操作多少次，服务器上的数据都是安全的，且每次的结果都是相同的。</p>
+<p><strong>POST</strong> 因为是「新增或提交数据」的操作，会修改服务器上的资源，所以是<strong>不安全</strong>的，且多次提交数据就会创建多个资源，所以<strong>不是幂等</strong>的。</p>
+
+        <h2 id="1-2-HTTP的变化"   >
+          <a href="#1-2-HTTP的变化" class="heading-link"><i class="fas fa-link"></i></a>1.2 HTTP的变化</h2>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th align="center">版本</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>HTTP1.0</strong></td>
+<td>1. 无状态： 不需要额外资源</td>
+<td>1. 无状态： 在完成关联性操作会比较麻烦</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td>2. 明文传输： 方便阅读，调试方便</td>
+<td>2. 明文传输： 信息窃取</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td></td>
+<td>3. 不安全： 明文不加密，不验证身份，无法保证报文的完整性</td>
+</tr>
+<tr>
+<td align="center"><strong>HTTP1.1</strong></td>
+<td>1. 长连接</td>
+<td>1. 队头堵塞： 服务器端按序回复请求，可能会造成堵塞</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td>2. 管道传输（可以连续发送多个请求而不用等他回来）</td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><strong>HTTPS</strong></td>
+<td><strong>解决了HTTP的不安全性</strong></td>
+<td><strong>实现方式：</strong></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td>1. 信息加密：交互信息无法被窃取</td>
+<td>1. 混合加密</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td>2. 校验机制： 无法篡改通信内容</td>
+<td>2. 摘要算法，生成指纹</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td>3. 身份证书：</td>
+<td>3. 将服务器公钥放置在数字证书中</td>
+</tr>
+</tbody></table></div>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124906.png" alt="image-20200527131330034"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124915.png" alt="image-20200527131311839"></p>
+
+        <h2 id="1-3-HTTPS建立连接"   >
+          <a href="#1-3-HTTPS建立连接" class="heading-link"><i class="fas fa-link"></i></a>1.3 HTTPS建立连接</h2>
+      <ol>
+<li><p>ClientHello</p>
+<p>（1）客户端支持的 SSL/TLS 协议版本，如 TLS 1.2 版本。</p>
+<p>（2）客户端生产的随机数（<code>Client Random</code>），后面用于生产「会话秘钥」。</p>
+<p>（3）客户端支持的密码套件列表，如 RSA 加密算法。</p>
+</li>
+<li><p>ServerHello</p>
+<p>（1）确认 SSL/ TLS 协议版本，如果浏览器不支持，则关闭加密通信。</p>
+<p>（2）服务器生产的随机数（<code>Server Random</code>），后面用于生产「会话秘钥」。</p>
+<p>（3）确认的密码套件列表，如 RSA 加密算法。</p>
+<p>（4）服务器的数字证书。</p>
+</li>
+<li><p>客户端回应</p>
+<p>客户端收到服务器的回应之后，首先<strong>通过浏览器或者操作系统中的 CA 公钥，确认服务器的数字证书的真实性。</strong></p>
+<p>如果证书没有问题，客户端会从数字证书中取出服务器的公钥，然后使用它加密报文，向服务器发送如下信息：</p>
+<p>（1）一个随机数（<code>pre-master key</code>）。该随机数会被服务器公钥加密。</p>
+<p>（2）加密通信算法改变通知，表示随后的信息都将用「会话秘钥」加密通信。</p>
+<p>（3）客户端握手结束通知，表示客户端的握手阶段已经结束。这一项同时把之前所有内容的发生的数据做个摘要，用来供服务端校验。</p>
+<p>上面第一项的随机数是整个握手阶段的第三个随机数，这样服务器和客户端就同时有三个随机数，接着就用双方协商的加密算法，<strong>各自生成</strong>本次通信的「会话秘钥」。</p>
+</li>
+<li><p>服务器的最后回应</p>
+<p>服务器收到客户端的第三个随机数（<code>pre-master key</code>）之后，通过协商的加密算法，计算出本次通信的「会话秘钥」。然后，向客户端发生最后的信息：</p>
+<p>（1）加密通信算法改变通知，表示随后的信息都将用「会话秘钥」加密通信。</p>
+<p>（2）服务器握手结束通知，表示服务器的握手阶段已经结束。这一项同时把之前所有内容的发生的数据做个摘要，用来供客户端校验。</p>
+<p>至此，整个 SSL/TLS 的握手阶段全部结束。接下来，客户端与服务器进入加密通信，就完全是使用普通的 HTTP 协议，只不过用「会话秘钥」加密内容。</p>
+</li>
+</ol>
+
+        <h2 id="1-4-HTTP-1-1、HTTP-2、HTTP-3演变"   >
+          <a href="#1-4-HTTP-1-1、HTTP-2、HTTP-3演变" class="heading-link"><i class="fas fa-link"></i></a>1.4 HTTP/1.1、HTTP/2、HTTP/3演变</h2>
+      
+        <h3 id="1-4-1-HTTP1-1相对于HTTP1-0"   >
+          <a href="#1-4-1-HTTP1-1相对于HTTP1-0" class="heading-link"><i class="fas fa-link"></i></a>1.4.1 HTTP1.1相对于HTTP1.0</h3>
+      <p><strong>优点：</strong> </p>
+<pre><code>* 支持长连接
+* 支持管道网络传输</code></pre><p><strong>瓶颈：</strong></p>
+<pre><code>+ 请求头/响应头未经压缩就发送
++ 服务器按序回应，有队头堵塞
++ 请求只能客户端发起</code></pre>
+        <h3 id="1-4-2-HTTP2对于HTTP1-1的优化"   >
+          <a href="#1-4-2-HTTP2对于HTTP1-1的优化" class="heading-link"><i class="fas fa-link"></i></a>1.4.2 HTTP2对于HTTP1.1的优化</h3>
+      <p><strong>优点：</strong></p>
+<pre><code>+ 头部压缩，如果同时发送多个请求，且请求头一致，会消除相同部分
++ **全面采用二进制格式**（头消息和数据体都是二进制，统称为帧）
++ 可以指定请求的优先级
++ **并非按照顺序回应**，一次你需要对数据包做标记</code></pre><ul>
+<li>服务器可以主动向客户端发送消息</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<p>​    + 多个HTTP请求复用一个TCP连接，但是TCP是不知道有多少个请求的，所以一旦丢包，就会触<strong>发重传机制，在一个TCP链接中的所有HTTP请求都必须等待这个丢了的包重传回来。</strong></p>
+
+        <h3 id="1-4-3-HTTP3"   >
+          <a href="#1-4-3-HTTP3" class="heading-link"><i class="fas fa-link"></i></a>1.4.3 HTTP3</h3>
+      <p>把下层的TCP协议改成了UDP，<strong>利用UDP的QUIC协议</strong></p>
+
+        <h1 id="2-一个数据包在网络中的旅程"   >
+          <a href="#2-一个数据包在网络中的旅程" class="heading-link"><i class="fas fa-link"></i></a>2. 一个数据包在网络中的旅程</h1>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124916.png" alt="image-20200527131358202"></p>
+
+        <h2 id="2-1-孤单小弟-HTTP"   >
+          <a href="#2-1-孤单小弟-HTTP" class="heading-link"><i class="fas fa-link"></i></a>2.1 孤单小弟 HTTP</h2>
+      <ol>
+<li>首先要进行的是<strong>URL解析</strong>：</li>
+</ol>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124917.png" alt="image-20200527131521380"></p>
+<ol start="2">
+<li>完成URL解析后，生成HTTP请求消息</li>
+</ol>
+<p>对 <code>URL</code> 进行解析之后，浏览器确定了 Web 服务器和文件名，接下来就是根据这些信息来生成 HTTP 请求消息了。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124918.png" alt="image-20200527131636389"></p>
+
+        <h2 id="2-2-真实地址查询-DNS"   >
+          <a href="#2-2-真实地址查询-DNS" class="heading-link"><i class="fas fa-link"></i></a>2.2 真实地址查询 DNS</h2>
+      <p>有一种服务器就专门保存了 <code>Web</code> 服务器域名与 <code>IP</code> 的对应关系，<strong>它就是 <code>DNS</code>服务器。</strong></p>
+<p><strong>域名的层级关系：</strong></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124919.png" alt="image-20200527131813690"></p>
+<p><strong>根域的 DNS 服务器信息保存在互联网中所有的 DNS 服务器中。</strong></p>
+<p>这样一来，任何 DNS 服务器就都可以找到并访问根域 DNS 服务器了。</p>
+<p>因此，客户端只要能够找到任意一台 DNS 服务器，就可以通过它找到根域 DNS 服务器，然后再一路顺藤摸瓜找到位于下层的某台目标 DNS 服务器。</p>
+
+        <h3 id="2-2-1-域名解析的流程"   >
+          <a href="#2-2-1-域名解析的流程" class="heading-link"><i class="fas fa-link"></i></a>2.2.1 域名解析的流程</h3>
+      <ol>
+<li>客户端首先会发出一个 DNS 请求，问 <span class="exturl"><a class="exturl__link"   href="http://www.server.com"  target="_blank" rel="noopener">www.server.com</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 的 IP 是啥，并发给本地 DNS 服务器（也就是客户端的 TCP/IP 设置中填写的 DNS 服务器地址）。</li>
+<li>本地域名服务器收到客户端的请求后，如果缓存里的表格能找到 <span class="exturl"><a class="exturl__link"   href="http://www.server.com，则它直接返回"  target="_blank" rel="noopener">www.server.com，则它直接返回</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> IP 地址。如果没有，本地 DNS 会去问它的根域名服务器：“老大， 能告诉我 <span class="exturl"><a class="exturl__link"   href="http://www.server.com"  target="_blank" rel="noopener">www.server.com</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 的 IP 地址吗？” 根域名服务器是最高层次的，它不直接用于域名解析，但能指明一条道路。</li>
+<li>根 DNS 收到来自本地 DNS 的请求后，发现后置是 .com，说：“<span class="exturl"><a class="exturl__link"   href="http://www.server.com"  target="_blank" rel="noopener">www.server.com</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 这个域名归 .com 区域管理”，我给你 .com 顶级域名服务器地址给你，你去问问它吧。”</li>
+<li>本地 DNS 收到顶级域名服务器的地址后，发起请求问“老二， 你能告诉我 <span class="exturl"><a class="exturl__link"   href="http://www.server.com"  target="_blank" rel="noopener">www.server.com</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>  的 IP 地址吗？”</li>
+<li>顶级域名服务器说：“我给你负责 <span class="exturl"><a class="exturl__link"   href="http://www.server.com"  target="_blank" rel="noopener">www.server.com</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 区域的权威 DNS 服务器的地址，你去问它应该能问到”。</li>
+<li>本地 DNS 于是转向问权威 DNS 服务器：“老三，<span class="exturl"><a class="exturl__link"   href="http://www.server.com对应的IP是啥呀？”" >www.server.com对应的IP是啥呀？”</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> server.com 的权威 DNS 服务器，它是域名解析结果的原出处。为啥叫权威呢？就是我的域名我做主。</li>
+<li>权威 DNS 服务器查询后将对应的 IP 地址 X.X.X.X 告诉本地 DNS。</li>
+<li>本地 DNS 再将 IP 地址返回客户端，客户端和目标建立连接。</li>
+</ol>
+<p>至此，我们完成了 DNS 的解析过程。现在总结一下，整个过程我画成了一个图。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124920.png" alt="image-20200527131951921"></p>
+<p><strong>但是这个时候我们还只是知道了目的地而已。</strong></p>
+
+        <h2 id="2-3-指路帮手-–-协议栈"   >
+          <a href="#2-3-指路帮手-–-协议栈" class="heading-link"><i class="fas fa-link"></i></a>2.3 指路帮手 –  协议栈</h2>
+      <p>通过 DNS 获取到 IP 后，就可以把 HTTP 的传输工作交给操作系统中的<strong>协议栈</strong>。</p>
+<p>协议栈的内部分为几个部分，分别承担不同的工作。上下关系是有一定的规则的，上面的部分会向下面的部分委托工作，下面的部分收到委托的工作并执行。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124921.png" alt="image-20200527132127386"></p>
+
+        <h2 id="2-4-可靠传输-TCP"   >
+          <a href="#2-4-可靠传输-TCP" class="heading-link"><i class="fas fa-link"></i></a>2.4 可靠传输 TCP</h2>
+      
+        <h3 id="2-4-1-TCP包头部"   >
+          <a href="#2-4-1-TCP包头部" class="heading-link"><i class="fas fa-link"></i></a>2.4.1 TCP包头部</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124922.png" alt="image-20200527132242935"></p>
+<p>首先，<strong>源端口号</strong>和<strong>目标端口</strong>号是不可少的，如果没有这两个端口号，数据就不知道应该发给哪个应用。</p>
+<p>接下来有包的<strong>序</strong>号，这个是为了解决包乱序的问题。</p>
+<p>还有应该有的是<strong>确认号</strong>，目的是确认发出去对方是否有收到。如果没有收到就应该重新发送，直到送达，这个是为了解决不丢包的问题。</p>
+<p>接下来还有一些<strong>状态位</strong>。例如 <code>SYN</code> 是发起一个连接，<code>ACK</code> 是回复，<code>RST</code> 是重新连接，<code>FIN</code> 是结束连接等。TCP 是面向连接的，因而双方要维护连接的状态，这些带状态位的包的发送，会引起双方的状态变更。</p>
+<p>还有一个重要的就是<strong>窗口大小</strong>。TCP 要做<strong>流量控制</strong>，通信双方各声明一个窗口（缓存大小），标识自己当前能够的处理能力，别发送的太快，撑死我，也别发的太慢，饿死我。</p>
+<p>除了做流量控制以外，TCP还会做<strong>拥塞控制</strong>，对于真正的通路堵车不堵车，它无能为力，唯一能做的就是控制自己，也即控制发送的速度。不能改变世界，就改变自己嘛。</p>
+
+        <h3 id="2-4-2-三次握手"   >
+          <a href="#2-4-2-三次握手" class="heading-link"><i class="fas fa-link"></i></a>2.4.2 三次握手</h3>
+      <p>TCP建立连接之前，首先需要三次握手</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124923.png" alt="image-20200527132442895"></p>
+
+        <h3 id="2-4-3-TCP报文生成"   >
+          <a href="#2-4-3-TCP报文生成" class="heading-link"><i class="fas fa-link"></i></a>2.4.3 TCP报文生成</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124924.png" alt="image-20200527132603286"></p>
+
+        <h2 id="2-5-远程定位-IP"   >
+          <a href="#2-5-远程定位-IP" class="heading-link"><i class="fas fa-link"></i></a>2.5 远程定位 IP</h2>
+      
+        <h3 id="2-5-1-IP包头部"   >
+          <a href="#2-5-1-IP包头部" class="heading-link"><i class="fas fa-link"></i></a>2.5.1 IP包头部</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124925.png" alt="image-20200527132731874"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124926.png" alt="image-20200527132738127"></p>
+<p>在 IP 协议里面需要有<strong>源地址 IP</strong> 和 <strong>目标地址 IP</strong>：</p>
+<ul>
+<li>源地址IP，即是客户端输出的 IP 地址；</li>
+<li>目标地址，即通过 DNS 域名解析得到的 Web 服务器 IP。</li>
+</ul>
+<p>因为 HTTP 是经过 TCP 传输的，所以在 IP 包头的<strong>协议号</strong>，<strong>要填写为 <code>06</code>（十六进制），表示协议为 TCP。</strong></p>
+
+        <h3 id="2-5-2-IP完成的是远程定位。"   >
+          <a href="#2-5-2-IP完成的是远程定位。" class="heading-link"><i class="fas fa-link"></i></a>2.5.2 IP完成的是远程定位。</h3>
+      
+        <h2 id="2-6-两点传输-–-MAC"   >
+          <a href="#2-6-两点传输-–-MAC" class="heading-link"><i class="fas fa-link"></i></a>2.6 两点传输 – MAC</h2>
+      
+        <h3 id="2-6-1-MAC包头格式"   >
+          <a href="#2-6-1-MAC包头格式" class="heading-link"><i class="fas fa-link"></i></a>2.6.1 MAC包头格式</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124927.png" alt="image-20200527133153233"></p>
+<p>一般在 TCP/IP 通信里，MAC 包头的<strong>协议类型</strong>只使用：</p>
+<ul>
+<li><code>0800</code> ：IP 协议</li>
+<li><code>0806</code> ：ARP 协议</li>
+</ul>
+
+        <h3 id="2-6-2-MAC的发送方和接收方"   >
+          <a href="#2-6-2-MAC的发送方和接收方" class="heading-link"><i class="fas fa-link"></i></a>2.6.2 MAC的发送方和接收方</h3>
+      <p><strong>发送方</strong>的 MAC 地址获取就比较简单了，MAC 地址是在网卡生产时写入到 ROM 里的，只要将这个值读取出来写入到 MAC 头部就可以了。</p>
+<p><strong>接收方</strong>的 MAC 地址就有点复杂了，只要告诉以太网对方的 MAC 的地址，以太网就会帮我们把包发送过去，那么很显然这里应该填写对方的 MAC 地址。</p>
+<p>所以先得搞清楚应该把包发给谁，这个只要查一下<strong>路由表</strong>就知道了。在路由表中找到相匹配的条目，然后把包发给 <code>Gateway</code> 列中的 IP 地址就可以了。</p>
+
+        <h3 id="2-6-3-如何获得对方的MAC地址？"   >
+          <a href="#2-6-3-如何获得对方的MAC地址？" class="heading-link"><i class="fas fa-link"></i></a>2.6.3 如何获得对方的MAC地址？</h3>
+      <p><strong>ARP广播：</strong></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124928.png" alt="image-20200527133400246"></p>
+<p>后续操作系统会把本次查询结果放到一块叫做 <strong>ARP 缓存</strong>的内存空间留着以后用，不过缓存的时间就几分钟。</p>
+<p>也就是说，在发包时：</p>
+<ul>
+<li><p>先查询 ARP 缓存，如果其中已经保存了对方的 MAC 地址，就不需要发送 ARP 查询，直接使用 ARP 缓存中的地址。</p>
+</li>
+<li><p>而当 ARP 缓存中不存在对方 MAC 地址时，则发送 ARP 广播查询。</p>
+<p>IP 的作用是主机之间通信中的，而 <strong>MAC 的作用则是实现「直连」的两个设备之间通信，而 IP 则负责在「没有直连」的两个网络之间进行通信传输。</strong></p>
+</li>
+</ul>
+
+        <h2 id="2-7-网卡"   >
+          <a href="#2-7-网卡" class="heading-link"><i class="fas fa-link"></i></a>2.7 网卡</h2>
+      <p>将<strong>数字信息转换为电信号</strong>，才能在网线上传输，也就是说，这才是真正的数据发送过程。</p>
+
+        <h2 id="2-8-交换机"   >
+          <a href="#2-8-交换机" class="heading-link"><i class="fas fa-link"></i></a>2.8 交换机</h2>
+      <p>交换机的设计是将网络包<strong>原样</strong>转发到目的地。交换机工作在 MAC 层，也称为<strong>二层网络设备</strong>。</p>
+<p>计算机的网卡本身具有 MAC 地址，并通过核对收到的包的接收方 MAC 地址判断是不是发给自己的，如果不是发给自己的则丢弃；相对地，交换机的端口不核对接收方 MAC 地址，而是直接接收所有的包并存放到缓冲区中。因此，和网卡不同，<strong>交换机的端口不具有 MAC 地址</strong>。</p>
+<p>将包存入缓冲区后，接下来需要查询一下这个包的接收方 MAC 地址是否已经在 MAC 地址表中有记录了。</p>
+<p>交换机的 MAC 地址表主要包含两个信息：</p>
+<ul>
+<li>一个是设备的 MAC 地址，</li>
+<li>另一个是该设备连接在交换机的哪个端口上。</li>
+</ul>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124929.png" alt="image-20200527134730279"></p>
+<p><strong>交换机根据 MAC 地址表查找 MAC 地址，然后将信号发送到相应的端口</strong>。</p>
+
+        <h3 id="2-8-1-但是如果MAC地址表找不到指定的MAC地址怎么办？"   >
+          <a href="#2-8-1-但是如果MAC地址表找不到指定的MAC地址怎么办？" class="heading-link"><i class="fas fa-link"></i></a>2.8.1 但是如果MAC地址表找不到指定的MAC地址怎么办？</h3>
+      <p>地址表中找不到指定的 MAC 地址。这可能是因为具有该地址的设备还没有向交换机发送过包，或者这个设备一段时间没有工作导致地址被从地址表中删除了。</p>
+<p>这种情况下，交换机无法判断应该把包转发到哪个端口，<strong>只能将包转发到除了源端口之外的所有端口上，无论该设备连接在哪个端口上都能收到这个包。</strong></p>
+<p>这样做不会产生什么问题，因为以太网的设计本来就是将包发送到整个网络的，然后<strong>只有相应的接收者才接收包，而其他设备则会忽略这个包</strong>。</p>
+
+        <h2 id="2-9-出境大门路由器"   >
+          <a href="#2-9-出境大门路由器" class="heading-link"><i class="fas fa-link"></i></a>2.9 出境大门路由器</h2>
+      
+        <h1 id="3-TCP"   >
+          <a href="#3-TCP" class="heading-link"><i class="fas fa-link"></i></a>3. TCP</h1>
+      <p><span class="exturl"><a class="exturl__link"   href="https://mp.weixin.qq.com/s/tH8RFmjrveOmgLvk9hmrkw"  target="_blank" rel="noopener">https://mp.weixin.qq.com/s/tH8RFmjrveOmgLvk9hmrkw</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h2 id="3-1-TCP基本认识"   >
+          <a href="#3-1-TCP基本认识" class="heading-link"><i class="fas fa-link"></i></a>3.1 TCP基本认识</h2>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124930.png" alt="image-20200527135612478"></p>
+
+        <h3 id="3-1-1-TCP头格式"   >
+          <a href="#3-1-1-TCP头格式" class="heading-link"><i class="fas fa-link"></i></a>3.1.1 TCP头格式</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/20200528124931.png" alt="image-20200527135641043"></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://yoursite.com">Pawnbrokers</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://yoursite.com/2020/05/27/%E8%AE%A1%E7%BD%91%E5%9B%9E%E9%A1%BE/">http://yoursite.com/2020/05/27/%E8%AE%A1%E7%BD%91%E5%9B%9E%E9%A1%BE/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://yoursite.com/tags/HTTP/">HTTP</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/05/28/Socket%E7%BC%96%E7%A8%8B/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Socket编程</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/05/26/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E9%93%BE%E6%8E%A5/"><span class="paginator-prev__text">思维导图链接</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-HTTP"><span class="toc-number">1.</span> <span class="toc-text">
+          1. HTTP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-GET和POST方法是安全与幂等的吗？"><span class="toc-number">1.1.</span> <span class="toc-text">
+          1.1 GET和POST方法是安全与幂等的吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-HTTP的变化"><span class="toc-number">1.2.</span> <span class="toc-text">
+          1.2 HTTP的变化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-HTTPS建立连接"><span class="toc-number">1.3.</span> <span class="toc-text">
+          1.3 HTTPS建立连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-HTTP-1-1、HTTP-2、HTTP-3演变"><span class="toc-number">1.4.</span> <span class="toc-text">
+          1.4 HTTP&#x2F;1.1、HTTP&#x2F;2、HTTP&#x2F;3演变</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-1-HTTP1-1相对于HTTP1-0"><span class="toc-number">1.4.1.</span> <span class="toc-text">
+          1.4.1 HTTP1.1相对于HTTP1.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-2-HTTP2对于HTTP1-1的优化"><span class="toc-number">1.4.2.</span> <span class="toc-text">
+          1.4.2 HTTP2对于HTTP1.1的优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-3-HTTP3"><span class="toc-number">1.4.3.</span> <span class="toc-text">
+          1.4.3 HTTP3</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-一个数据包在网络中的旅程"><span class="toc-number">2.</span> <span class="toc-text">
+          2. 一个数据包在网络中的旅程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-孤单小弟-HTTP"><span class="toc-number">2.1.</span> <span class="toc-text">
+          2.1 孤单小弟 HTTP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-真实地址查询-DNS"><span class="toc-number">2.2.</span> <span class="toc-text">
+          2.2 真实地址查询 DNS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-域名解析的流程"><span class="toc-number">2.2.1.</span> <span class="toc-text">
+          2.2.1 域名解析的流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-指路帮手-–-协议栈"><span class="toc-number">2.3.</span> <span class="toc-text">
+          2.3 指路帮手 –  协议栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-可靠传输-TCP"><span class="toc-number">2.4.</span> <span class="toc-text">
+          2.4 可靠传输 TCP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-1-TCP包头部"><span class="toc-number">2.4.1.</span> <span class="toc-text">
+          2.4.1 TCP包头部</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-2-三次握手"><span class="toc-number">2.4.2.</span> <span class="toc-text">
+          2.4.2 三次握手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-3-TCP报文生成"><span class="toc-number">2.4.3.</span> <span class="toc-text">
+          2.4.3 TCP报文生成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-远程定位-IP"><span class="toc-number">2.5.</span> <span class="toc-text">
+          2.5 远程定位 IP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-1-IP包头部"><span class="toc-number">2.5.1.</span> <span class="toc-text">
+          2.5.1 IP包头部</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-2-IP完成的是远程定位。"><span class="toc-number">2.5.2.</span> <span class="toc-text">
+          2.5.2 IP完成的是远程定位。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-两点传输-–-MAC"><span class="toc-number">2.6.</span> <span class="toc-text">
+          2.6 两点传输 – MAC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-1-MAC包头格式"><span class="toc-number">2.6.1.</span> <span class="toc-text">
+          2.6.1 MAC包头格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-2-MAC的发送方和接收方"><span class="toc-number">2.6.2.</span> <span class="toc-text">
+          2.6.2 MAC的发送方和接收方</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-3-如何获得对方的MAC地址？"><span class="toc-number">2.6.3.</span> <span class="toc-text">
+          2.6.3 如何获得对方的MAC地址？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-网卡"><span class="toc-number">2.7.</span> <span class="toc-text">
+          2.7 网卡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-8-交换机"><span class="toc-number">2.8.</span> <span class="toc-text">
+          2.8 交换机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-1-但是如果MAC地址表找不到指定的MAC地址怎么办？"><span class="toc-number">2.8.1.</span> <span class="toc-text">
+          2.8.1 但是如果MAC地址表找不到指定的MAC地址怎么办？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-9-出境大门路由器"><span class="toc-number">2.9.</span> <span class="toc-text">
+          2.9 出境大门路由器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-TCP"><span class="toc-number">3.</span> <span class="toc-text">
+          3. TCP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-TCP基本认识"><span class="toc-number">3.1.</span> <span class="toc-text">
+          3.1 TCP基本认识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-TCP头格式"><span class="toc-number">3.1.1.</span> <span class="toc-text">
+          3.1.1 TCP头格式</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/me.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">我们必须习惯，站在人生的交叉路口，却没有红绿灯的事实。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/pawnbrokers" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/mu-rong-xue-hen-46" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="assets/wechat.jpg" target="_blank" rel="noopener" data-popover="微信" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="assets/qq.jpg" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">37</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">33</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">43</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Pawnbrokers</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v4.2.1</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script></body></html>

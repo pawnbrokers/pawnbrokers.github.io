@@ -1,0 +1,605 @@
+<!DOCTYPE html><html lang="cn"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0" type="image/png" sizes="32x32"><meta name="description" content="登录注册及个人中心">
+<meta property="og:type" content="article">
+<meta property="og:title" content="eblog搭建3">
+<meta property="og:url" content="http://yoursite.com/2020/05/23/eblog%E6%90%AD%E5%BB%BA3/index.html">
+<meta property="og:site_name" content="节能主义">
+<meta property="og:description" content="登录注册及个人中心">
+<meta property="og:locale" content="cn">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/S45wQPHlOadI1EZ.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/lbnOwUiNVMKkcJB.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/EwLW7lcFH3kPGVo.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/pxGLjNbJ9BkWIts.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/duoeSI9nvLVKMij.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/xQEJXP7V4s3k2ho.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/8TQn9s21ywPZdfI.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/n2SQ1hJD3ylfc5k.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/gqKBrWbohjFtAxP.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/fQltErx1qShG8sN.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/hJFb4vQ5pYfKldw.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/5iAfUTrENZclwYy.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/qzujG1ToNpWEKv2.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/7Y5y1zKuIjchU9g.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/arQLUpXhY7IWAe9.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/g1hJ7NuvGpcOFlV.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/QE2mrNnluqBz8fP.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/pyEnJosKFX4Dm6b.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/ziUEtHDYpRyq8CG.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/oPJFC9RyjsEXSqp.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/kndDpi5rSTjY6e3.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/N26GDBOqb5caZsM.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/4eKx2yjEWtLqObs.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/M7lutqzS8jaRVHC.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/2NoJrzhe56SVTlK.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/wfzqyIm1D8clgQx.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/tvIohNX6q8AxWd4.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/NFeDCPtKSpo25zn.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/R1s3KNEMLX8cpgx.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/WJZKbL5gFVnuwYs.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/RpZxsToLBjlbMyc.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/N3z9nlVGfSeB8Ko.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/Sn6i8h9Nd7j2fum.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/PlaNOzG3FprX4He.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/FbdJwSxGoY9L2Ci.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/P9yueZKfj5gIA4w.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/b82ZREpYGVTtr9n.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/FNJ2Oro1VnhgXfm.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/QY9bLdETvNPsAh4.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/O1qAiEHdxrgPLT9.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/WQpPZbjH2iwKD7V.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/LWvZmrXJiMagB1h.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/j2eizOVyK3XhQxC.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/iG9YFsuxwPChKaJ.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/ThFupLsjJC2QPoS.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/qD2MGS5rO7lF6bP.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/jweku4KoxIEaOtZ.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/IqDSXwoQbcC5j7E.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/HzTDvGjorw3q86S.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/ADnSqk6fbMwuF4j.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/FXh2CM8jVOWKovq.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/C4f9wYXPz8NMrZ2.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/mVzTFtRwjcAuaIh.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/huPkLAZwYOexcUV.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/b2IEnSxqu4FTBHg.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/ZXYb1Fc8BTrUmsV.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/24/wq38sXF5e6KLBYo.png">
+<meta property="article:published_time" content="2020-05-23T13:56:36.000Z">
+<meta property="article:modified_time" content="2020-05-24T11:49:38.591Z">
+<meta property="article:author" content="Pawnbrokers">
+<meta property="article:tag" content="FreeMarker">
+<meta property="article:tag" content="Spring Boot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/24/S45wQPHlOadI1EZ.png"><meta name="keywords" content="Pawnbrokers, 节能主义"><meta name="description" content=""><title>eblog搭建3 | 节能主义</title><link ref="canonical" href="http://yoursite.com/2020/05/23/eblog%E6%90%AD%E5%BB%BA3/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="节能主义" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">节能主义</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">eblog搭建3</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-05-23</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-05-24</span></span></div></header><div class="post-body">
+        <h1 id="登录注册及个人中心"   >
+          <a href="#登录注册及个人中心" class="heading-link"><i class="fas fa-link"></i></a>登录注册及个人中心</h1>
+      <p><img src="https://i.loli.net/2020/05/24/S45wQPHlOadI1EZ.png" alt="image-20200523225657282"></p>
+<a id="more"></a>
+
+
+
+
+        <h1 id="1-用户注册-AuthController"   >
+          <a href="#1-用户注册-AuthController" class="heading-link"><i class="fas fa-link"></i></a>1. 用户注册(AuthController)</h1>
+      
+        <h2 id="1-1-步骤"   >
+          <a href="#1-1-步骤" class="heading-link"><i class="fas fa-link"></i></a>1.1 步骤</h2>
+      <blockquote>
+<ol>
+<li>修改reg页面</li>
+<li>编写controller</li>
+<li>导入谷歌框架</li>
+<li>生成验证码图片的Ajax请求，同样是一个请求</li>
+<li>注册校验逻辑</li>
+<li>校验输入的验证码与正确的验证码</li>
+<li>userService的具体注册实现</li>
+<li>火狐验证码的刷新问题</li>
+</ol>
+</blockquote>
+
+        <h2 id="1-2-修改reg页面（reg-ftl）"   >
+          <a href="#1-2-修改reg页面（reg-ftl）" class="heading-link"><i class="fas fa-link"></i></a>1.2 修改reg页面（reg.ftl）</h2>
+      
+        <h3 id="1-2-0-目标效果"   >
+          <a href="#1-2-0-目标效果" class="heading-link"><i class="fas fa-link"></i></a>1.2.0 目标效果</h3>
+      <p>下面的人类验证部分，我们Ajax传入验证码图片，并且设定点击刷新。</p>
+<p><img src="https://i.loli.net/2020/05/24/lbnOwUiNVMKkcJB.png" alt="image-20200523222103996"></p>
+
+        <h3 id="1-2-1-首先修改header-ftl中的跳转请求"   >
+          <a href="#1-2-1-首先修改header-ftl中的跳转请求" class="heading-link"><i class="fas fa-link"></i></a>1.2.1 首先修改header.ftl中的跳转请求</h3>
+      <p><img src="https://i.loli.net/2020/05/24/EwLW7lcFH3kPGVo.png" alt="image-20200523221956906"></p>
+
+        <h3 id="1-2-2-对应的注册提交表单的action修改"   >
+          <a href="#1-2-2-对应的注册提交表单的action修改" class="heading-link"><i class="fas fa-link"></i></a>1.2.2 对应的注册提交表单的action修改</h3>
+      <p><img src="https://i.loli.net/2020/05/24/pxGLjNbJ9BkWIts.png" alt="image-20200523221328886"></p>
+<p>我们发现<code>layui</code>的表单提交并非我们传统上的<code>type = &quot;submit&quot;</code>，而且表单上也没有<code>action=“”</code>我们进去它的<code>js</code>源码看看他的表单提交具体是如何实现的。</p>
+<p><img src="https://i.loli.net/2020/05/24/duoeSI9nvLVKMij.png" alt="image-20200523222858987"></p>
+<p>它发往的请求地址是我们定义好的action路径，且如果<code>alert=&quot;true&quot;</code>，就会 弹出我们设定好的<code>msg</code>，同样的，如果<code>reload = &quot;true&quot;</code>，就会刷新页面。</p>
+
+        <h2 id="1-3-AuthController"   >
+          <a href="#1-3-AuthController" class="heading-link"><i class="fas fa-link"></i></a>1.3 AuthController</h2>
+      <p><img src="https://i.loli.net/2020/05/24/xQEJXP7V4s3k2ho.png" alt="image-20200523222447174"></p>
+
+        <h2 id="1-4-Result类的定义"   >
+          <a href="#1-4-Result类的定义" class="heading-link"><i class="fas fa-link"></i></a>1.4 Result类的定义</h2>
+      <p>我们次接收到表单的请求，无论成功失败都要给他们至少提供两个信息：<strong>msg和action</strong>，即成功或者失败的消息，当然还有成功码的信息以及一些必要的信息。</p>
+<p><img src="https://i.loli.net/2020/05/24/8TQn9s21ywPZdfI.png" alt="image-20200523223035412"></p>
+<p>我们这里接受表单请求之后，主要返回这样几种消息<strong>：成功码，要提示的消息，可能含有的一些数据，下一步的请求路径。</strong></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yuan.common.lang;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Result</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//0 成功 ， -1 失败，</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> status;</span><br><span class="line">    <span class="keyword">private</span> String msg;</span><br><span class="line">    <span class="keyword">private</span> Object data;</span><br><span class="line">    <span class="keyword">private</span> String action;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Result <span class="title">success</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Result.success(<span class="string">"操作成功"</span>, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Result <span class="title">success</span><span class="params">(Object data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Result.success(<span class="string">"操作成功"</span>, data);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Result <span class="title">success</span><span class="params">(String msg, Object data)</span> </span>&#123;</span><br><span class="line">        Result result = <span class="keyword">new</span> Result();</span><br><span class="line">        result.msg = msg;</span><br><span class="line">        result.data = data;</span><br><span class="line">        result.status = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Result <span class="title">fail</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">        Result result = <span class="keyword">new</span> Result();</span><br><span class="line">        result.msg = msg;</span><br><span class="line">        result.data = <span class="keyword">null</span>;</span><br><span class="line">        result.status = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">action</span><span class="params">(String action)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.action = action;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="1-5-验证码的生成"   >
+          <a href="#1-5-验证码的生成" class="heading-link"><i class="fas fa-link"></i></a>1.5 验证码的生成</h2>
+      <ol>
+<li>导入依赖</li>
+</ol>
+<figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--验证码--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.axet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>kaptcha<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<ol start="2">
+<li>生成验证码</li>
+<li>这里的<code>porducer</code>是<code>kaptcha</code>的类，主要提供两个方法，生成二维码的文字及其对应图片。</li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/24/n2SQ1hJD3ylfc5k.png" alt="image-20200523223700168"></p>
+<p><img src="https://i.loli.net/2020/05/24/gqKBrWbohjFtAxP.png" alt="image-20200523223606425"></p>
+<p>注意：我们这里引入了<code>resp</code>，主要是高速浏览器，不要留有缓存，以及我们传输过去的内容格式，这里大抵是一段固定的代码。</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String KAPTCHA_SESSION_KEY = <span class="string">"KAPTCHA_SESSION_KEY"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    Producer producer;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    MUserService userService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//生成验证码图片</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/captcha.jpg"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">kaptcha</span><span class="params">(HttpServletResponse resp)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">//验证码</span></span><br><span class="line">        String text = producer.createText();</span><br><span class="line">        BufferedImage image = producer.createImage(text);</span><br><span class="line">        req.getSession().setAttribute(KAPTCHA_SESSION_KEY, text);</span><br><span class="line"></span><br><span class="line">        resp.setHeader(<span class="string">"Cache-Control"</span>, <span class="string">"no-store, no-cache"</span>);</span><br><span class="line">        resp.setContentType(<span class="string">"image/jpeg"</span>);</span><br><span class="line">        ServletOutputStream outputStream = resp.getOutputStream();</span><br><span class="line">        ImageIO.write(image, <span class="string">"jpg"</span>, outputStream);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="1-6-Controller验证注册"   >
+          <a href="#1-6-Controller验证注册" class="heading-link"><i class="fas fa-link"></i></a>1.6 Controller验证注册</h2>
+      <p><img src="https://i.loli.net/2020/05/24/fQltErx1qShG8sN.png" alt="image-20200523224408182"></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/register"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">register</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"/auth/reg"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//校验认证</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@PostMapping</span>(<span class="string">"/register"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> Result <span class="title">doRegister</span><span class="params">(MUser user, String repass, String vercode)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//校验</span></span><br><span class="line">    ValidationUtil.ValidResult validResult = ValidationUtil.validateBean(user);</span><br><span class="line">    <span class="keyword">if</span> (validResult.hasErrors()) &#123;</span><br><span class="line">        <span class="keyword">return</span> Result.fail(validResult.getErrors());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!user.getPassword().equals(repass)) &#123;</span><br><span class="line">        <span class="keyword">return</span> Result.fail(<span class="string">"两次输入密码不一致"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//正确的验证码</span></span><br><span class="line">    String kaptcha = (String) req.getSession().getAttribute(KAPTCHA_SESSION_KEY);</span><br><span class="line">    System.out.println(kaptcha);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (vercode == <span class="keyword">null</span> || !vercode.equalsIgnoreCase(kaptcha)) &#123;</span><br><span class="line">        <span class="keyword">return</span> Result.fail(<span class="string">"验证码输入不正确"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//如果上述验证通过之后，则需要进行注册了</span></span><br><span class="line">    Result result = userService.register(user);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result.action(<span class="string">"/login"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+
+
+        <h3 id="1-6-1-ValidationUtil是我们引入的一个验证的工具类。"   >
+          <a href="#1-6-1-ValidationUtil是我们引入的一个验证的工具类。" class="heading-link"><i class="fas fa-link"></i></a>1.6.1 ValidationUtil是我们引入的一个验证的工具类。</h3>
+      <p>首先来看一下<code>ValidResult</code>:</p>
+<p><img src="https://i.loli.net/2020/05/24/hJFb4vQ5pYfKldw.png" alt="image-20200523224734433"></p>
+<p><img src="https://i.loli.net/2020/05/24/5iAfUTrENZclwYy.png" alt="image-20200523224831283"></p>
+<p>最开始校验工作主要完成一些最基本的校验工作，比如格式等问题。</p>
+<p>为此我们在<code>MUser</code>的实体类上加上了一些注解：</p>
+<p><img src="https://i.loli.net/2020/05/24/qzujG1ToNpWEKv2.png" alt="image-20200523224947149"></p>
+<p>上述工具类主要就是完成此类的格式校验。</p>
+
+        <h3 id="1-6-2-比较密码以及验证码"   >
+          <a href="#1-6-2-比较密码以及验证码" class="heading-link"><i class="fas fa-link"></i></a>1.6.2 比较密码以及验证码</h3>
+      <p><img src="https://i.loli.net/2020/05/24/7Y5y1zKuIjchU9g.png" alt="image-20200523225105572"></p>
+<p>我们这里输入的就是Result中的<code>msg</code>，用于实现前端的<code>alert</code>。</p>
+
+        <h3 id="1-6-3-Service层面的校验以及查询"   >
+          <a href="#1-6-3-Service层面的校验以及查询" class="heading-link"><i class="fas fa-link"></i></a>1.6.3 Service层面的校验以及查询</h3>
+      <p>这里我们主要保证没有重复，如果没有重复，则新建对象 进行保存，<strong>并返回成功的Result。</strong></p>
+<p><img src="https://i.loli.net/2020/05/24/arQLUpXhY7IWAe9.png" alt="image-20200523225531377"></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MUserServiceImpl</span> <span class="keyword">extends</span> <span class="title">ServiceImpl</span>&lt;<span class="title">MUserMapper</span>, <span class="title">MUser</span>&gt; <span class="keyword">implements</span> <span class="title">MUserService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">register</span><span class="params">(MUser user)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//之前我们只是完成了格式的校验，现在又更多的校验，邮箱名称等不能为空</span></span><br><span class="line">        QueryWrapper&lt;MUser&gt; wrapper = <span class="keyword">new</span> QueryWrapper&lt;MUser&gt;()</span><br><span class="line">                .eq(<span class="string">"email"</span>, user.getEmail())</span><br><span class="line">                .or()</span><br><span class="line">                .eq(<span class="string">"username"</span>, user.getUsername());</span><br><span class="line">        <span class="keyword">int</span> count = <span class="keyword">this</span>.count(wrapper);</span><br><span class="line">        <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> Result.fail(<span class="string">"用户名或邮箱已被占用"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//这里我们必须新建MUser,不然前端的数据传过来可能会有数据库没有的属性</span></span><br><span class="line">        MUser temp = <span class="keyword">new</span> MUser();</span><br><span class="line">        temp.setUsername(user.getUsername());</span><br><span class="line">        temp.setPassword(SecureUtil.md5(user.getPassword()));</span><br><span class="line">        temp.setEmail(user.getEmail());</span><br><span class="line">        temp.setAvatar(<span class="string">"/res/images/avatar/default.png"</span>);</span><br><span class="line"></span><br><span class="line">        temp.setCreated(<span class="keyword">new</span> Date());</span><br><span class="line">        temp.setPoint(<span class="number">0</span>);</span><br><span class="line">        temp.setVipLevel(<span class="number">0</span>);</span><br><span class="line">        temp.setCommentCount(<span class="number">0</span>);</span><br><span class="line">        temp.setPostCount(<span class="number">0</span>);</span><br><span class="line">        temp.setGender(<span class="string">"0"</span>);</span><br><span class="line">        <span class="keyword">this</span>.save(temp);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Result.success();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="1-7-成功之后返回到登录请求"   >
+          <a href="#1-7-成功之后返回到登录请求" class="heading-link"><i class="fas fa-link"></i></a>1.7 成功之后返回到登录请求</h2>
+      
+        <h2 id="1-8-火狐浏览器刷新问题"   >
+          <a href="#1-8-火狐浏览器刷新问题" class="heading-link"><i class="fas fa-link"></i></a>1.8 火狐浏览器刷新问题</h2>
+      <p>用户可能会看不清楚验证码，所以我们还要给验证码图片+一个点击事件，每当点击验证码图片后，就会重新发起一个Ajax请求。</p>
+<p><strong>为此我们需要引入jquery.js。</strong></p>
+<p><img src="https://i.loli.net/2020/05/24/g1hJ7NuvGpcOFlV.png" alt="image-20200523230041801"></p>
+<p>注意这里我们的<strong>js代码</strong>不可以是<code>this.src = &quot;/captcha.jpg&quot;</code>,这样的话火狐等就会认为是同一张图片，而不会发起心得请求。</p>
+
+        <h2 id="1-9-测试"   >
+          <a href="#1-9-测试" class="heading-link"><i class="fas fa-link"></i></a>1.9 测试</h2>
+      <p>为了避免重复书写的麻烦，所以写了一些<code>placeholder</code>。</p>
+<p>社交账号登陆的功能<strong>暂时未做。</strong></p>
+<p><img src="https://i.loli.net/2020/05/24/QE2mrNnluqBz8fP.png" alt="image-20200523230203737"></p>
+
+        <h1 id="2-用户登录-AuthController"   >
+          <a href="#2-用户登录-AuthController" class="heading-link"><i class="fas fa-link"></i></a>2. 用户登录(AuthController)</h1>
+      
+        <h2 id="2-1-目标效果"   >
+          <a href="#2-1-目标效果" class="heading-link"><i class="fas fa-link"></i></a>2.1 目标效果</h2>
+      <p><img src="https://i.loli.net/2020/05/24/pyEnJosKFX4Dm6b.png" alt="image-20200523230358199"></p>
+
+        <h2 id="2-2-步骤"   >
+          <a href="#2-2-步骤" class="heading-link"><i class="fas fa-link"></i></a>2.2 步骤</h2>
+      <blockquote>
+<ol>
+<li>页面的修改</li>
+<li>跳转页面的请求</li>
+<li>处理登录的请求</li>
+<li>shiro中 realm认证方法的重写</li>
+<li>个人信息的存储</li>
+<li>shiro安全中心以及拦截器链</li>
+<li>shiro的FreeMarker标签</li>
+</ol>
+</blockquote>
+
+        <h2 id="2-3-导入依赖"   >
+          <a href="#2-3-导入依赖" class="heading-link"><i class="fas fa-link"></i></a>2.3 导入依赖</h2>
+      <figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--shiro权限框架--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.shiro<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>shiro-spring<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>net.mingsoft<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>shiro-freemarker-tags<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="2-4-前端的form"   >
+          <a href="#2-4-前端的form" class="heading-link"><i class="fas fa-link"></i></a>2.4 前端的form</h2>
+      <p><img src="https://i.loli.net/2020/05/24/ziUEtHDYpRyq8CG.png" alt="image-20200523231004569"></p>
+<p>这里就是没有方法的，意味着我们同样需要返回<code>Result</code>对象。</p>
+
+        <h2 id="2-5-接受请求以及处理请求"   >
+          <a href="#2-5-接受请求以及处理请求" class="heading-link"><i class="fas fa-link"></i></a>2.5 接受请求以及处理请求</h2>
+      <p><img src="https://i.loli.net/2020/05/24/oPJFC9RyjsEXSqp.png" alt="image-20200523231428358"></p>
+<ul>
+<li><ol>
+<li>接收页面跳转的请求</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>判断用户名密码是否为空</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>判断验证码是否正确</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>将<strong>用户名密码封装成token</strong>，交由realm认证，并由安全中心审核。</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>处理<strong>安全中心</strong>中返回的异常</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/login"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">login</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"/auth/login"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"/login"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">doLogin</span><span class="params">(String email, String password,String vercode)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (StrUtil.isEmpty(email) || StrUtil.isEmpty(password)) &#123;</span><br><span class="line">            <span class="keyword">return</span> Result.fail(<span class="string">"用户名或密码不能为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//正确的验证码</span></span><br><span class="line">        String kaptcha = (String) req.getSession().getAttribute(KAPTCHA_SESSION_KEY);</span><br><span class="line">        System.out.println(kaptcha);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (vercode == <span class="keyword">null</span> || !vercode.equalsIgnoreCase(kaptcha)) &#123;</span><br><span class="line">            <span class="keyword">return</span> Result.fail(<span class="string">"验证码输入不正确"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        UsernamePasswordToken token = <span class="keyword">new</span> UsernamePasswordToken(email, SecureUtil.md5(password));</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            SecurityUtils.getSubject().login(token);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (AuthenticationException e) &#123;</span><br><span class="line">            <span class="keyword">if</span> (e <span class="keyword">instanceof</span> UnknownAccountException) &#123;</span><br><span class="line">                <span class="keyword">return</span> Result.fail(<span class="string">"用户不存在"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e <span class="keyword">instanceof</span> LockedAccountException) &#123;</span><br><span class="line">                <span class="keyword">return</span> Result.fail(<span class="string">"用户被禁用"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e <span class="keyword">instanceof</span> IncorrectCredentialsException) &#123;</span><br><span class="line">                <span class="keyword">return</span> Result.fail(<span class="string">"密码错误"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> Result.fail(<span class="string">"用户认证失败"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Result.success().action(<span class="string">"/"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p><img src="https://i.loli.net/2020/05/24/kndDpi5rSTjY6e3.png" alt="image-20200523231809659"></p>
+<p>这个是使用<code>shiro</code>在我们的Controller中必写的一部分，<strong>主要就是封装成token，传递给Realm完成认证与授权操作。</strong></p>
+
+        <h2 id="2-5-AccountRealm"   >
+          <a href="#2-5-AccountRealm" class="heading-link"><i class="fas fa-link"></i></a>2.5 AccountRealm</h2>
+      <p><img src="https://i.loli.net/2020/05/24/N26GDBOqb5caZsM.png" alt="image-20200523232040522"></p>
+<ul>
+<li>首先一定要继承AuthorizingRealm</li>
+<li>认证信息传递的参数为token，返回值为<strong>认证info</strong>类型</li>
+<li>AccountProfile主要完成的是认证通过后一些信息的封装与展示：如下图对比：</li>
+</ul>
+<p>未登录：</p>
+<p><img src="https://i.loli.net/2020/05/24/4eKx2yjEWtLqObs.png" alt="image-20200523232404958"></p>
+<p>登录后：</p>
+<p><img src="https://i.loli.net/2020/05/24/M7lutqzS8jaRVHC.png" alt="image-20200523232504363"></p>
+<p>登录后显示头像姓名等信息，所以需要封装一下。</p>
+
+        <h3 id="2-5-1-AccountProfile"   >
+          <a href="#2-5-1-AccountProfile" class="heading-link"><i class="fas fa-link"></i></a>2.5.1 AccountProfile</h3>
+      <p><img src="https://i.loli.net/2020/05/24/2NoJrzhe56SVTlK.png" alt="image-20200523232709352"></p>
+
+        <h2 id="2-6-UserService的login-方法"   >
+          <a href="#2-6-UserService的login-方法" class="heading-link"><i class="fas fa-link"></i></a>2.6 UserService的login()方法</h2>
+      <p><img src="https://i.loli.net/2020/05/24/wfzqyIm1D8clgQx.png" alt="image-20200523232934844"></p>
+<ul>
+<li>首先从数据库中查询是否有这样的一条记录，没有，抛出未知账户异常</li>
+<li>如果密码不相符，则密码不一致异常</li>
+<li>否则更新数据库</li>
+<li>并将信息存储到一个新建的profile对象中返回</li>
+</ul>
+
+        <h2 id="2-7-回到AccountRealm"   >
+          <a href="#2-7-回到AccountRealm" class="heading-link"><i class="fas fa-link"></i></a>2.7 回到AccountRealm</h2>
+      <p>Service层返回profile对象后，我们将profile存在这样一次<code>session</code>中,方便前端获取，以便展示。</p>
+<p><img src="https://i.loli.net/2020/05/24/tvIohNX6q8AxWd4.png" alt="image-20200523233530663"></p>
+<p>最后我们需要给安全中心返回一个<code>AuthenticationInfo</code>。</p>
+<p>构造方法 三个参数分别代表:</p>
+<p><img src="https://i.loli.net/2020/05/24/NFeDCPtKSpo25zn.png" alt="image-20200523233502104"></p>
+<p>第一个参数：用户对象</p>
+<p>第二个参数：密码</p>
+<p><strong>第三个参数：盐-用于加密对比，这里我们没有传入</strong></p>
+<p>第四个参数： 当前realm的名字</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yuan.shiro;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.yuan.service.MUserService;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authc.*;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authz.AuthorizationInfo;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authz.SimpleAuthorizationInfo;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.realm.AuthorizingRealm;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.subject.PrincipalCollection;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cache.annotation.Cacheable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccountRealm</span>  <span class="keyword">extends</span> <span class="title">AuthorizingRealm</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    MUserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//授权</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> AuthorizationInfo <span class="title">doGetAuthorizationInfo</span><span class="params">(PrincipalCollection principals)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//认证</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> AuthenticationInfo <span class="title">doGetAuthenticationInfo</span><span class="params">(AuthenticationToken token)</span> <span class="keyword">throws</span> AuthenticationException </span>&#123;</span><br><span class="line">        UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken)token;</span><br><span class="line">       AccountProfile accountProfile =  userService.login(usernamePasswordToken.getUsername(),String.valueOf(usernamePasswordToken.getPassword()));</span><br><span class="line"></span><br><span class="line">        SimpleAuthenticationInfo info = <span class="keyword">new</span> SimpleAuthenticationInfo(accountProfile,token.getCredentials(),getName());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> info;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="2-8-Shiro安全中心和拦截器链"   >
+          <a href="#2-8-Shiro安全中心和拦截器链" class="heading-link"><i class="fas fa-link"></i></a>2.8 Shiro安全中心和拦截器链</h2>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShiroConfig</span> </span>&#123;</span><br><span class="line">    <span class="comment">//配置两个东西，安全中心和拦截器链</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> SecurityManager <span class="title">securityManager</span><span class="params">(AccountRealm accountRealm)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        DefaultWebSecurityManager securityManager = <span class="keyword">new</span> DefaultWebSecurityManager();</span><br><span class="line">        securityManager.setRealm(accountRealm);</span><br><span class="line"></span><br><span class="line">        log.info(<span class="string">"------------------&gt;securityManager注入成功"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> securityManager;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ShiroFilterFactoryBean <span class="title">shiroFilterFactoryBean</span><span class="params">(SecurityManager securityManager)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        ShiroFilterFactoryBean filterFactoryBean = <span class="keyword">new</span> ShiroFilterFactoryBean();</span><br><span class="line">        filterFactoryBean.setSecurityManager(securityManager);</span><br><span class="line">        <span class="comment">// 配置登录的url和登录成功的url</span></span><br><span class="line">        filterFactoryBean.setLoginUrl(<span class="string">"/login"</span>);</span><br><span class="line">        filterFactoryBean.setSuccessUrl(<span class="string">"/user/center"</span>);</span><br><span class="line">        <span class="comment">// 配置未授权跳转页面</span></span><br><span class="line">        filterFactoryBean.setUnauthorizedUrl(<span class="string">"/error/403"</span>);</span><br><span class="line"><span class="comment">//        filterFactoryBean.setFilters(MapUtil.of("auth", authFilter()));</span></span><br><span class="line"></span><br><span class="line">        Map&lt;String, String&gt; hashMap = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">        hashMap.put(<span class="string">"/user/home"</span>,<span class="string">"authc"</span>);</span><br><span class="line">        hashMap.put(<span class="string">"/user/set"</span>,<span class="string">"authc"</span>);</span><br><span class="line">        hashMap.put(<span class="string">"/user/upload"</span>,<span class="string">"authc"</span>);</span><br><span class="line">        hashMap.put(<span class="string">"/res/**"</span>, <span class="string">"anon"</span>);</span><br><span class="line">        filterFactoryBean.setFilterChainDefinitionMap(hashMap);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> filterFactoryBean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>配置安全中心的时候参数是我们自定义的Realm</strong>。</p>
+<p><img src="https://i.loli.net/2020/05/24/R1s3KNEMLX8cpgx.png" alt="image-20200524112410353"></p>
+<ul>
+<li><ol>
+<li>将安全中心传递给过滤器链</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>配置登录的url以及登陆成功的跳转页面</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>配置未授权情况相爱的跳转页面</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>配置请求需要的权限</li>
+</ol>
+</li>
+</ul>
+
+        <h2 id="2-9-回到AuthController"   >
+          <a href="#2-9-回到AuthController" class="heading-link"><i class="fas fa-link"></i></a>2.9 回到AuthController</h2>
+      <p><img src="https://i.loli.net/2020/05/24/WJZKbL5gFVnuwYs.png" alt="image-20200524112643624"></p>
+<p>这里<code>login（token）</code>之后交由<code>realm</code>来校验，然后由<code>UserService的login()</code>方法来抛出指定的异常，这里我们定义登陆成功的跳转页面为<code>&quot;/&quot;</code>。</p>
+
+        <h2 id="2-10-测试"   >
+          <a href="#2-10-测试" class="heading-link"><i class="fas fa-link"></i></a>2.10 测试</h2>
+      <p><img src="https://i.loli.net/2020/05/24/RpZxsToLBjlbMyc.png" alt="image-20200524113130228"></p>
+<p><img src="https://i.loli.net/2020/05/24/N3z9nlVGfSeB8Ko.png" alt="image-20200524113141078"></p>
+
+        <h1 id="3-用户退出"   >
+          <a href="#3-用户退出" class="heading-link"><i class="fas fa-link"></i></a>3. 用户退出</h1>
+      <p>用户退出只需要使用<code>shiro的SecurityUtils.getSubject().logout();</code>然后重定向到首页即可。</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/user/logout"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">logout</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        SecurityUtils.getSubject().logout();</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"redirect:/"</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h1 id="4-个人中心-UserController"   >
+          <a href="#4-个人中心-UserController" class="heading-link"><i class="fas fa-link"></i></a>4. 个人中心(UserController)</h1>
+      <p><img src="https://i.loli.net/2020/05/24/Sn6i8h9Nd7j2fum.png" alt="image-20200524113204207"></p>
+
+        <h2 id="4-1-我的主页"   >
+          <a href="#4-1-我的主页" class="heading-link"><i class="fas fa-link"></i></a>4.1 我的主页</h2>
+      
+        <h3 id="4-1-1-效果展示"   >
+          <a href="#4-1-1-效果展示" class="heading-link"><i class="fas fa-link"></i></a>4.1.1 效果展示</h3>
+      <p><img src="https://i.loli.net/2020/05/24/PlaNOzG3FprX4He.png" alt="image-20200524113226355"></p>
+
+        <h3 id="4-1-2-部分组成"   >
+          <a href="#4-1-2-部分组成" class="heading-link"><i class="fas fa-link"></i></a>4.1.2 部分组成</h3>
+      <ul>
+<li>用户信息</li>
+<li>发布文章信息</li>
+<li>评论信息</li>
+</ul>
+
+        <h3 id="4-1-3-登录和未登录的区别"   >
+          <a href="#4-1-3-登录和未登录的区别" class="heading-link"><i class="fas fa-link"></i></a>4.1.3  登录和未登录的区别</h3>
+      <ol>
+<li>需要定义<code>shiro</code>的<code>FreeMarker</code>标签。</li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/24/FbdJwSxGoY9L2Ci.png" alt="image-20200524114011942"></p>
+<ol start="2">
+<li>网上查询<code>shiro</code>的<code>freemarker</code>标签的用法。</li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/24/P9yueZKfj5gIA4w.png" alt="image-20200524114206788"></p>
+<p>我们这里暂时用到这样三个标签。其中前两个用于实现登录与未登录<code>header</code>的区别，后者用于实现从<code>shiro</code>中取值。</p>
+<p>我们从<code>shiro</code>中取值，取得是<code>Realm</code>中封装的对象。</p>
+<p><img src="https://i.loli.net/2020/05/24/b82ZREpYGVTtr9n.png" alt="image-20200524114437569"></p>
+<p>第一个参数：用户对象</p>
+<p>第二个参数：密码</p>
+<p><strong>第三个参数：盐-用于加密对比，这里我们没有传入</strong></p>
+<p>第四个参数： 当前realm的名字</p>
+
+        <h3 id="4-1-4-前端取值"   >
+          <a href="#4-1-4-前端取值" class="heading-link"><i class="fas fa-link"></i></a>4.1.4 前端取值</h3>
+      <p>未登录的话采用<code>&lt;@shiro:guest&gt;</code>标签进行封装。</p>
+<p><img src="https://i.loli.net/2020/05/24/FNJ2Oro1VnhgXfm.png" alt="image-20200524114702713"></p>
+<p>登录状态的显示用<code>&lt;@shiro:user&gt;</code>来封装，其中的取值采用<code>&lt;@shiro.pricipal&gt;</code>来取值。</p>
+<p><img src="https://i.loli.net/2020/05/24/QY9bLdETvNPsAh4.png" alt="image-20200524114856424"></p>
+
+        <h3 id="4-1-5-UserController之个人主页处理请求"   >
+          <a href="#4-1-5-UserController之个人主页处理请求" class="heading-link"><i class="fas fa-link"></i></a>4.1.5 UserController之个人主页处理请求</h3>
+      <p><img src="https://i.loli.net/2020/05/24/O1qAiEHdxrgPLT9.png" alt="image-20200524115108613"></p>
+<ul>
+<li><p>我们首先看一下<code>getProfileId()</code>方法。因为下面的设置，头像上传，密码修改等均需要获得登录用户的ID，所以我们将其封装在了<code>BaseController</code>中。</p>
+<p><img src="https://i.loli.net/2020/05/24/WQpPZbjH2iwKD7V.png" alt="image-20200524115323951"></p>
+</li>
+<li><p>下面就是通过userService查询出用户，并通过postService查询出文章，这里我们没有做评论查询功能，也是同理。</p>
+</li>
+</ul>
+
+        <h2 id="4-2-个人设置页面"   >
+          <a href="#4-2-个人设置页面" class="heading-link"><i class="fas fa-link"></i></a>4.2 个人设置页面</h2>
+      
+        <h3 id="4-2-1-效果展示"   >
+          <a href="#4-2-1-效果展示" class="heading-link"><i class="fas fa-link"></i></a>4.2.1 效果展示</h3>
+      <p><img src="https://i.loli.net/2020/05/24/LWvZmrXJiMagB1h.png" alt="image-20200524120255999"></p>
+<p>我们主要修改的包括个人信息的展示与修改，只允许修改昵称和签名。头像上传功能，以及密码修改的功能。</p>
+
+        <h3 id="4-2-2-我的资料"   >
+          <a href="#4-2-2-我的资料" class="heading-link"><i class="fas fa-link"></i></a>4.2.2 我的资料</h3>
+      <p><img src="https://i.loli.net/2020/05/24/j2eizOVyK3XhQxC.png" alt="image-20200524120005321"></p>
+<p>我们默认展示用户的邮箱，用户名，性别等，个人签名等。</p>
+
+        <h3 id="4-2-3-Controller接受并返回请求"   >
+          <a href="#4-2-3-Controller接受并返回请求" class="heading-link"><i class="fas fa-link"></i></a>4.2.3 Controller接受并返回请求</h3>
+      <p><img src="https://i.loli.net/2020/05/24/iG9YFsuxwPChKaJ.png" alt="image-20200524120342168"></p>
+
+        <h3 id="4-2-4-接收表单修改请求"   >
+          <a href="#4-2-4-接收表单修改请求" class="heading-link"><i class="fas fa-link"></i></a>4.2.4 接收表单修改请求</h3>
+      <p><img src="https://i.loli.net/2020/05/24/ThFupLsjJC2QPoS.png" alt="image-20200524120737086"></p>
+<ol>
+<li><p>这里是负责头像修改的，我们暂时不理会</p>
+</li>
+<li><p>主要负责昵称的格式以及合法性验证</p>
+</li>
+<li><p>完成数据库中用户信息的更新</p>
+</li>
+<li><p>完成shiro中用户信息的更新，因为我们的header中的信息是从<code>shiro</code>中读取的，也要做到同步更新。</p>
+</li>
+<li><p>返回成功的Result，并重新指向当前页面。</p>
+</li>
+</ol>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/user/set"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">set</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        MUser user = userService.getById(getProfileId());</span><br><span class="line">        req.setAttribute(<span class="string">"user"</span>, user);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"/user/set"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"/user/set"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">doset</span><span class="params">(MUser user)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (StrUtil.isNotBlank(user.getAvatar()))&#123;</span><br><span class="line">            MUser temp = userService.getById(getProfileId());</span><br><span class="line">            temp.setAvatar(user.getAvatar());</span><br><span class="line">            userService.updateById(temp);</span><br><span class="line"></span><br><span class="line">            AccountProfile profile = <span class="keyword">new</span> AccountProfile();</span><br><span class="line">            profile.setAvatar(user.getAvatar());</span><br><span class="line">            <span class="keyword">return</span> Result.success().action(<span class="string">"/user/set#avatar"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (StrUtil.isBlank(user.getUsername())) &#123;</span><br><span class="line">            <span class="keyword">return</span> Result.fail(<span class="string">"昵称不能为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        QueryWrapper&lt;MUser&gt; wr = <span class="keyword">new</span> QueryWrapper&lt;MUser&gt;()</span><br><span class="line">                .eq(<span class="string">"username"</span>, getProfile().getUsername())</span><br><span class="line">                .ne(<span class="string">"id"</span>, getProfileId());</span><br><span class="line">        <span class="keyword">int</span> count = userService.count(wr);</span><br><span class="line">        <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> Result.fail(<span class="string">"该昵称已被占用"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        MUser temp = userService.getById(getProfileId());</span><br><span class="line"></span><br><span class="line">        temp.setUsername(user.getUsername());</span><br><span class="line">        temp.setGender(user.getGender());</span><br><span class="line">        temp.setSign(user.getSign());</span><br><span class="line">        userService.updateById(temp);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//更新后同样需要更新shiro的信息</span></span><br><span class="line">        AccountProfile profile = getProfile();</span><br><span class="line">        profile.setUsername(temp.getUsername());</span><br><span class="line">        profile.setSign(temp.getSign());</span><br><span class="line">        SecurityUtils.getSubject().getSession().setAttribute(<span class="string">"profile"</span>, profile);</span><br><span class="line">        <span class="keyword">return</span> Result.success().action(<span class="string">"/user/set#info"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h3 id="4-2-5-确认修改的提交设置"   >
+          <a href="#4-2-5-确认修改的提交设置" class="heading-link"><i class="fas fa-link"></i></a>4.2.5 确认修改的提交设置</h3>
+      <p><img src="https://i.loli.net/2020/05/24/qD2MGS5rO7lF6bP.png" alt="image-20200524121152761"></p>
+<p>保证弹出信息，并重新刷新当前页面。</p>
+
+        <h2 id="4-3-头像上传"   >
+          <a href="#4-3-头像上传" class="heading-link"><i class="fas fa-link"></i></a>4.3 头像上传</h2>
+      
+        <h3 id="4-3-1-效果"   >
+          <a href="#4-3-1-效果" class="heading-link"><i class="fas fa-link"></i></a>4.3.1 效果</h3>
+      <p><img src="https://i.loli.net/2020/05/24/jweku4KoxIEaOtZ.png" alt="image-20200524121242022"></p>
+
+        <h3 id="4-3-2-前端提交方法"   >
+          <a href="#4-3-2-前端提交方法" class="heading-link"><i class="fas fa-link"></i></a>4.3.2 前端提交方法</h3>
+      <p><img src="https://i.loli.net/2020/05/24/IqDSXwoQbcC5j7E.png" alt="image-20200524121504326"></p>
+<p>我们首先需要知道接受的参数是什么？</p>
+<p><strong>它传递给我们的是一个文件！</strong></p>
+<p><img src="https://i.loli.net/2020/05/24/HzTDvGjorw3q86S.png" alt="image-20200524122922800"></p>
+
+        <h3 id="4-3-3-接受请求的Controller"   >
+          <a href="#4-3-3-接受请求的Controller" class="heading-link"><i class="fas fa-link"></i></a>4.3.3 接受请求的Controller</h3>
+      <p><img src="https://i.loli.net/2020/05/24/ADnSqk6fbMwuF4j.png" alt="image-20200524121814111"></p>
+<p>这里我们采用一个上传图片的工具类来完成。</p>
+
+        <h3 id="4-3-4-UploadUtil"   >
+          <a href="#4-3-4-UploadUtil" class="heading-link"><i class="fas fa-link"></i></a>4.3.4 UploadUtil</h3>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yuan.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.hutool.core.date.DatePattern;</span><br><span class="line"><span class="keyword">import</span> cn.hutool.core.date.DateUtil;</span><br><span class="line"><span class="keyword">import</span> cn.hutool.core.util.StrUtil;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.yuan.common.lang.Consts;</span><br><span class="line"><span class="keyword">import</span> com.yuan.common.lang.Result;</span><br><span class="line"><span class="keyword">import</span> com.yuan.shiro.AccountProfile;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.SecurityUtils;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.multipart.MultipartFile;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UploadUtil</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    Consts consts;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> String type_avatar = <span class="string">"avatar"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">upload</span><span class="params">(String type, MultipartFile file)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(StrUtil.isBlank(type) || file.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">return</span> Result.fail(<span class="string">"上传失败"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取文件名</span></span><br><span class="line">        String fileName = file.getOriginalFilename();</span><br><span class="line">        log.info(<span class="string">"上传的文件名为："</span> + fileName);</span><br><span class="line">        <span class="comment">// 获取文件的后缀名</span></span><br><span class="line">        String suffixName = fileName.substring(fileName.lastIndexOf(<span class="string">"."</span>));</span><br><span class="line">        log.info(<span class="string">"上传的后缀名为："</span> + suffixName);</span><br><span class="line">        <span class="comment">// 文件上传后的路径</span></span><br><span class="line">        String filePath = consts.getUploadDir();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"avatar"</span>.equalsIgnoreCase(type)) &#123;</span><br><span class="line">            AccountProfile profile = (AccountProfile) SecurityUtils.getSubject().getPrincipal();</span><br><span class="line">            fileName = <span class="string">"/avatar/avatar_"</span> + profile.getId() + suffixName;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"post"</span>.equalsIgnoreCase(type)) &#123;</span><br><span class="line">            fileName = <span class="string">"/post/post_"</span> + DateUtil.format(<span class="keyword">new</span> Date(), DatePattern.PURE_DATETIME_MS_PATTERN) + suffixName;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        File dest = <span class="keyword">new</span> File(filePath + fileName);</span><br><span class="line">        <span class="comment">// 检测是否存在目录</span></span><br><span class="line">        <span class="keyword">if</span> (!dest.getParentFile().exists()) &#123;</span><br><span class="line">            dest.getParentFile().mkdirs();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            file.transferTo(dest);</span><br><span class="line">            log.info(<span class="string">"上传成功后的文件路径未："</span> + filePath + fileName);</span><br><span class="line"></span><br><span class="line">            String path = filePath + fileName;</span><br><span class="line">            String url = <span class="string">"/upload"</span> + fileName;</span><br><span class="line"></span><br><span class="line">            log.info(<span class="string">"url ---&gt; &#123;&#125;"</span>, url);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> Result.success(url);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalStateException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Result.success(<span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>其中常量Consts类内容如下：</p>
+<p><img src="https://i.loli.net/2020/05/24/FXh2CM8jVOWKovq.png" alt="image-20200524123203656"></p>
+<p><img src="https://i.loli.net/2020/05/24/C4f9wYXPz8NMrZ2.png" alt="image-20200524123400858"></p>
+<p><strong>我们这里上传文件的方法可以上传头像或者文章。我们上传到本地后，<code>返回Result的msg为图片的URL</code>。</strong>为此我们需要设置我们的上传路径：</p>
+<figure class="highlight yml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">file:</span></span><br><span class="line">  <span class="attr">upload:</span></span><br><span class="line">    <span class="attr">dir:</span> <span class="string">$&#123;user.dir&#125;/upload</span></span><br></pre></td></tr></table></div></figure>
+
+
+
+<p><img src="https://i.loli.net/2020/05/24/mVzTFtRwjcAuaIh.png" alt="image-20200524124226957"></p>
+<p>上传成功之后，放在项目目录下的<code>upload</code>文件夹家中，为此还有需要设置<code>MvcConfig</code>，将其加入到我们的静态资源目录中。</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MvcConfig</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    Consts consts;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//把我们的upload文件夹也当做静态资源目录</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> </span>&#123;</span><br><span class="line">        registry.addResourceHandler(<span class="string">"/upload/avatar/**"</span>)</span><br><span class="line">                .addResourceLocations(<span class="string">"file:///"</span> + consts.getUploadDir() + <span class="string">"/avatar/"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="4-3-5-我们返回的是文件路径的URL，我们去看一下layui的上传图片逻辑"   >
+          <a href="#4-3-5-我们返回的是文件路径的URL，我们去看一下layui的上传图片逻辑" class="heading-link"><i class="fas fa-link"></i></a>4.3.5 我们返回的是文件路径的URL，我们去看一下layui的上传图片逻辑</h3>
+      <p><img src="https://i.loli.net/2020/05/24/huPkLAZwYOexcUV.png" alt="image-20200524125104108"></p>
+<p><strong>它这里接收到返回status为0的情况下，会执行<code>&quot;/user/set&quot;</code>的请求，并且将头像设置为<code>res.data</code>，这里的<code>res</code>就是我们定义的<code>Result</code>，<code>data</code>就是我们Result中的属性。</strong></p>
+<p><img src="https://i.loli.net/2020/05/24/b2IEnSxqu4FTBHg.png" alt="image-20200524125558153"></p>
+<p>我们定义的<code>Result.success()</code>方法中如果只有一个参数，就是我们的data,所以这样我们就已经将头像设置为刚才上传的头像了。</p>
+
+        <h3 id="4-3-6-数据库和缓存的更新"   >
+          <a href="#4-3-6-数据库和缓存的更新" class="heading-link"><i class="fas fa-link"></i></a>4.3.6 数据库和缓存的更新</h3>
+      <p>这里我们上传完成了，<strong>不然这里的头像，默认采取的同样为<code>shiro</code>中的缓存，且数据库中也合并没有更新。</strong>但是还需要<strong>完成数据库以及<code>shiro</code>缓存的同步</strong>，我们<strong>放在js中写好的<code>/user/set</code>这样的请求中来完成</strong>。</p>
+<p><img src="https://i.loli.net/2020/05/24/ZXYb1Fc8BTrUmsV.png" alt="image-20200524125954354"></p>
+
+        <h2 id="4-4-密码修改"   >
+          <a href="#4-4-密码修改" class="heading-link"><i class="fas fa-link"></i></a>4.4 密码修改</h2>
+      <p>密码修改的逻辑与个人信息的修改大致相同。</p>
+<p><img src="https://i.loli.net/2020/05/24/wq38sXF5e6KLBYo.png" alt="image-20200524130147585"></p>
+<ul>
+<li><ol>
+<li>接收前端传递的参数</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>判断两次密码输入是否一致</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>通过当前登录用户的id查询数据库</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>将当前输入的密码加密以后与数据库中的进行比对</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>如果一致则在userService中修改密码</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>返回action</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//修改密码的请求</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@PostMapping</span>(<span class="string">"/user/repass"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> Result <span class="title">repass</span><span class="params">(String nowpass,String pass,String repass)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!pass.equals(repass))&#123;</span><br><span class="line">        <span class="keyword">return</span> Result.fail(<span class="string">"两次输入的密码不一致"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    MUser user = userService.getById(getProfileId());</span><br><span class="line"></span><br><span class="line">    String nowPassMd5 = SecureUtil.md5(nowpass);</span><br><span class="line">    <span class="keyword">if</span>(!nowPassMd5.equals(user.getPassword())) &#123;</span><br><span class="line">        <span class="keyword">return</span> Result.fail(<span class="string">"密码不正确"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    user.setPassword(SecureUtil.md5(pass));</span><br><span class="line">    userService.updateById(user);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Result.success().action(<span class="string">"/user/set#pass"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://yoursite.com">Pawnbrokers</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://yoursite.com/2020/05/23/eblog%E6%90%AD%E5%BB%BA3/">http://yoursite.com/2020/05/23/eblog%E6%90%AD%E5%BB%BA3/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://yoursite.com/tags/FreeMarker/">FreeMarker</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://yoursite.com/tags/Spring-Boot/">Spring Boot</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/05/24/eblog%E6%90%AD%E5%BB%BA4/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">eblog搭建4</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/05/23/Stream%E6%B5%81-%E4%BD%93%E9%AA%8C/"><span class="paginator-prev__text">Stream流 体验</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#登录注册及个人中心"><span class="toc-number">1.</span> <span class="toc-text">
+          登录注册及个人中心</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-用户注册-AuthController"><span class="toc-number">2.</span> <span class="toc-text">
+          1. 用户注册(AuthController)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-步骤"><span class="toc-number">2.1.</span> <span class="toc-text">
+          1.1 步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-修改reg页面（reg-ftl）"><span class="toc-number">2.2.</span> <span class="toc-text">
+          1.2 修改reg页面（reg.ftl）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-0-目标效果"><span class="toc-number">2.2.1.</span> <span class="toc-text">
+          1.2.0 目标效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-首先修改header-ftl中的跳转请求"><span class="toc-number">2.2.2.</span> <span class="toc-text">
+          1.2.1 首先修改header.ftl中的跳转请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-对应的注册提交表单的action修改"><span class="toc-number">2.2.3.</span> <span class="toc-text">
+          1.2.2 对应的注册提交表单的action修改</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-AuthController"><span class="toc-number">2.3.</span> <span class="toc-text">
+          1.3 AuthController</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-Result类的定义"><span class="toc-number">2.4.</span> <span class="toc-text">
+          1.4 Result类的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-验证码的生成"><span class="toc-number">2.5.</span> <span class="toc-text">
+          1.5 验证码的生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-Controller验证注册"><span class="toc-number">2.6.</span> <span class="toc-text">
+          1.6 Controller验证注册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-1-ValidationUtil是我们引入的一个验证的工具类。"><span class="toc-number">2.6.1.</span> <span class="toc-text">
+          1.6.1 ValidationUtil是我们引入的一个验证的工具类。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-2-比较密码以及验证码"><span class="toc-number">2.6.2.</span> <span class="toc-text">
+          1.6.2 比较密码以及验证码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-3-Service层面的校验以及查询"><span class="toc-number">2.6.3.</span> <span class="toc-text">
+          1.6.3 Service层面的校验以及查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-成功之后返回到登录请求"><span class="toc-number">2.7.</span> <span class="toc-text">
+          1.7 成功之后返回到登录请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8-火狐浏览器刷新问题"><span class="toc-number">2.8.</span> <span class="toc-text">
+          1.8 火狐浏览器刷新问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-9-测试"><span class="toc-number">2.9.</span> <span class="toc-text">
+          1.9 测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-用户登录-AuthController"><span class="toc-number">3.</span> <span class="toc-text">
+          2. 用户登录(AuthController)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-目标效果"><span class="toc-number">3.1.</span> <span class="toc-text">
+          2.1 目标效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-步骤"><span class="toc-number">3.2.</span> <span class="toc-text">
+          2.2 步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-导入依赖"><span class="toc-number">3.3.</span> <span class="toc-text">
+          2.3 导入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-前端的form"><span class="toc-number">3.4.</span> <span class="toc-text">
+          2.4 前端的form</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-接受请求以及处理请求"><span class="toc-number">3.5.</span> <span class="toc-text">
+          2.5 接受请求以及处理请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-AccountRealm"><span class="toc-number">3.6.</span> <span class="toc-text">
+          2.5 AccountRealm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-1-AccountProfile"><span class="toc-number">3.6.1.</span> <span class="toc-text">
+          2.5.1 AccountProfile</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-UserService的login-方法"><span class="toc-number">3.7.</span> <span class="toc-text">
+          2.6 UserService的login()方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-回到AccountRealm"><span class="toc-number">3.8.</span> <span class="toc-text">
+          2.7 回到AccountRealm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-8-Shiro安全中心和拦截器链"><span class="toc-number">3.9.</span> <span class="toc-text">
+          2.8 Shiro安全中心和拦截器链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-9-回到AuthController"><span class="toc-number">3.10.</span> <span class="toc-text">
+          2.9 回到AuthController</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-10-测试"><span class="toc-number">3.11.</span> <span class="toc-text">
+          2.10 测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-用户退出"><span class="toc-number">4.</span> <span class="toc-text">
+          3. 用户退出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-个人中心-UserController"><span class="toc-number">5.</span> <span class="toc-text">
+          4. 个人中心(UserController)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-我的主页"><span class="toc-number">5.1.</span> <span class="toc-text">
+          4.1 我的主页</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-1-效果展示"><span class="toc-number">5.1.1.</span> <span class="toc-text">
+          4.1.1 效果展示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-2-部分组成"><span class="toc-number">5.1.2.</span> <span class="toc-text">
+          4.1.2 部分组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-3-登录和未登录的区别"><span class="toc-number">5.1.3.</span> <span class="toc-text">
+          4.1.3  登录和未登录的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-4-前端取值"><span class="toc-number">5.1.4.</span> <span class="toc-text">
+          4.1.4 前端取值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-5-UserController之个人主页处理请求"><span class="toc-number">5.1.5.</span> <span class="toc-text">
+          4.1.5 UserController之个人主页处理请求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-个人设置页面"><span class="toc-number">5.2.</span> <span class="toc-text">
+          4.2 个人设置页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-1-效果展示"><span class="toc-number">5.2.1.</span> <span class="toc-text">
+          4.2.1 效果展示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-2-我的资料"><span class="toc-number">5.2.2.</span> <span class="toc-text">
+          4.2.2 我的资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-3-Controller接受并返回请求"><span class="toc-number">5.2.3.</span> <span class="toc-text">
+          4.2.3 Controller接受并返回请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-4-接收表单修改请求"><span class="toc-number">5.2.4.</span> <span class="toc-text">
+          4.2.4 接收表单修改请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-5-确认修改的提交设置"><span class="toc-number">5.2.5.</span> <span class="toc-text">
+          4.2.5 确认修改的提交设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-头像上传"><span class="toc-number">5.3.</span> <span class="toc-text">
+          4.3 头像上传</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-1-效果"><span class="toc-number">5.3.1.</span> <span class="toc-text">
+          4.3.1 效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-2-前端提交方法"><span class="toc-number">5.3.2.</span> <span class="toc-text">
+          4.3.2 前端提交方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-3-接受请求的Controller"><span class="toc-number">5.3.3.</span> <span class="toc-text">
+          4.3.3 接受请求的Controller</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-4-UploadUtil"><span class="toc-number">5.3.4.</span> <span class="toc-text">
+          4.3.4 UploadUtil</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-5-我们返回的是文件路径的URL，我们去看一下layui的上传图片逻辑"><span class="toc-number">5.3.5.</span> <span class="toc-text">
+          4.3.5 我们返回的是文件路径的URL，我们去看一下layui的上传图片逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-6-数据库和缓存的更新"><span class="toc-number">5.3.6.</span> <span class="toc-text">
+          4.3.6 数据库和缓存的更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-密码修改"><span class="toc-number">5.4.</span> <span class="toc-text">
+          4.4 密码修改</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/me.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">我们必须习惯，站在人生的交叉路口，却没有红绿灯的事实。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/pawnbrokers" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/mu-rong-xue-hen-46" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="assets/wechat.jpg" target="_blank" rel="noopener" data-popover="微信" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="assets/qq.jpg" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">37</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">33</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">43</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Pawnbrokers</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v4.2.1</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script></body></html>

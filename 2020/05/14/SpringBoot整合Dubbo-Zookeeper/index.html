@@ -1,0 +1,342 @@
+<!DOCTYPE html><html lang="cn"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0" type="image/png" sizes="32x32"><meta name="description" content="Github:https:&#x2F;&#x2F;github.com&#x2F;pawnbrokers&#x2F;Dubbo-Zookeeper 转载：狂神说 https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;sKu9-vH7NEpUd8tbxLRLVQ                     1. 分布式系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot整合Dubbo+Zookeeper">
+<meta property="og:url" content="http://yoursite.com/2020/05/14/SpringBoot%E6%95%B4%E5%90%88Dubbo-Zookeeper/index.html">
+<meta property="og:site_name" content="节能主义">
+<meta property="og:description" content="Github:https:&#x2F;&#x2F;github.com&#x2F;pawnbrokers&#x2F;Dubbo-Zookeeper 转载：狂神说 https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;sKu9-vH7NEpUd8tbxLRLVQ                     1. 分布式系统">
+<meta property="og:locale" content="cn">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/nGKi8DeUkdpTP9q.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/BHGIp6OjVLNZw8E.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/n5aU6DjtrQSHq9E.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/IsqUQF4VZWrJTuz.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/cLHVKYk1Jzfsm7P.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/DFojrAOpwNuQyJC.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/MwNnDk7pBgrqPUl.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/OtYhEIdlfTHMFKw.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/QsClfk6TndScZiq.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/6rb7N2vjhHKWLgC.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/E5uwhSOygkRLpZN.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/rsf1KH87DbgSVo5.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/9k4jswp1qCmQigr.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/5fLViQzkhD7vrxZ.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/eC3l9wSmfrTkMt5.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/YBhdIwjZxpU5eC6.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/3ntDRewHSqTYk9N.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/qORDCVTLmtpsMdi.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/VeQtXhsD6GyHfq1.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/MmFGAuzi8qsYSLg.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/qORDCVTLmtpsMdi.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/14/VeQtXhsD6GyHfq1.png">
+<meta property="article:published_time" content="2020-05-14T13:18:25.000Z">
+<meta property="article:modified_time" content="2020-05-14T13:54:26.642Z">
+<meta property="article:author" content="Pawnbrokers">
+<meta property="article:tag" content="SpringBoot整合zookeeper+dubbo">
+<meta property="article:tag" content="微服务解决方案">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/14/nGKi8DeUkdpTP9q.png"><meta name="keywords" content="Pawnbrokers, 节能主义"><meta name="description" content=""><title>SpringBoot整合Dubbo+Zookeeper | 节能主义</title><link ref="canonical" href="http://yoursite.com/2020/05/14/SpringBoot%E6%95%B4%E5%90%88Dubbo-Zookeeper/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="节能主义" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">节能主义</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">SpringBoot整合Dubbo+Zookeeper</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-05-14</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-05-14</span></span></div></header><div class="post-body"><p>Github:<span class="exturl"><a class="exturl__link"   href="https://github.com/pawnbrokers/Dubbo-Zookeeper"  target="_blank" rel="noopener">https://github.com/pawnbrokers/Dubbo-Zookeeper</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>转载：狂神说 <span class="exturl"><a class="exturl__link"   href="https://mp.weixin.qq.com/s/sKu9-vH7NEpUd8tbxLRLVQ"  target="_blank" rel="noopener">https://mp.weixin.qq.com/s/sKu9-vH7NEpUd8tbxLRLVQ</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h1 id="1-分布式系统"   >
+          <a href="#1-分布式系统" class="heading-link"><i class="fas fa-link"></i></a>1. 分布式系统</h1>
+      <a id="more"></a>
+
+
+        <h2 id="什么是分布式系统？"   >
+          <a href="#什么是分布式系统？" class="heading-link"><i class="fas fa-link"></i></a>什么是分布式系统？</h2>
+      <p>在《分布式系统原理与范型》一书中有如下定义：“分布式系统是若干独立计算机的集合，这些计算机对于用户来说就像单个相关系统”；</p>
+<p>分布式系统是由一组通过网络进行通信、为了完成共同的任务而协调工作的计算机节点组成的系统。分布式系统的出现是为了用廉价的、普通的机器完成单个计算机无法完成的计算、存储任务。其目的是<strong>利用更多的机器，处理更多的数据</strong>。</p>
+<p>分布式系统（distributed system）是建立在网络之上的软件系统。</p>
+<p>首先需要明确的是，只有当单个节点的处理能力无法满足日益增长的计算、存储任务的时候，且硬件的提升（加内存、加磁盘、使用更好的CPU）高昂到得不偿失的时候，应用程序也不能进一步优化的时候，我们才需要考虑分布式系统。因为，分布式系统要解决的问题本身就是和单机系统一样的，而由于分布式系统多节点、通过网络通信的拓扑结构，会引入很多单机系统没有的问题，为了解决这些问题又会引入更多的机制、协议，带来更多的问题。。。</p>
+
+        <h2 id="Dubbo文档"   >
+          <a href="#Dubbo文档" class="heading-link"><i class="fas fa-link"></i></a>Dubbo文档</h2>
+      <p>随着互联网的发展，网站应用的规模不断扩大，常规的垂直应用架构已无法应对，分布式服务架构以及流动计算架构势在必行，急需<strong>一个治理系统</strong>确保架构有条不紊的演进。</p>
+<p>在Dubbo的官网文档有这样一张图</p>
+<p><img src="https://i.loli.net/2020/05/14/nGKi8DeUkdpTP9q.png" alt="img"></p>
+
+        <h2 id="单一应用架构"   >
+          <a href="#单一应用架构" class="heading-link"><i class="fas fa-link"></i></a>单一应用架构</h2>
+      <p>当网站流量很小时，只需一个应用，将所有功能都部署在一起，以减少部署节点和成本。此时，用于简化增删改查工作量的数据访问框架(ORM)是关键。</p>
+<p><img src="https://i.loli.net/2020/05/14/BHGIp6OjVLNZw8E.png" alt="img"></p>
+<p>适用于小型网站，小型管理系统，将所有功能都部署到一个功能里，简单易用。</p>
+<p><strong>缺点：</strong></p>
+<p>1、性能扩展比较难</p>
+<p>2、协同开发问题</p>
+<p>3、不利于升级维护</p>
+
+        <h2 id="垂直应用架构"   >
+          <a href="#垂直应用架构" class="heading-link"><i class="fas fa-link"></i></a>垂直应用架构</h2>
+      <p>当访问量逐渐增大，单一应用增加机器带来的加速度越来越小，将应用拆成互不相干的几个应用，以提升效率。此时，用于加速前端页面开发的Web框架(MVC)是关键。</p>
+<p><img src="https://i.loli.net/2020/05/14/n5aU6DjtrQSHq9E.png" alt="img"></p>
+<p>通过切分业务来实现各个模块独立部署，降低了维护和部署的难度，团队各司其职更易管理，性能扩展也更方便，更有针对性。</p>
+<p>缺点：公用模块无法重复利用，开发性的浪费</p>
+
+        <h2 id="分布式服务架构"   >
+          <a href="#分布式服务架构" class="heading-link"><i class="fas fa-link"></i></a>分布式服务架构</h2>
+      <p>当垂直应用越来越多，应用之间交互不可避免，将核心业务抽取出来，作为独立的服务，逐渐形成稳定的服务中心，使前端应用能更快速的响应多变的市场需求。此时，用于提高业务复用及整合的<strong>分布式服务框架(RPC)</strong>是关键。</p>
+<p><img src="https://i.loli.net/2020/05/14/IsqUQF4VZWrJTuz.png" alt="img"></p>
+
+        <h2 id="流动计算架构"   >
+          <a href="#流动计算架构" class="heading-link"><i class="fas fa-link"></i></a>流动计算架构</h2>
+      <p>当服务越来越多，容量的评估，小服务资源的浪费等问题逐渐显现，此时需增加一个调度中心基于访问压力实时管理集群容量，提高集群利用率。此时，用于<strong>提高机器利用率的资源调度和治理中心</strong>(SOA)[ Service Oriented Architecture]是关键。</p>
+<p><img src="https://i.loli.net/2020/05/14/cLHVKYk1Jzfsm7P.png" alt="img"></p>
+<p>什么是RPC</p>
+<p>RPC【Remote Procedure Call】是指远程过程调用，是一种进程间通信方式，他是一种技术的思想，而不是规范。它允许程序调用另一个地址空间（通常是共享网络的另一台机器上）的过程或函数，而不用程序员显式编码这个远程调用的细节。即程序员无论是调用本地的还是远程的函数，本质上编写的调用代码基本相同。</p>
+<p>也就是说两台服务器A，B，一个应用部署在A服务器上，想要调用B服务器上应用提供的函数/方法，由于不在一个内存空间，不能直接调用，需要通过网络来表达调用的语义和传达调用的数据。为什么要用RPC呢？就是无法在一个进程内，甚至一个计算机内通过本地调用的方式完成的需求，比如不同的系统间的通讯，甚至不同的组织间的通讯，由于计算能力需要横向扩展，需要在多台机器组成的集群上部署应用。RPC就是要像调用本地的函数一样去调远程函数；</p>
+<p>推荐阅读文章：<span class="exturl"><a class="exturl__link"   href="https://www.jianshu.com/p/2accc2840a1b"  target="_blank" rel="noopener">https://www.jianshu.com/p/2accc2840a1b</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><strong>RPC基本原理</strong></p>
+<p><img src="https://i.loli.net/2020/05/14/DFojrAOpwNuQyJC.png" alt="img"></p>
+<p><strong>步骤解析：</strong></p>
+<p><img src="https://i.loli.net/2020/05/14/MwNnDk7pBgrqPUl.png" alt="img"></p>
+<p>RPC两个核心模块：通讯，序列化。</p>
+<p>测试环境搭建</p>
+
+        <h2 id="Dubbo"   >
+          <a href="#Dubbo" class="heading-link"><i class="fas fa-link"></i></a>Dubbo</h2>
+      <p>Apache Dubbo |ˈdʌbəʊ| 是一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及服务自动注册和发现。</p>
+<p>dubbo官网 <span class="exturl"><a class="exturl__link"   href="http://dubbo.apache.org/zh-cn/index.html"  target="_blank" rel="noopener">http://dubbo.apache.org/zh-cn/index.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>1.了解Dubbo的特性</p>
+<p>2.查看官方文档</p>
+<p><strong>dubbo基本概念</strong></p>
+<p><img src="https://i.loli.net/2020/05/14/OtYhEIdlfTHMFKw.png" alt="img"></p>
+<p><strong>服务提供者</strong>（Provider）：暴露服务的服务提供方，服务提供者在启动时，向注册中心注册自己提供的服务。</p>
+<p><strong>服务消费者</strong>（Consumer）：调用远程服务的服务消费方，服务消费者在启动时，向注册中心订阅自己所需的服务，服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。</p>
+<p><strong>注册中心</strong>（Registry）：注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者</p>
+<p><strong>监控中心</strong>（Monitor）：服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心</p>
+<p><strong>调用关系说明</strong></p>
+<p>l 服务容器负责启动，加载，运行服务提供者。</p>
+<p>l 服务提供者在启动时，向注册中心注册自己提供的服务。</p>
+<p>l 服务消费者在启动时，向注册中心订阅自己所需的服务。</p>
+<p>l 注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。</p>
+<p>l 服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。</p>
+<p>l 服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</p>
+
+        <h2 id="Dubbo环境搭建"   >
+          <a href="#Dubbo环境搭建" class="heading-link"><i class="fas fa-link"></i></a>Dubbo环境搭建</h2>
+      <p>点进dubbo官方文档，推荐我们使用Zookeeper 注册中心</p>
+<p>什么是zookeeper呢？可以查看官方文档</p>
+
+        <h2 id="Window下安装zookeeper"   >
+          <a href="#Window下安装zookeeper" class="heading-link"><i class="fas fa-link"></i></a>Window下安装zookeeper</h2>
+      <p>1、下载zookeeper ：地址， 我们下载3.4.14 ， 最新版！解压zookeeper</p>
+<p>2、运行/bin/zkServer.cmd ，初次运行会报错，没有zoo.cfg配置文件；</p>
+<p>可能遇到问题：闪退 !</p>
+<p>解决方案：编辑zkServer.cmd文件末尾添加pause 。这样运行出错就不会退出，会提示错误信息，方便找到原因。</p>
+<p><img src="https://i.loli.net/2020/05/14/QsClfk6TndScZiq.png" alt="img"></p>
+<p><img src="https://i.loli.net/2020/05/14/6rb7N2vjhHKWLgC.png" alt="img"></p>
+<p>3、修改zoo.cfg配置文件</p>
+<p>将conf文件夹下面的zoo_sample.cfg复制一份改名为zoo.cfg即可。</p>
+<p>注意几个重要位置：</p>
+<p>dataDir=./  临时数据存储的目录（可写相对路径）</p>
+<p>clientPort=2181  zookeeper的端口号</p>
+<p>修改完成后再次启动zookeeper</p>
+<p><img src="https://i.loli.net/2020/05/14/E5uwhSOygkRLpZN.png" alt="img"></p>
+<p>4、使用zkCli.cmd测试</p>
+<p>ls /：列出zookeeper根下保存的所有节点</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[zk: 127.0.0.1:2181(CONNECTED) 4] ls &#x2F;</span><br><span class="line">[zookeeper]</span><br></pre></td></tr></table></div></figure>
+
+<p>create –e /kuangshen 123：创建一个kuangshen节点，值为123</p>
+<p><img src="https://i.loli.net/2020/05/14/rsf1KH87DbgSVo5.png" alt="img"></p>
+<p>get /kuangshen：获取/kuangshen节点的值</p>
+<p><img src="https://i.loli.net/2020/05/14/9k4jswp1qCmQigr.png" alt="img"></p>
+<p>我们再来查看一下节点</p>
+<p><img src="https://i.loli.net/2020/05/14/5fLViQzkhD7vrxZ.png" alt="img"></p>
+
+        <h2 id="window下安装dubbo-admin"   >
+          <a href="#window下安装dubbo-admin" class="heading-link"><i class="fas fa-link"></i></a>window下安装dubbo-admin</h2>
+      <p>dubbo本身并不是一个服务软件。它其实就是一个jar包，能够帮你的java程序连接到zookeeper，并利用zookeeper消费、提供服务。</p>
+<p>但是为了让用户更好的管理监控众多的dubbo服务，官方提供了一个可视化的监控程序dubbo-admin，不过这个监控即使不装也不影响使用。</p>
+<p>我们这里来安装一下：</p>
+<p><strong>1、下载dubbo-admin</strong></p>
+<p>地址 ：<span class="exturl"><a class="exturl__link"   href="https://github.com/apache/dubbo-admin/tree/master"  target="_blank" rel="noopener">https://github.com/apache/dubbo-admin/tree/master</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><strong>2、解压进入目录</strong></p>
+<p>修改 dubbo-admin\src\main\resources \application.properties 指定zookeeper地址</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server.port&#x3D;7001</span><br><span class="line">spring.velocity.cache&#x3D;false</span><br><span class="line">spring.velocity.charset&#x3D;UTF-8</span><br><span class="line">spring.velocity.layout-url&#x3D;&#x2F;templates&#x2F;default.vm</span><br><span class="line">spring.messages.fallback-to-system-locale&#x3D;false</span><br><span class="line">spring.messages.basename&#x3D;i18n&#x2F;message</span><br><span class="line">spring.root.password&#x3D;root</span><br><span class="line">spring.guest.password&#x3D;guest</span><br><span class="line"></span><br><span class="line">dubbo.registry.address&#x3D;zookeeper:&#x2F;&#x2F;127.0.0.1:2181</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>3、在项目目录下</strong>打包dubbo-admin</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean package -Dmaven.test.skip&#x3D;true</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>第一次打包的过程有点慢，需要耐心等待！直到成功！</strong></p>
+<p><img src="https://i.loli.net/2020/05/14/eC3l9wSmfrTkMt5.png" alt="img"></p>
+<p>4、执行 dubbo-admin\target 下的dubbo-admin-0.0.1-SNAPSHOT.jar</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar dubbo-admin-0.0.1-SNAPSHOT.jar</span><br></pre></td></tr></table></div></figure>
+
+<p>【注意：zookeeper的服务一定要打开！】</p>
+<p>执行完毕，我们去访问一下 <span class="exturl"><a class="exturl__link"   href="http://localhost:7001/"  target="_blank" rel="noopener">http://localhost:7001/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> ， 这时候我们需要输入登录账户和密码，我们都是默认的root-root；</p>
+<p>登录成功后，查看界面</p>
+<p><img src="https://i.loli.net/2020/05/14/YBhdIwjZxpU5eC6.png" alt="img"></p>
+<p>安装完成！</p>
+
+        <h2 id="SpringBoot-Dubbo-zookeeper"   >
+          <a href="#SpringBoot-Dubbo-zookeeper" class="heading-link"><i class="fas fa-link"></i></a>SpringBoot + Dubbo + zookeeper</h2>
+      
+        <h2 id="框架搭建"   >
+          <a href="#框架搭建" class="heading-link"><i class="fas fa-link"></i></a>框架搭建</h2>
+      <p><strong>1. 启动zookeeper ！</strong></p>
+<p><strong>2. IDEA创建一个空项目；</strong></p>
+<p><strong>3.创建一个模块，实现服务提供者：provider-server ， 选择web依赖即可</strong></p>
+<p><strong>4.项目创建完毕，我们写一个服务，比如卖票的服务；</strong></p>
+<p>编写接口</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kuang.provider.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TicketService</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">getTicket</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>编写实现类</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kuang.provider.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TicketServiceImpl</span> <span class="keyword">implements</span> <span class="title">TicketService</span> </span>&#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">getTicket</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="string">"《狂神说Java》"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>5.创建一个模块，实现服务消费者：consumer-server ， 选择web依赖即可</strong></p>
+<p><strong>6.项目创建完毕，我们写一个服务，比如用户的服务；</strong></p>
+<p>编写service</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kuang.consumer.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line">   <span class="comment">//我们需要去拿去注册中心的服务</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>需求：现在我们的用户想使用买票的服务，这要怎么弄呢 ？</strong></p>
+
+        <h2 id="服务提供者"   >
+          <a href="#服务提供者" class="heading-link"><i class="fas fa-link"></i></a>服务提供者</h2>
+      <p><strong>1、将服务提供者注册到注册中心，我们需要整合Dubbo和zookeeper，所以需要导包</strong></p>
+<p><strong>我们从dubbo官网进入github，看下方的帮助文档，找到dubbo-springboot，找到依赖包</strong></p>
+<figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Dubbo Spring Boot Starter --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.dubbo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>dubbo-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>zookeeper的包我们去maven仓库下载，zkclient；</strong></p>
+<figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.github.sgroschupf/zkclient --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.sgroschupf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>zkclient<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>【新版的坑】zookeeper及其依赖包，解决日志冲突，还需要剔除日志依赖；</strong></p>
+<figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 引入zookeeper --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.curator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>curator-framework<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.12.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.curator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>curator-recipes<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.12.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.zookeeper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>zookeeper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.14<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--排除这个slf4j-log4j12--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-log4j12<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>2、在springboot配置文件中配置dubbo相关属性！</strong></p>
+<figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#当前应用名字</span><br><span class="line">dubbo.application.name=provider-server</span><br><span class="line">#注册中心地址</span><br><span class="line">dubbo.registry.address=zookeeper://127.0.0.1:2181</span><br><span class="line">#扫描指定包下服务</span><br><span class="line">dubbo.scan.base-packages=com.kuang.provider.service</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>3、在service的实现类中配置服务注解，发布服务！注意导包问题</strong></p>
+<figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import org.apache.dubbo.config.annotation.Service;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">@Service //将服务发布出去</span><br><span class="line">@Component //放在容器中</span><br><span class="line">public class TicketServiceImpl implements TicketService &#123;</span><br><span class="line">   @Override</span><br><span class="line">   public String getTicket() &#123;</span><br><span class="line">       return "《狂神说Java》";</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>逻辑理解 ：应用启动起来，dubbo就会扫描指定的包下带有@component注解的服务，将它发布在指定的注册中心中！</strong></p>
+
+        <h2 id="服务消费者"   >
+          <a href="#服务消费者" class="heading-link"><i class="fas fa-link"></i></a>服务消费者</h2>
+      <p><strong>1、导入依赖，和之前的依赖一样；</strong></p>
+<figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--dubbo--&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Dubbo Spring Boot Starter --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.dubbo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>dubbo-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--zookeeper--&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.github.sgroschupf/zkclient --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.sgroschupf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>zkclient<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 引入zookeeper --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.curator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>curator-framework<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.12.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.curator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>curator-recipes<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.12.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.zookeeper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>zookeeper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.14<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--排除这个slf4j-log4j12--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-log4j12<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>2、<strong>配置参数</strong></p>
+<figure class="highlight properties"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#当前应用名字</span></span><br><span class="line"><span class="meta">dubbo.application.name</span>=<span class="string">consumer-server</span></span><br><span class="line"><span class="comment">#注册中心地址</span></span><br><span class="line"><span class="meta">dubbo.registry.address</span>=<span class="string">zookeeper://127.0.0.1:2181</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>3. 本来正常步骤是需要将服务提供者的接口打包，然后用pom文件导入，我们这里使用简单的方式，直接将服务的接口拿过来，路径必须保证正确，即和服务提供者相同；</strong></p>
+<p><img src="https://i.loli.net/2020/05/14/3ntDRewHSqTYk9N.png" alt="img"></p>
+<p><strong>4. 完善消费者的服务类</strong></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kuang.consumer.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.kuang.provider.service.TicketService;</span><br><span class="line"><span class="keyword">import</span> org.apache.dubbo.config.annotation.Reference;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span> <span class="comment">//注入到容器中</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Reference</span> <span class="comment">//远程引用指定的服务，他会按照全类名进行匹配，看谁给注册中心注册了这个全类名</span></span><br><span class="line">   TicketService ticketService;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bugTicket</span><span class="params">()</span></span>&#123;</span><br><span class="line">       String ticket = ticketService.getTicket();</span><br><span class="line">       System.out.println(<span class="string">"在注册中心买到"</span>+ticket);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>5. 测试类编写；</strong></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringRunner<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">@<span class="title">SpringBootTest</span></span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">ConsumerServerApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">   UserService userService;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">       userService.bugTicket();</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="启动测试"   >
+          <a href="#启动测试" class="heading-link"><i class="fas fa-link"></i></a>启动测试</h2>
+      <p><strong>1. 开启zookeeper</strong></p>
+<p><strong>2. 打开dubbo-admin实现监控【可以不用做】</strong></p>
+<p><strong>3. 开启服务者</strong></p>
+<p><strong>4. 消费者消费测试，结果：</strong></p>
+<p><img src="https://i.loli.net/2020/05/14/qORDCVTLmtpsMdi.png" alt="img"></p>
+<p><strong>监控中心 ：</strong></p>
+<p><img src="https://i.loli.net/2020/05/14/VeQtXhsD6GyHfq1.png" alt="img"></p>
+<p><strong>ok , 这就是SpingBoot + dubbo + zookeeper实现分布式开发的应用，其实就是一个服务拆分的思想；</strong></p>
+
+        <h1 id="总结"   >
+          <a href="#总结" class="heading-link"><i class="fas fa-link"></i></a>总结</h1>
+      <ol>
+<li><p>启动zookeepwe-server（保持常开）</p>
+</li>
+<li><p>打包dubbo-admin，主要是可视化监控功能</p>
+</li>
+<li><p>引入依赖</p>
+<figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Dubbo Spring Boot Starter --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.dubbo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>dubbo-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.github.sgroschupf/zkclient --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.sgroschupf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>zkclient<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 引入zookeeper --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.curator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>curator-framework<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.12.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.curator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>curator-recipes<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.12.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.zookeeper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>zookeeper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.14<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--排除这个slf4j-log4j12--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-log4j12<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<ol start="4">
+<li>Provider类中的application.properties配置<ul>
+<li>当前应用的名字</li>
+<li>注册中心的地址（默认端口为2181）</li>
+<li>指定扫描包下的服务</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight properties"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#当前应用名字</span></span><br><span class="line"><span class="meta">dubbo.application.name</span>=<span class="string">provider-server</span></span><br><span class="line"><span class="comment">#注册中心地址</span></span><br><span class="line"><span class="meta">dubbo.registry.address</span>=<span class="string">zookeeper://127.0.0.1:2181</span></span><br><span class="line"><span class="comment">#扫描指定包下服务</span></span><br><span class="line"><span class="meta">dubbo.scan.base-packages</span>=<span class="string">com.kuang.provider.service</span></span><br></pre></td></tr></table></div></figure>
+
+<ol start="5">
+<li>在Service的实现类中配置服务注解，发布服务，<strong>注意导包问题！！！</strong></li>
+</ol>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.dubbo.config.annotation.Service;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span> <span class="comment">//将服务发布出去,这里并非spring的service注解</span></span><br><span class="line"><span class="meta">@Component</span> <span class="comment">//放在容器中</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TicketServiceImpl</span> <span class="keyword">implements</span> <span class="title">TicketService</span> </span>&#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">getTicket</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="string">"《狂神说Java》"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<ol start="6">
+<li>服务消费者同样导入依赖</li>
+<li>消费者的application.properties中<strong>配置当前应用的名字和注册中心的地址，这里我们并没有发布服务，所以不用配置此项</strong></li>
+</ol>
+<figure class="highlight properties"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#当前应用名字</span></span><br><span class="line"><span class="meta">dubbo.application.name</span>=<span class="string">consumer-server</span></span><br><span class="line"><span class="comment">#注册中心地址</span></span><br><span class="line"><span class="meta">dubbo.registry.address</span>=<span class="string">zookeeper://127.0.0.1:2181</span></span><br></pre></td></tr></table></div></figure>
+
+<ol start="8">
+<li><strong>本来正常步骤是需要将服务提供者的接口打包，然后用pom文件导入，我们这里使用简单的方式，直接将服务的接口拿过来，路径必须保证正确，即和服务提供者相同；</strong></li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/14/MmFGAuzi8qsYSLg.png" alt="image-20200514213644013"></p>
+<ol start="9">
+<li><p>完整的消费者服务类</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kuang.consumer.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.kuang.provider.service.TicketService;</span><br><span class="line"><span class="keyword">import</span> org.apache.dubbo.config.annotation.Reference;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span> <span class="comment">//注入到容器中</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Reference</span> <span class="comment">//远程引用指定的服务，他会按照全类名进行匹配，看谁给注册中心注册了这个全类名</span></span><br><span class="line">   TicketService ticketService;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bugTicket</span><span class="params">()</span></span>&#123;</span><br><span class="line">       String ticket = ticketService.getTicket();</span><br><span class="line">       System.out.println(<span class="string">"在注册中心买到"</span>+ticket);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<ol start="10">
+<li>测试类编写</li>
+</ol>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringRunner<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">@<span class="title">SpringBootTest</span></span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">ConsumerServerApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">   UserService userService;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">       userService.bugTicket();</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+</li>
+</ol>
+
+        <h2 id="启动测试-1"   >
+          <a href="#启动测试-1" class="heading-link"><i class="fas fa-link"></i></a>启动测试</h2>
+      <p>   <strong>1. 开启zookeeper</strong></p>
+<p>   <strong>2. 打开dubbo-admin实现监控【可以不用做】</strong></p>
+<p>   <strong>3. 开启服务者</strong></p>
+<p>   <strong>4. 消费者消费测试，结果：</strong></p>
+<p>   <img src="https://i.loli.net/2020/05/14/qORDCVTLmtpsMdi.png" alt="img"></p>
+<p>   <strong>监控中心 ：</strong></p>
+<p>   <img src="https://i.loli.net/2020/05/14/VeQtXhsD6GyHfq1.png" alt="img"></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://yoursite.com">Pawnbrokers</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://yoursite.com/2020/05/14/SpringBoot%E6%95%B4%E5%90%88Dubbo-Zookeeper/">http://yoursite.com/2020/05/14/SpringBoot%E6%95%B4%E5%90%88Dubbo-Zookeeper/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://yoursite.com/tags/SpringBoot%E6%95%B4%E5%90%88zookeeper-dubbo/">SpringBoot整合zookeeper+dubbo</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://yoursite.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">微服务解决方案</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/05/15/MySQL%E5%86%8D%E5%AD%A6/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">MySQL再学</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/05/14/SpringBoot%E6%95%B4%E5%90%88Redis/"><span class="paginator-prev__text">SpringBoot整合Redis</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-分布式系统"><span class="toc-number">1.</span> <span class="toc-text">
+          1. 分布式系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是分布式系统？"><span class="toc-number">1.1.</span> <span class="toc-text">
+          什么是分布式系统？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dubbo文档"><span class="toc-number">1.2.</span> <span class="toc-text">
+          Dubbo文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单一应用架构"><span class="toc-number">1.3.</span> <span class="toc-text">
+          单一应用架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#垂直应用架构"><span class="toc-number">1.4.</span> <span class="toc-text">
+          垂直应用架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式服务架构"><span class="toc-number">1.5.</span> <span class="toc-text">
+          分布式服务架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流动计算架构"><span class="toc-number">1.6.</span> <span class="toc-text">
+          流动计算架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dubbo"><span class="toc-number">1.7.</span> <span class="toc-text">
+          Dubbo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dubbo环境搭建"><span class="toc-number">1.8.</span> <span class="toc-text">
+          Dubbo环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Window下安装zookeeper"><span class="toc-number">1.9.</span> <span class="toc-text">
+          Window下安装zookeeper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#window下安装dubbo-admin"><span class="toc-number">1.10.</span> <span class="toc-text">
+          window下安装dubbo-admin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringBoot-Dubbo-zookeeper"><span class="toc-number">1.11.</span> <span class="toc-text">
+          SpringBoot + Dubbo + zookeeper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#框架搭建"><span class="toc-number">1.12.</span> <span class="toc-text">
+          框架搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务提供者"><span class="toc-number">1.13.</span> <span class="toc-text">
+          服务提供者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务消费者"><span class="toc-number">1.14.</span> <span class="toc-text">
+          服务消费者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动测试"><span class="toc-number">1.15.</span> <span class="toc-text">
+          启动测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">2.</span> <span class="toc-text">
+          总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#启动测试-1"><span class="toc-number">2.1.</span> <span class="toc-text">
+          启动测试</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/me.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">我们必须习惯，站在人生的交叉路口，却没有红绿灯的事实。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/pawnbrokers" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/mu-rong-xue-hen-46" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="assets/wechat.jpg" target="_blank" rel="noopener" data-popover="微信" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="assets/qq.jpg" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">37</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">33</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">43</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Pawnbrokers</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v4.2.1</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script></body></html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html><html lang="cn"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0" type="image/png" sizes="32x32"><meta name="description" content="1. 采用feign                           1.1 Feign简介">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hystrix服务熔断与降级">
+<meta property="og:url" content="http://yoursite.com/2020/05/17/Hystrix%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%8D%E7%BA%A7/index.html">
+<meta property="og:site_name" content="节能主义">
+<meta property="og:description" content="1. 采用feign                           1.1 Feign简介">
+<meta property="og:locale" content="cn">
+<meta property="og:image" content="https://i.loli.net/2020/05/17/efWkT7i9hFrMSJb.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/17/R7t6VYvHKmuWQLa.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/17/pw8eM6vuAfBTxQz.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/17/srAf1QVw8ES24IF.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/874963/201807/874963-20180730172725624-245631738.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/874963/201807/874963-20180730172821821-960520983.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/874963/201807/874963-20180730172949326-29467411.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/17/d7gqbOUmTHhV8JL.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/17/HXVtInD7TjB42gC.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/17/bGiJMLA3s1Xp5gj.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/17/ZAtYkPOyeF58sRL.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/17/gLyF95dsRT4zeS3.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/17/Ok5xAz7msUpwYPT.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/17/LjJr7DWIgUVZKEc.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/17/74QZJcmveHWXh2U.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/17/rc3AC9PhU1pfz5S.png">
+<meta property="og:image" content="https://i.loli.net/2020/05/17/Rf3wEto5aiUWgcz.png">
+<meta property="article:published_time" content="2020-05-17T09:26:40.000Z">
+<meta property="article:modified_time" content="2020-05-17T15:03:50.710Z">
+<meta property="article:author" content="Pawnbrokers">
+<meta property="article:tag" content="feign">
+<meta property="article:tag" content="Hystrix">
+<meta property="article:tag" content="服务熔断">
+<meta property="article:tag" content="服务降级">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/17/efWkT7i9hFrMSJb.png"><meta name="keywords" content="Pawnbrokers, 节能主义"><meta name="description" content=""><title>Hystrix服务熔断与降级 | 节能主义</title><link ref="canonical" href="http://yoursite.com/2020/05/17/Hystrix%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%8D%E7%BA%A7/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="节能主义" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">节能主义</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Hystrix服务熔断与降级</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-05-17</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-05-17</span></span></div></header><div class="post-body">
+        <h1 id="1-采用feign"   >
+          <a href="#1-采用feign" class="heading-link"><i class="fas fa-link"></i></a>1. 采用feign</h1>
+      
+        <h2 id="1-1-Feign简介"   >
+          <a href="#1-1-Feign简介" class="heading-link"><i class="fas fa-link"></i></a>1.1 Feign简介</h2>
+      <a id="more"></a>
+
+<p>Feign 是一个<strong>声明web服务客户端</strong>，这便得编写web服务客户端更容易，使用Feign 创建一个接口并对它进行注解，它具有可插拔的注解支持包括Feign注解与JAX-RS注解，Feign还支持可插拔的编码器与解码器，Spring Cloud 增加了对 Spring MVC的注解，Spring Web 默认使用了HttpMessageConverters, Spring Cloud 集成 Ribbon 和 Eureka 提供的负载均衡的HTTP客户端 Feign.</p>
+<p> <strong>面向接口编程</strong></p>
+
+        <h2 id="声明式REST客户端：Feign"   >
+          <a href="#声明式REST客户端：Feign" class="heading-link"><i class="fas fa-link"></i></a>声明式REST客户端：Feign</h2>
+      <p>先要启动<strong>eureka_register_service</strong>工程（注册中心）和<strong>biz-service-0</strong>工程（服务生产者）</p>
+
+        <h2 id="1-2-回想一下我们使用RestTemplate来访问微服务的方案"   >
+          <a href="#1-2-回想一下我们使用RestTemplate来访问微服务的方案" class="heading-link"><i class="fas fa-link"></i></a>1.2 回想一下我们使用RestTemplate来访问微服务的方案</h2>
+      <blockquote>
+<ol>
+<li>引入依赖</li>
+<li>定义一个config类，@Bean将RestTEmplate加入容器，其中可以选择自定义的负载均衡算法（默认轮询算法）</li>
+<li>在对应的Controller中注入我们的restTemplate</li>
+<li>前缀为微服务名字，加上后缀，利用restTemplate的方法与其他为服务实现通信</li>
+</ol>
+</blockquote>
+
+        <h1 id="2-Feign"   >
+          <a href="#2-Feign" class="heading-link"><i class="fas fa-link"></i></a>2. Feign</h1>
+      <p>我们现在的调用者不仅仅是一个Controller，还需要一个Service</p>
+<blockquote>
+<ol>
+<li>引入依赖</li>
+<li>编写配置</li>
+<li>启用配置</li>
+<li>编写配置类</li>
+</ol>
+</blockquote>
+
+        <h2 id="2-1-引入依赖"   >
+          <a href="#2-1-引入依赖" class="heading-link"><i class="fas fa-link"></i></a>2.1 引入依赖</h2>
+      <figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--        feign的依赖--&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-feign<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.6.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="2-2-编写配置"   >
+          <a href="#2-2-编写配置" class="heading-link"><i class="fas fa-link"></i></a>2.2 编写配置</h2>
+      <figure class="highlight yml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">7777</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Eureka集成</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">false</span> <span class="comment"># 不向eureka注册自己</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://localhost:7001/eureka/,http://eureka7003.com:7003/eureka/,http://eureka7001.com:7001/eureka/</span></span><br><span class="line"><span class="attr">feign:</span></span><br><span class="line">  <span class="attr">hystrix:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br></pre></td></tr></table></div></figure>
+
+<p>配置文件和之前的消费者一模一样，无需改变</p>
+
+        <h2 id="2-3-编写Service层"   >
+          <a href="#2-3-编写Service层" class="heading-link"><i class="fas fa-link"></i></a>2.3 编写Service层</h2>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yuan.springcloud.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.yuan.springcloud.pojo.Dept;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.openfeign.FeignClient;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PostMapping;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@FeignClient</span>(value = <span class="string">"SPRINGCLOUD-PROVIDER-DEPT-8001"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DeptFeignService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/dept/get/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Dept <span class="title">queryById</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> Long id)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/dept/list"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Dept&gt; <span class="title">queryAll</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"/dept/add"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">addDept</span><span class="params">(Dept dept)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<ol>
+<li>这是一个接口</li>
+<li>添加两个注解，value为服务名称</li>
+<li>与正常的service一样，提供查询服务</li>
+</ol>
+
+        <h2 id="2-4-Controller层"   >
+          <a href="#2-4-Controller层" class="heading-link"><i class="fas fa-link"></i></a>2.4 Controller层</h2>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yuan.springcloud.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.yuan.springcloud.pojo.Dept;</span><br><span class="line"><span class="keyword">import</span> com.yuan.springcloud.service.DeptFeignService;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeptFeignConsumer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    DeptFeignService deptFeignService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/consumer/dept/get/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Dept <span class="title">get</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span>Long id)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> deptFeignService.queryById(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/consumer/dept/add"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(Dept dept)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> deptFeignService.addDept(dept);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/consumer/dept/list"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Dept&gt; <span class="title">list</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> deptFeignService.queryAll();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>这里我们诸如这样一个service，使用service来完成操作</p>
+
+        <h2 id="2-5-测试"   >
+          <a href="#2-5-测试" class="heading-link"><i class="fas fa-link"></i></a>2.5 测试</h2>
+      <p><img src="https://i.loli.net/2020/05/17/efWkT7i9hFrMSJb.png" alt="image-20200517193833744"></p>
+
+        <h1 id="3-Hystrix"   >
+          <a href="#3-Hystrix" class="heading-link"><i class="fas fa-link"></i></a>3.Hystrix</h1>
+      <p><img src="https://i.loli.net/2020/05/17/R7t6VYvHKmuWQLa.png" alt="image-20200517193416047"></p>
+<p><img src="https://i.loli.net/2020/05/17/pw8eM6vuAfBTxQz.png" alt="image-20200517193426402"></p>
+<p><img src="https://i.loli.net/2020/05/17/srAf1QVw8ES24IF.png" alt="image-20200517193434958"></p>
+<p><strong>Hystrix的设计目的：</strong></p>
+<p>通过第三方客户端的库来为访问依赖服务时的潜在故障提供保护和控制；</p>
+<p>防止在复杂分布式系统中出现级联故障；</p>
+<p>快速失败和迅速恢复；</p>
+<p>在允许的情况下，提供退路对服务进行优雅降级；</p>
+<p>提供近实时的监控、报警和操作控制;</p>
+
+        <h1 id="4-服务熔断与服务降级"   >
+          <a href="#4-服务熔断与服务降级" class="heading-link"><i class="fas fa-link"></i></a>4. 服务熔断与服务降级</h1>
+      
+        <h2 id="4-1-服务熔断"   >
+          <a href="#4-1-服务熔断" class="heading-link"><i class="fas fa-link"></i></a>4.1 服务熔断</h2>
+      <p>服务熔断的作用类似于我们家用的保险丝，当某服务出现不可用或响应超时的情况时，为了防止整个系统出现雪崩，暂时停止对该服务的调用。</p>
+
+        <h2 id="4-2-服务降级"   >
+          <a href="#4-2-服务降级" class="heading-link"><i class="fas fa-link"></i></a>4.2 服务降级</h2>
+      <p>服务降级是从整个系统的负荷情况出发和考虑的，对某些负荷会比较高的情况，为了预防某些功能（业务场景）出现负荷过载或者响应慢的情况，在其内部暂时舍弃对一些非核心的接口和数据的请求，而直接返回一个提前准备好的fallback（退路）错误处理信息。这样，虽然提供的是一个有损的服务，但却保证了整个系统的稳定性和可用性。</p>
+
+        <h2 id="4-3-熔断VS降级"   >
+          <a href="#4-3-熔断VS降级" class="heading-link"><i class="fas fa-link"></i></a>4.3 熔断VS降级</h2>
+      <p>相同点：</p>
+<p>目标一致 都是从可用性和可靠性出发，为了防止系统崩溃；</p>
+<p>用户体验类似 最终都让用户体验到的是某些功能暂时不可用；</p>
+<p>不同点：</p>
+<p>触发原因不同 服务熔断一般是某个服务（下游服务）故障引起，而服务降级一般是从整体负荷考虑； </p>
+
+        <h2 id="Hystrix解决了什么问题"   >
+          <a href="#Hystrix解决了什么问题" class="heading-link"><i class="fas fa-link"></i></a>Hystrix解决了什么问题</h2>
+      <p>复杂分布式体系结构中的应用程序有许多依赖项，每个依赖项在某些时候都不可避免地会失败。如果主机应用程序没有与这些外部故障隔离，那么它有可能被他们拖垮。</p>
+<p>例如，对于一个依赖于30个服务的应用程序，每个服务都有99.99%的正常运行时间，你可以期望如下：</p>
+<p>99.9930 = 99.7% 可用</p>
+<p>也就是说一亿个请求的0.03% = 3000000 会失败</p>
+<p>如果一切正常，那么每个月有2个小时服务是不可用的</p>
+<p>现实通常是更糟糕 </p>
+<hr>
+<p>当一切正常时，请求看起来是这样的：</p>
+<p><img src="https://images2018.cnblogs.com/blog/874963/201807/874963-20180730172725624-245631738.png" alt="img"></p>
+<p>当其中有一个系统有延迟时，它可能阻塞整个用户请求：</p>
+<p><img src="https://images2018.cnblogs.com/blog/874963/201807/874963-20180730172821821-960520983.png" alt="img"></p>
+<p>在高流量的情况下，一个后端依赖项的延迟可能导致所有服务器上的所有资源在数秒内饱和（PS：意味着后续再有请求将无法立即提供服务）</p>
+<p><img src="https://images2018.cnblogs.com/blog/874963/201807/874963-20180730172949326-29467411.png" alt="img"></p>
+
+        <h2 id="4-6-总结"   >
+          <a href="#4-6-总结" class="heading-link"><i class="fas fa-link"></i></a>4.6 总结</h2>
+      <p>服务熔断是<strong>服务提供方</strong>出现故障，我们不能够直接给用户返回错误界面</p>
+<p>服务降级是<strong>由消费者发起</strong>，当提供者服务器被关闭的时候，消费服务器返回给消费者的友好界面</p>
+
+        <h1 id="5-服务熔断"   >
+          <a href="#5-服务熔断" class="heading-link"><i class="fas fa-link"></i></a>5. 服务熔断</h1>
+      
+        <h2 id="5-1-项目结构（与原来的消费提供者没有两样）"   >
+          <a href="#5-1-项目结构（与原来的消费提供者没有两样）" class="heading-link"><i class="fas fa-link"></i></a>5.1 项目结构（与原来的消费提供者没有两样）</h2>
+      <p><img src="https://i.loli.net/2020/05/17/d7gqbOUmTHhV8JL.png" alt="image-20200517194350205"></p>
+
+        <h2 id="5-2-步骤"   >
+          <a href="#5-2-步骤" class="heading-link"><i class="fas fa-link"></i></a>5.2 步骤</h2>
+      <ol>
+<li>引入依赖</li>
+<li>编写配置文件</li>
+<li>@Enable对应功能</li>
+<li>编写配置类（可能没有）</li>
+</ol>
+
+        <h2 id="5-3-引入依赖"   >
+          <a href="#5-3-引入依赖" class="heading-link"><i class="fas fa-link"></i></a>5.3 引入依赖</h2>
+      <figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-hystrix<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.6.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="5-4-application-yml"   >
+          <a href="#5-4-application-yml" class="heading-link"><i class="fas fa-link"></i></a>5.4 application.yml</h2>
+      <p>和原来相比没有变化</p>
+<figure class="highlight yaml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8004</span></span><br><span class="line"></span><br><span class="line"><span class="attr">mybatis:</span></span><br><span class="line">  <span class="attr">mapper-locations:</span> <span class="string">classpath:com/yuan/springcloud/dao/*.xml</span></span><br><span class="line">  <span class="attr">type-aliases-package:</span> <span class="string">com.yuan.springcloud</span></span><br><span class="line">  <span class="attr">config-location:</span> <span class="string">classpath:com/yuan/springcloud/mybatis-config.xml</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#   数据源</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">springcloud-provider-dept-8001</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">org.gjt.mm.mysql.Driver</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/db01?useUnicode=true&amp;characterEncoding=utf-8</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">root</span></span><br><span class="line">    <span class="comment">#Eureka的配置,服务注册到哪里？</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://localhost:7001/eureka/,http://localhost:7002/eureka/,http://localhost:7003/eureka/</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">instance-id:</span> <span class="string">springcloud-provider-hystrix-dept8004</span> <span class="comment"># 修改默认的描述信息</span></span><br><span class="line"><span class="comment"># info</span></span><br><span class="line"><span class="attr">info:</span></span><br><span class="line">  <span class="attr">app.name:</span> <span class="string">yuan_tangbo</span></span><br><span class="line">  <span class="attr">company.name:</span> <span class="string">ZJU</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="5-5-Controller"   >
+          <a href="#5-5-Controller" class="heading-link"><i class="fas fa-link"></i></a>5.5 Controller</h2>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yuan.springcloud.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;</span><br><span class="line"><span class="keyword">import</span> com.yuan.springcloud.pojo.Dept;</span><br><span class="line"><span class="keyword">import</span> com.yuan.springcloud.service.DeptService;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.client.ServiceInstance;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.client.discovery.DiscoveryClient;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">//提供restFul服务</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeptController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    DeptService deptService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@HystrixCommand</span>(fallbackMethod = <span class="string">"getHystrix"</span>)</span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/dept/get/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Dept <span class="title">get</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> Long id) </span>&#123;</span><br><span class="line">        Dept dept = deptService.queryById(id);</span><br><span class="line">        <span class="keyword">if</span> (dept == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"id==&gt;"</span> + id + <span class="string">",不存在该用户"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dept;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//备选方案</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Dept <span class="title">getHystrix</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> Long id) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Dept().setDeptno(id)</span><br><span class="line">                .setDname(<span class="string">"id==&gt;"</span> + id + <span class="string">",不存在该用户---@Hystrix"</span>)</span><br><span class="line">                .setDb_source(<span class="string">"没有此数据库"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>我们实际上针对每一个方法都要有一个备选方案，在对应方法上加入<code>@HystrixCommand(fallbackMethod = &quot;getHystrix&quot;)</code>指定具体的回滚方法，这里我们同样也要返回对应类型的数据，<strong>因为前端需要我们给出这样的数据格式。</strong></p>
+
+        <h2 id="5-6-测试"   >
+          <a href="#5-6-测试" class="heading-link"><i class="fas fa-link"></i></a>5.6 测试</h2>
+      <ol>
+<li>正确数据的情况下并不会出现问题</li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/17/HXVtInD7TjB42gC.png" alt="image-20200517194925954"></p>
+<ol start="2">
+<li>访问错误数据，回馈给我们友好页面</li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/17/bGiJMLA3s1Xp5gj.png" alt="image-20200517194955921"></p>
+
+        <h1 id="6-服务降级"   >
+          <a href="#6-服务降级" class="heading-link"><i class="fas fa-link"></i></a>6. 服务降级</h1>
+      <p>服务降级 针对消费方的，当我们的请求得不到回应的时候，应该如何处理</p>
+
+        <h2 id="6-0-引入依赖"   >
+          <a href="#6-0-引入依赖" class="heading-link"><i class="fas fa-link"></i></a>6.0 引入依赖</h2>
+      
+        <h2 id="6-1-Feign的对应Service类"   >
+          <a href="#6-1-Feign的对应Service类" class="heading-link"><i class="fas fa-link"></i></a>6.1 Feign的对应Service类</h2>
+      <p><img src="https://i.loli.net/2020/05/17/ZAtYkPOyeF58sRL.png" alt="image-20200517195202996"></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yuan.springcloud.service;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.yuan.springcloud.pojo.Dept;</span><br><span class="line"><span class="keyword">import</span> feign.hystrix.FallbackFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeptServiceFallBackFactory</span> <span class="keyword">implements</span> <span class="title">FallbackFactory</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">create</span><span class="params">(Throwable throwable)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DeptClientService() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Dept <span class="title">queryById</span><span class="params">(Long id)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Dept()</span><br><span class="line">                        .setDeptno(id)</span><br><span class="line">                        .setDname(<span class="string">"目前进行服务降级，暂不可用"</span>)</span><br><span class="line">                        .setDb_source(<span class="string">"无数据库服务"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> List&lt;Dept&gt; <span class="title">queryAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">addDept</span><span class="params">(Dept dept)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>我们重写了整个service类</p>
+<p><img src="https://i.loli.net/2020/05/17/gLyF95dsRT4zeS3.png" alt="image-20200517195318273"></p>
+
+        <h2 id="6-2-在对应的service类上加注解"   >
+          <a href="#6-2-在对应的service类上加注解" class="heading-link"><i class="fas fa-link"></i></a>6.2 在对应的service类上加注解</h2>
+      <p><img src="https://i.loli.net/2020/05/17/Ok5xAz7msUpwYPT.png" alt="image-20200517195354886"></p>
+<p><img src="https://i.loli.net/2020/05/17/LjJr7DWIgUVZKEc.png" alt="image-20200517195400796"></p>
+
+        <h2 id="6-3-测试-我们运行过程中关闭服务提供者"   >
+          <a href="#6-3-测试-我们运行过程中关闭服务提供者" class="heading-link"><i class="fas fa-link"></i></a>6.3 测试(我们运行过程中关闭服务提供者)</h2>
+      <ol>
+<li>正常数据  /get/1</li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/17/74QZJcmveHWXh2U.png" alt="image-20200517195557067"></p>
+<ol start="2">
+<li>错误数据（测试服务熔断）</li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/17/rc3AC9PhU1pfz5S.png" alt="image-20200517195622988"></p>
+<ol start="3">
+<li>关闭服务提供者</li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/17/Rf3wEto5aiUWgcz.png" alt="image-20200517200327666"></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://yoursite.com">Pawnbrokers</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://yoursite.com/2020/05/17/Hystrix%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%8D%E7%BA%A7/">http://yoursite.com/2020/05/17/Hystrix%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%8D%E7%BA%A7/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://yoursite.com/tags/feign/">feign</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://yoursite.com/tags/Hystrix/">Hystrix</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://yoursite.com/tags/%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD/">服务熔断</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://yoursite.com/tags/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7/">服务降级</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/05/18/MySQL%E5%A4%8D%E4%B9%A0/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">MySQL复习</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/05/16/SpringCloud%E5%AD%A6%E4%B9%A0/"><span class="paginator-prev__text">SpringCloud学习</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-采用feign"><span class="toc-number">1.</span> <span class="toc-text">
+          1. 采用feign</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-Feign简介"><span class="toc-number">1.1.</span> <span class="toc-text">
+          1.1 Feign简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#声明式REST客户端：Feign"><span class="toc-number">1.2.</span> <span class="toc-text">
+          声明式REST客户端：Feign</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-回想一下我们使用RestTemplate来访问微服务的方案"><span class="toc-number">1.3.</span> <span class="toc-text">
+          1.2 回想一下我们使用RestTemplate来访问微服务的方案</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Feign"><span class="toc-number">2.</span> <span class="toc-text">
+          2. Feign</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-引入依赖"><span class="toc-number">2.1.</span> <span class="toc-text">
+          2.1 引入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-编写配置"><span class="toc-number">2.2.</span> <span class="toc-text">
+          2.2 编写配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-编写Service层"><span class="toc-number">2.3.</span> <span class="toc-text">
+          2.3 编写Service层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-Controller层"><span class="toc-number">2.4.</span> <span class="toc-text">
+          2.4 Controller层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-测试"><span class="toc-number">2.5.</span> <span class="toc-text">
+          2.5 测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Hystrix"><span class="toc-number">3.</span> <span class="toc-text">
+          3.Hystrix</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-服务熔断与服务降级"><span class="toc-number">4.</span> <span class="toc-text">
+          4. 服务熔断与服务降级</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-服务熔断"><span class="toc-number">4.1.</span> <span class="toc-text">
+          4.1 服务熔断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-服务降级"><span class="toc-number">4.2.</span> <span class="toc-text">
+          4.2 服务降级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-熔断VS降级"><span class="toc-number">4.3.</span> <span class="toc-text">
+          4.3 熔断VS降级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hystrix解决了什么问题"><span class="toc-number">4.4.</span> <span class="toc-text">
+          Hystrix解决了什么问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-6-总结"><span class="toc-number">4.5.</span> <span class="toc-text">
+          4.6 总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-服务熔断"><span class="toc-number">5.</span> <span class="toc-text">
+          5. 服务熔断</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-项目结构（与原来的消费提供者没有两样）"><span class="toc-number">5.1.</span> <span class="toc-text">
+          5.1 项目结构（与原来的消费提供者没有两样）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-步骤"><span class="toc-number">5.2.</span> <span class="toc-text">
+          5.2 步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-引入依赖"><span class="toc-number">5.3.</span> <span class="toc-text">
+          5.3 引入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-application-yml"><span class="toc-number">5.4.</span> <span class="toc-text">
+          5.4 application.yml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-Controller"><span class="toc-number">5.5.</span> <span class="toc-text">
+          5.5 Controller</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-6-测试"><span class="toc-number">5.6.</span> <span class="toc-text">
+          5.6 测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-服务降级"><span class="toc-number">6.</span> <span class="toc-text">
+          6. 服务降级</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-0-引入依赖"><span class="toc-number">6.1.</span> <span class="toc-text">
+          6.0 引入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-Feign的对应Service类"><span class="toc-number">6.2.</span> <span class="toc-text">
+          6.1 Feign的对应Service类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-在对应的service类上加注解"><span class="toc-number">6.3.</span> <span class="toc-text">
+          6.2 在对应的service类上加注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-测试-我们运行过程中关闭服务提供者"><span class="toc-number">6.4.</span> <span class="toc-text">
+          6.3 测试(我们运行过程中关闭服务提供者)</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/me.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">我们必须习惯，站在人生的交叉路口，却没有红绿灯的事实。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/pawnbrokers" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/mu-rong-xue-hen-46" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="assets/wechat.jpg" target="_blank" rel="noopener" data-popover="微信" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="assets/qq.jpg" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">37</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">33</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">43</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Pawnbrokers</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v4.2.1</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script></body></html>
