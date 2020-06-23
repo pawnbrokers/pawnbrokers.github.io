@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="cn"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0" type="image/png" sizes="32x32"><meta name="description" content="1. 检索数据                           1.1 检索不同的行 DISTINCT       但是不能部分使用，DISTINCT关键字将用于所有列而非只是前置他的列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL必知必会">
+<meta property="og:url" content="http://yoursite.com/2020/06/23/MySQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/index.html">
+<meta property="og:site_name" content="节能主义">
+<meta property="og:description" content="1. 检索数据                           1.1 检索不同的行 DISTINCT       但是不能部分使用，DISTINCT关键字将用于所有列而非只是前置他的列">
+<meta property="og:locale" content="cn">
+<meta property="article:published_time" content="2020-06-23T02:26:11.000Z">
+<meta property="article:modified_time" content="2020-06-23T07:07:56.958Z">
+<meta property="article:author" content="Pawnbrokers">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary"><meta name="keywords" content="Pawnbrokers, 节能主义"><meta name="description" content=""><title>MySQL必知必会 | 节能主义</title><link ref="canonical" href="http://yoursite.com/2020/06/23/MySQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="节能主义" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">节能主义</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">MySQL必知必会</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-06-23</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-06-23</span></span></div></header><div class="post-body">
+        <h1 id="1-检索数据"   >
+          <a href="#1-检索数据" class="heading-link"><i class="fas fa-link"></i></a>1. 检索数据</h1>
+      
+        <h2 id="1-1-检索不同的行-DISTINCT"   >
+          <a href="#1-1-检索不同的行-DISTINCT" class="heading-link"><i class="fas fa-link"></i></a>1.1 检索不同的行 DISTINCT</h2>
+      <p>但是不能部分使用，DISTINCT关键字将用于所有列而非只是前置他的列</p>
+<a id="more"></a>
+
+
+        <h2 id="1-2-限制结果-limit"   >
+          <a href="#1-2-限制结果-limit" class="heading-link"><i class="fas fa-link"></i></a>1.2 限制结果 limit</h2>
+      <p><code>limit 5</code> 表示限制输出5条记录</p>
+<p><code>limit 3，5</code> 表示从<strong>行3开始的5行</strong></p>
+
+        <h2 id="1-3-排序ASC-DESC"   >
+          <a href="#1-3-排序ASC-DESC" class="heading-link"><i class="fas fa-link"></i></a>1.3 排序ASC DESC</h2>
+      <p>可以按照多个列进行排序，但是必须对每一个列都指定ASC或者DESC，<strong>关键字只对前置的列生效</strong></p>
+
+        <h2 id="1-4-求最值"   >
+          <a href="#1-4-求最值" class="heading-link"><i class="fas fa-link"></i></a>1.4 求最值</h2>
+      <figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> price <span class="keyword">from</span> products </span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">DESC</span></span><br><span class="line"><span class="keyword">limit</span> <span class="number">1</span></span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h1 id="2-过滤数据"   >
+          <a href="#2-过滤数据" class="heading-link"><i class="fas fa-link"></i></a>2. 过滤数据</h1>
+      <p>MySQL在执行匹配的时候不区分大小写</p>
+
+        <h2 id="2-1串与值的区别"   >
+          <a href="#2-1串与值的区别" class="heading-link"><i class="fas fa-link"></i></a>2.1串与值的区别</h2>
+      <p>单引号用于限定字符串</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> user_id </span><br><span class="line"><span class="keyword">from</span> <span class="keyword">user</span> </span><br><span class="line"><span class="keyword">where</span> username = <span class="string">'zhangsan'</span></span><br></pre></td></tr></table></div></figure>
+
+<p>数值比较不需要加单引号</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> vend_id,prod_name</span><br><span class="line"><span class="keyword">from</span> products</span><br><span class="line"><span class="keyword">where</span> vend_id &lt;&gt; <span class="number">1003</span></span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="2-2-空值检查-IS-NULL"   >
+          <a href="#2-2-空值检查-IS-NULL" class="heading-link"><i class="fas fa-link"></i></a>2.2 空值检查 IS NULL</h2>
+      <p>NULL 无值，不用于0，空串或空格</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> prod_name</span><br><span class="line"><span class="keyword">from</span> products</span><br><span class="line"><span class="keyword">where</span> prod_price <span class="keyword">IS</span> <span class="literal">NULL</span></span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h1 id="3-通配符"   >
+          <a href="#3-通配符" class="heading-link"><i class="fas fa-link"></i></a>3. 通配符</h1>
+      
+        <h2 id="3-1-通配符"   >
+          <a href="#3-1-通配符" class="heading-link"><i class="fas fa-link"></i></a>3.1 %通配符</h2>
+      <p>%表示任意字符出现任意次数</p>
+<figure class="highlight sql"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span>  *</span><br><span class="line"><span class="keyword">from</span> product</span><br><span class="line"><span class="keyword">where</span> prod_name </span><br><span class="line"><span class="keyword">like</span> <span class="string">'jet%'</span></span><br></pre></td></tr></table></div></figure>
+
+<p>表示搜索所有以<code>jet</code>开头的词。</p>
+<p><strong>注意：</strong></p>
+<p>即使是<code>%</code>也不能匹配<code>NULL</code></p>
+
+        <h2 id="3-2-下划线-通配符"   >
+          <a href="#3-2-下划线-通配符" class="heading-link"><i class="fas fa-link"></i></a>3.2 下划线_通配符</h2>
+      <p>只能匹配单子字符，只匹配一个，不能多也不能少。</p>
+
+        <h1 id="4-正则表达式"   >
+          <a href="#4-正则表达式" class="heading-link"><i class="fas fa-link"></i></a>4. 正则表达式</h1>
+      
+        <h2 id="4-1-REGEXP"   >
+          <a href="#4-1-REGEXP" class="heading-link"><i class="fas fa-link"></i></a>4.1 REGEXP</h2>
+      <p>查询带有1000的文本行</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select prod_name</span><br><span class="line">from products</span><br><span class="line">where prod_name REGEXP &#39;1000&#39;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+
+
+        <h1 id="5-计算字段"   >
+          <a href="#5-计算字段" class="heading-link"><i class="fas fa-link"></i></a>5. 计算字段</h1>
+      
+        <h2 id="5-1-概念"   >
+          <a href="#5-1-概念" class="heading-link"><i class="fas fa-link"></i></a>5.1 概念</h2>
+      <p><strong>字段</strong>基本上与列的意思相同，经常互换使用，不过数据库列一般称为列，而术语<strong>字段</strong>则通常用在计算字段的连接上。</p>
+
+        <h2 id="5-2-拼接字段"   >
+          <a href="#5-2-拼接字段" class="heading-link"><i class="fas fa-link"></i></a>5.2 拼接字段</h2>
+      <p>将值连接到一起形成单个值</p>
+<p>解决方法是把两个列拼接起来，在<code>MySQL</code>的<code>SELECT</code>语句中，可以使用<code>Concat()</code>函数来拼接两列。</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT Concat(vend_name,&#39;(&#39;,vend_country,&#39;)&#39;)</span><br><span class="line">from vendors</span><br><span class="line">ORDER BY vend_name</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="5-3-去掉空格"   >
+          <a href="#5-3-去掉空格" class="heading-link"><i class="fas fa-link"></i></a>5.3 去掉空格</h2>
+      <p><code>Trim，LTrim，RTrim</code></p>
+<p>·</p>
+
+        <h2 id="5-4-执行算术运算"   >
+          <a href="#5-4-执行算术运算" class="heading-link"><i class="fas fa-link"></i></a>5.4 执行算术运算</h2>
+      
+        <h1 id="6-分组查询"   >
+          <a href="#6-分组查询" class="heading-link"><i class="fas fa-link"></i></a>6. 分组查询</h1>
+      
+        <h2 id="6-1-数据分组"   >
+          <a href="#6-1-数据分组" class="heading-link"><i class="fas fa-link"></i></a>6.1 数据分组</h2>
+      <p><code>Group BY</code></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://yoursite.com">Pawnbrokers</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://yoursite.com/2020/06/23/MySQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">http://yoursite.com/2020/06/23/MySQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://yoursite.com/tags/MySQL/">MySQL</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/06/23/Spring%E5%AE%9E%E4%BE%8B%E5%8C%96Bean%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Spring实例化Bean的三种方法</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/06/06/eblog%E6%90%AD%E5%BB%BA6/"><span class="paginator-prev__text">eblog搭建6</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-检索数据"><span class="toc-number">1.</span> <span class="toc-text">
+          1. 检索数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-检索不同的行-DISTINCT"><span class="toc-number">1.1.</span> <span class="toc-text">
+          1.1 检索不同的行 DISTINCT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-限制结果-limit"><span class="toc-number">1.2.</span> <span class="toc-text">
+          1.2 限制结果 limit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-排序ASC-DESC"><span class="toc-number">1.3.</span> <span class="toc-text">
+          1.3 排序ASC DESC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-求最值"><span class="toc-number">1.4.</span> <span class="toc-text">
+          1.4 求最值</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-过滤数据"><span class="toc-number">2.</span> <span class="toc-text">
+          2. 过滤数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1串与值的区别"><span class="toc-number">2.1.</span> <span class="toc-text">
+          2.1串与值的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-空值检查-IS-NULL"><span class="toc-number">2.2.</span> <span class="toc-text">
+          2.2 空值检查 IS NULL</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-通配符"><span class="toc-number">3.</span> <span class="toc-text">
+          3. 通配符</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-通配符"><span class="toc-number">3.1.</span> <span class="toc-text">
+          3.1 %通配符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-下划线-通配符"><span class="toc-number">3.2.</span> <span class="toc-text">
+          3.2 下划线_通配符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-正则表达式"><span class="toc-number">4.</span> <span class="toc-text">
+          4. 正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-REGEXP"><span class="toc-number">4.1.</span> <span class="toc-text">
+          4.1 REGEXP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-计算字段"><span class="toc-number">5.</span> <span class="toc-text">
+          5. 计算字段</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-概念"><span class="toc-number">5.1.</span> <span class="toc-text">
+          5.1 概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-拼接字段"><span class="toc-number">5.2.</span> <span class="toc-text">
+          5.2 拼接字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-去掉空格"><span class="toc-number">5.3.</span> <span class="toc-text">
+          5.3 去掉空格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-执行算术运算"><span class="toc-number">5.4.</span> <span class="toc-text">
+          5.4 执行算术运算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-分组查询"><span class="toc-number">6.</span> <span class="toc-text">
+          6. 分组查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-数据分组"><span class="toc-number">6.1.</span> <span class="toc-text">
+          6.1 数据分组</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/me.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">我们必须习惯，站在人生的交叉路口，却没有红绿灯的事实。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/pawnbrokers" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/mu-rong-xue-hen-46" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="assets/wechat.jpg" target="_blank" rel="noopener" data-popover="微信" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="assets/qq.jpg" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">39</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">34</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">44</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Pawnbrokers</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v4.2.1</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script></body></html>
