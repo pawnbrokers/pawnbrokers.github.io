@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="cn"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0" type="image/png" sizes="32x32"><meta name="description" content="1. 核心注解       其实 Starter 的核心就是条件注解 @Conditional ，当 classpath 下存在某一个 Class 时，某个配置才会生效。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自己写一个Starter">
+<meta property="og:url" content="http://yoursite.com/2020/06/24/%E8%87%AA%E5%B7%B1%E5%86%99%E4%B8%80%E4%B8%AAStarter/index.html">
+<meta property="og:site_name" content="节能主义">
+<meta property="og:description" content="1. 核心注解       其实 Starter 的核心就是条件注解 @Conditional ，当 classpath 下存在某一个 Class 时，某个配置才会生效。">
+<meta property="og:locale" content="cn">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200624162901185.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200624163056475.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200624163220465.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200624163307299.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200624163326229.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200624181541396.png">
+<meta property="article:published_time" content="2020-06-24T08:08:42.000Z">
+<meta property="article:modified_time" content="2020-06-24T10:16:58.513Z">
+<meta property="article:author" content="Pawnbrokers">
+<meta property="article:tag" content="Spring Boot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200624162901185.png"><meta name="keywords" content="Pawnbrokers, 节能主义"><meta name="description" content=""><title>自己写一个Starter | 节能主义</title><link ref="canonical" href="http://yoursite.com/2020/06/24/%E8%87%AA%E5%B7%B1%E5%86%99%E4%B8%80%E4%B8%AAStarter/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="节能主义" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">节能主义</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">自己写一个Starter</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-06-24</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-06-24</span></span></div></header><div class="post-body">
+        <h1 id="1-核心注解"   >
+          <a href="#1-核心注解" class="heading-link"><i class="fas fa-link"></i></a>1. 核心注解</h1>
+      <p>其实 Starter 的核心就是条件注解 <code>@Conditional</code> ，当 classpath 下存在某一个 Class 时，某个配置才会生效。</p>
+<a id="more"></a>
+
+
+
+
+        <h1 id="2-定义自己的Starter"   >
+          <a href="#2-定义自己的Starter" class="heading-link"><i class="fas fa-link"></i></a>2. 定义自己的Starter</h1>
+      
+        <h2 id="2-1-定义"   >
+          <a href="#2-1-定义" class="heading-link"><i class="fas fa-link"></i></a>2.1 定义</h2>
+      <p>所谓的 Starter ，其实就是一个普通的 Maven 项目，因此我们自定义 Starter ，需要首先创建一个普通的 Maven 项目，创建完成后，添加 Starter 的自动化配置类即可，如下：</p>
+<figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-autoconfigure<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.7.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="2-2-HelloProperties类"   >
+          <a href="#2-2-HelloProperties类" class="heading-link"><i class="fas fa-link"></i></a>2.2 HelloProperties类</h2>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"yuan"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloProperties</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEFAULT_NAME = <span class="string">"袁堂波"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEFAULT_MSG = <span class="string">"浙江大学"</span>;</span><br><span class="line">    <span class="keyword">private</span> String name = DEFAULT_NAME;</span><br><span class="line">    <span class="keyword">private</span> String msg = DEFAULT_MSG;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMsg</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> msg;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMsg</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.msg = msg;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>这个配置类很好理解，将 <code>application.properties</code> 中配置的属性值直接注入到这个实例中， <code>@ConfigurationProperties</code> 类型安全的属性注入，即将 <code>application.properties</code> 文件中前缀为<code>yuan</code>的属性注入到这个类对应的属性上。</p>
+
+        <h2 id="2-3-application-properties"   >
+          <a href="#2-3-application-properties" class="heading-link"><i class="fas fa-link"></i></a>2.3 application.properties</h2>
+      <figure class="highlight properties"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">yuan.name</span>=<span class="string">Yuan_Tangbo</span></span><br><span class="line"><span class="meta">yuan.msg</span>=<span class="string">ZJ University</span></span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="2-4-HelloService"   >
+          <a href="#2-4-HelloService" class="heading-link"><i class="fas fa-link"></i></a>2.4 HelloService</h2>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String msg;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name + <span class="string">" say "</span> + msg + <span class="string">" !"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMsg</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> msg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMsg</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.msg = msg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="2-5-自动配置类！！！"   >
+          <a href="#2-5-自动配置类！！！" class="heading-link"><i class="fas fa-link"></i></a>2.5 自动配置类！！！</h2>
+      <p>接下来就是我们的重轴戏，自动配置类的定义，用了很多别人定义的自定义类之后，我们也来自己定义一个自定义类。</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableConfigurationProperties</span>(HelloProperties<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">@<span class="title">ConditionalOnClass</span>(<span class="title">HelloService</span>.<span class="title">class</span>)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">HelloServiceAutoConfiguration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    HelloProperties helloProperties;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function">HelloService <span class="title">helloService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        HelloService helloService = <span class="keyword">new</span> HelloService();</span><br><span class="line">        helloService.setName(helloProperties.getName());</span><br><span class="line">        helloService.setMsg(helloProperties.getMsg());</span><br><span class="line">        <span class="keyword">return</span> helloService;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>关于这一段自动配置，解释如下：</p>
+<ul>
+<li>首先 @Configuration 注解表明这是一个配置类。</li>
+<li>@EnableConfigurationProperties 注解是使我们之前配置的 @ConfigurationProperties 生效，让配置的属性成功的进入 Bean 中。</li>
+<li>@ConditionalOnClass 表示当项目当前 classpath 下存在 HelloService 时，后面的配置才生效。</li>
+<li>自动配置类中首先注入 HelloProperties ，这个实例中含有我们在 application.properties 中配置的相关数据。</li>
+<li>提供一个 HelloService 的实例，将 HelloProperties 中的值注入进去。</li>
+</ul>
+
+        <h2 id="2-6-spring-factories"   >
+          <a href="#2-6-spring-factories" class="heading-link"><i class="fas fa-link"></i></a>2.6 spring.factories</h2>
+      <p>做完这一步之后，我们的自动化配置类就算是完成了，接下来还需要一个 spring.factories 文件，那么这个文件是干嘛的呢？大家知道我们的 Spring Boot 项目的启动类都有一个 @SpringBootApplication 注解，这个注解的定义如下：</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootConfiguration</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(excludeFilters = &#123;</span><br><span class="line">  <span class="meta">@Filter</span>(type = FilterType.CUSTOM, classes = TypeExcludeFilter<span class="class">.<span class="keyword">class</span>),</span></span><br><span class="line"><span class="class">  @<span class="title">Filter</span>(<span class="title">type</span> </span>= FilterType.CUSTOM,</span><br><span class="line">    classes = AutoConfigurationExcludeFilter<span class="class">.<span class="keyword">class</span>) &#125;)</span></span><br><span class="line"><span class="class"><span class="title">public</span> @<span class="title">interface</span> <span class="title">SpringBootApplication</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>大家看到这是一个组合注解，其中的一个组合项就是 @EnableAutoConfiguration ，这个注解是干嘛的呢？</p>
+<p><strong>@EnableAutoConfiguration 表示启用 Spring 应用程序上下文的自动配置</strong>，该注解会自动导入一个名为 AutoConfigurationImportSelector 的类,而这个类会去读取一个名为 spring.factories 的文件, spring.factories 中则定义需要加载的自动化配置类，我们打开任意一个框架的 Starter ，都能看到它有一个 spring.factories 文件，例如 MyBatis 的 Starter 如下：</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200624162901185.png" alt="image-20200624162901185"></p>
+<p>那么我们自定义 Starter 当然也需要这样一个文件，我们首先在 Maven 项目的 resources 目录下创建一个名为 META-INF 的文件夹，然后在文件夹中创建一个名为 spring.factories 的文件，文件内容如下：</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.boot.autoconfigure.EnableAutoConfiguration&#x3D;HelloServiceAutoConfiguration</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="2-7-项目结构"   >
+          <a href="#2-7-项目结构" class="heading-link"><i class="fas fa-link"></i></a>2.7 项目结构</h2>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200624163056475.png" alt="image-20200624163056475"></p>
+
+        <h1 id="3-本地安装"   >
+          <a href="#3-本地安装" class="heading-link"><i class="fas fa-link"></i></a>3. 本地安装</h1>
+      <p>我将这个自动化配置类安装到本地仓库，然后在其他项目中使用即可。安装方式很简单，在 IntelliJ IDEA 中，点击右边的 Maven Project ，然后选择 Lifecycle 中的 install ，双击即可，如下：</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200624163220465.png" alt="image-20200624163220465"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200624163307299.png" alt="image-20200624163307299"></p>
+
+        <h2 id="3-1-对应坐标"   >
+          <a href="#3-1-对应坐标" class="heading-link"><i class="fas fa-link"></i></a>3.1 对应坐标</h2>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200624163326229.png" alt="image-20200624163326229"></p>
+
+        <h1 id="4-使用我们的starter"   >
+          <a href="#4-使用我们的starter" class="heading-link"><i class="fas fa-link"></i></a>4. 使用我们的starter</h1>
+      <p>步骤：</p>
+<ol>
+<li>新建Spring Boot项目，并导入我们的Starter以来</li>
+<li>可以在application.properties中对我们HelloProperties进行属性赋值</li>
+<li>测试</li>
+</ol>
+
+        <h2 id="4-1-建立项目导入依赖"   >
+          <a href="#4-1-建立项目导入依赖" class="heading-link"><i class="fas fa-link"></i></a>4.1 建立项目导入依赖</h2>
+      <figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>myStarter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="4-2-application-properties"   >
+          <a href="#4-2-application-properties" class="heading-link"><i class="fas fa-link"></i></a>4.2 application.properties</h2>
+      <figure class="highlight properties"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">yuan.name</span>=<span class="string">Wang_Qishan</span></span><br><span class="line"><span class="meta">yuan.msg</span>=<span class="string">DongNan University</span></span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="4-3-测试"   >
+          <a href="#4-3-测试" class="heading-link"><i class="fas fa-link"></i></a>4.3 测试</h2>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200624181541396.png" alt="image-20200624181541396"></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://yoursite.com">Pawnbrokers</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://yoursite.com/2020/06/24/%E8%87%AA%E5%B7%B1%E5%86%99%E4%B8%80%E4%B8%AAStarter/">http://yoursite.com/2020/06/24/%E8%87%AA%E5%B7%B1%E5%86%99%E4%B8%80%E4%B8%AAStarter/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://yoursite.com/tags/Spring-Boot/">Spring Boot</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2020/06/24/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%E4%BA%8C%EF%BC%9AXML%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B/"><span class="paginator-prev__text">Spring源码学习二：XML文件解析流程</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-核心注解"><span class="toc-number">1.</span> <span class="toc-text">
+          1. 核心注解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-定义自己的Starter"><span class="toc-number">2.</span> <span class="toc-text">
+          2. 定义自己的Starter</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-定义"><span class="toc-number">2.1.</span> <span class="toc-text">
+          2.1 定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-HelloProperties类"><span class="toc-number">2.2.</span> <span class="toc-text">
+          2.2 HelloProperties类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-application-properties"><span class="toc-number">2.3.</span> <span class="toc-text">
+          2.3 application.properties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-HelloService"><span class="toc-number">2.4.</span> <span class="toc-text">
+          2.4 HelloService</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-自动配置类！！！"><span class="toc-number">2.5.</span> <span class="toc-text">
+          2.5 自动配置类！！！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-spring-factories"><span class="toc-number">2.6.</span> <span class="toc-text">
+          2.6 spring.factories</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-项目结构"><span class="toc-number">2.7.</span> <span class="toc-text">
+          2.7 项目结构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-本地安装"><span class="toc-number">3.</span> <span class="toc-text">
+          3. 本地安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-对应坐标"><span class="toc-number">3.1.</span> <span class="toc-text">
+          3.1 对应坐标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-使用我们的starter"><span class="toc-number">4.</span> <span class="toc-text">
+          4. 使用我们的starter</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-建立项目导入依赖"><span class="toc-number">4.1.</span> <span class="toc-text">
+          4.1 建立项目导入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-application-properties"><span class="toc-number">4.2.</span> <span class="toc-text">
+          4.2 application.properties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-测试"><span class="toc-number">4.3.</span> <span class="toc-text">
+          4.3 测试</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/me.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">我们必须习惯，站在人生的交叉路口，却没有红绿灯的事实。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/pawnbrokers" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/mu-rong-xue-hen-46" target="_blank" rel="noopener" data-popover="Zhihu" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="assets/wechat.jpg" target="_blank" rel="noopener" data-popover="Wechat" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="assets/qq.jpg" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">42</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">35</div><div class="sidebar-ov-state-item__name">Categories</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">45</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Pawnbrokers</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v4.2.1</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script></body></html>
