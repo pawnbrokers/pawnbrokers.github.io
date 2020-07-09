@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-07-08T13:50:19.882Z</updated>
+  <updated>2020-07-09T14:27:15.373Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>剑指offer07-09</title>
+    <link href="http://yoursite.com/2020/07/09/%E5%89%91%E6%8C%87offer07-09/"/>
+    <id>http://yoursite.com/2020/07/09/%E5%89%91%E6%8C%87offer07-09/</id>
+    <published>2020-07-09T14:24:12.000Z</published>
+    <updated>2020-07-09T14:27:15.373Z</updated>
+    
+    <content type="html"><![CDATA[        <h1 id="1-恢复空格"   >          <a href="#1-恢复空格" class="heading-link"><i class="fas fa-link"></i></a>1. 恢复空格</h1>      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200709222451206.png" alt="image-20200709222451206"></p><p>首先想象一下贪心是否可行，发现是不可以的，</p><p>题意：给定字符串，尽可能多地匹配字典内的单词，即最少未匹配数。</p><p>分析：拿到题目，先想贪心能不能做，显然不行。比如给定字符串：abcdef，字典：[“abcd”, “ab”, “def”]，贪心匹配是 abcd ef，有2个字符未匹配。显然有更优匹配策略： ab c def ，只有 1 个字符未匹配。所以这题需要用动态规划来解决（怎么思考一个题目可不可以用 dp 来解决，先假设 dp 表达含义，再想转移方程，很多时候自然而然就出来了）。</p><p><strong>1、状态定义：</strong></p><p>dp[i] 表示字符串的前 i 个字符的最少未匹配数。</p><p><strong>2、状态转移：</strong><br>假设当前我们已经考虑完了前 i 个字符了，对于前 i + 1 个字符对应的最少未匹配数：</p><p>第 i + 1 个字符未匹配，则 dp[i + 1] = dp[i] + 1，即不匹配数加 1;<br>遍历前 i 个字符，若以其中某一个下标 idx 为开头、以第 i + 1 个字符为结尾的字符串正好在词典里，则 dp[i] = min(dp[i], dp[idx]) 更新 dp[i]。</p><figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">respace</span><span class="params">(String[] dictionary, String sentence)</span> </span>&#123;</span><br><span class="line">            Set&lt;String&gt; set = <span class="keyword">new</span> TreeSet&lt;&gt;(Arrays.asList(dictionary));</span><br><span class="line">            <span class="keyword">int</span> sentence_length = sentence.length();</span><br><span class="line">            <span class="comment">//设置dp[i]数组表示前i有多少个未匹配的数目</span></span><br><span class="line">            <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[sentence_length + <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= sentence_length; i++) &#123;</span><br><span class="line">                dp[i] = dp[i - <span class="number">1</span>] + <span class="number">1</span>;<span class="comment">//至少是前一个+1</span></span><br><span class="line">                <span class="comment">//但是如果有从i之前的某一个位置为止一直到i，背字典包围，则dp【i】可以是dp[idx]</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; i; idx++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (set.contains(sentence.substring(idx, i))) &#123;</span><br><span class="line">                        dp[i] = Math.min(dp[i], dp[idx]);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> dp[sentence_length];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        &lt;h1 id=&quot;1-恢复空格&quot;   &gt;
+          &lt;a href=&quot;#1-恢复空格&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;1. 恢复空格&lt;/h1&gt;
+      &lt;p&gt;&lt;img src=
+      
+    
+    </summary>
+    
+    
+      <category term="刷题" scheme="http://yoursite.com/categories/%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="剑指offer" scheme="http://yoursite.com/tags/%E5%89%91%E6%8C%87offer/"/>
+    
+  </entry>
   
   <entry>
     <title>剑指offer07-08</title>
@@ -495,29 +524,6 @@
     
     
       <category term="HTTP" scheme="http://yoursite.com/tags/HTTP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>思维导图链接</title>
-    <link href="http://yoursite.com/2020/05/26/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E9%93%BE%E6%8E%A5/"/>
-    <id>http://yoursite.com/2020/05/26/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E9%93%BE%E6%8E%A5/</id>
-    <published>2020-05-26T12:16:23.000Z</published>
-    <updated>2020-05-26T12:30:33.825Z</updated>
-    
-    <content type="html"><![CDATA[<p>GIthub： <span class="exturl"><a class="exturl__link"   href="https://github.com/pawnbrokers/xmind"  target="_blank" rel="noopener">https://github.com/pawnbrokers/xmind</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;GIthub： &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/pawnbrokers/xmind&quot;  target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/pawnbrokers/xmind&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="思维导图" scheme="http://yoursite.com/categories/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"/>
-    
-    
-      <category term="xmind" scheme="http://yoursite.com/tags/xmind/"/>
     
   </entry>
   
