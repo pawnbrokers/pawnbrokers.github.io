@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/07/08/%E5%89%91%E6%8C%87offer07-08/</loc>
+    
+    <lastmod>2020-07-10T02:46:26.187Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/07/10/leetcode%E6%9C%80%E4%BD%B3%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E6%97%B6%E6%9C%BA/</loc>
     
     <lastmod>2020-07-10T02:37:27.544Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://yoursite.com/2020/07/09/%E5%89%91%E6%8C%87offer07-09/</loc>
     
     <lastmod>2020-07-09T14:28:37.856Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/07/08/%E5%89%91%E6%8C%87offer07-08/</loc>
-    
-    <lastmod>2020-07-08T13:50:19.882Z</lastmod>
     
   </url>
   
