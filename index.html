@@ -28,7 +28,271 @@ var CONFIG = {
 };
 
 window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="节能主义" type="application/atom+xml">
-</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">节能主义</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/07/10/leetcode%E5%8F%8C%E6%8C%87%E9%92%88/">leetcode双指针</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-07-10</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-07-10</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>双指针主要有两种：<strong>快慢指针和左右指针</strong></p>
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">节能主义</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/07/13/leetcode%E6%8E%92%E5%BA%8F/">leetcode排序</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-07-13</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-07-13</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h1 id="1-获得第k个元素的几种思路"   >
+          <a href="#1-获得第k个元素的几种思路" class="heading-link"><i class="fas fa-link"></i></a>1. 获得第k个元素的几种思路</h1>
+      <ul>
+<li><p>排序</p>
+</li>
+<li><p>快速选择（利用快速排序的<code>partition()</code>来实现）</p>
+</li>
+<li><p>堆</p>
+<blockquote>
+<p>利用大顶堆来实现一个最小堆，我们的大顶堆里面存放的是最小的k个元素，其中堆顶元素即为第k大的值</p>
+</blockquote>
+</li>
+</ul>
+
+        <h1 id="2-获得k个元素的思路"   >
+          <a href="#2-获得k个元素的思路" class="heading-link"><i class="fas fa-link"></i></a>2. 获得k个元素的思路</h1>
+      <ul>
+<li><p>堆排序</p>
+<blockquote>
+<p>假设我们要获得k个最小的元素，那就有两种思路：</p>
+<ul>
+<li><p>最小堆</p>
+<p>我们利用大顶堆来实现一个最小堆，即我们的堆里面存放的就是最小的k个元素，一直添加到堆中，当数目超过的时候，遍历元素小于堆顶元素，则弹出堆顶元素，并将此元素放入</p>
+</li>
+<li><p>小顶堆</p>
+<p>我们一直遍历下去，留下来的最终结果就是最小的k个元素</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>快速选择</p>
+<blockquote>
+<p>快速选择也可以求解 TopK Elements 问题，因为找到 Kth Element 之后，再遍历一次数组，所有小于等于 Kth Element 的元素都是 TopK Elements。</p>
+</blockquote>
+</li>
+</ul>
+
+        <h1 id="3-数组中的第K个最大元素"   >
+          <a href="#3-数组中的第K个最大元素" class="heading-link"><i class="fas fa-link"></i></a>3. 数组中的第K个最大元素</h1>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200713135030823.png" alt="image-20200713104638593"></p>
+<ul>
+<li><p>方法1： 直接排序</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//方法1 排序</span></span><br><span class="line">            <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length &lt;= <span class="number">0</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            Arrays.sort(nums);</span><br><span class="line">            <span class="keyword">int</span> l = nums.length;</span><br><span class="line">            <span class="keyword">return</span> nums[l - k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>大顶堆</p>
+<p>维护一个size-k+1的大顶堆，当遍历到的元素小于堆顶元素的时候，则踢出堆顶元素，并插入新的元素</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">            <span class="comment">//2. 大顶堆</span></span><br><span class="line">            <span class="keyword">int</span> size = nums.length;</span><br><span class="line">            PriorityQueue&lt;Integer&gt; queue = <span class="keyword">new</span> PriorityQueue&lt;&gt;(size - k + <span class="number">1</span>, <span class="keyword">new</span> Comparator&lt;Integer&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer o1, Integer o2)</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> o2 - o1;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">                <span class="keyword">if</span> (queue.size() &lt; size - k + <span class="number">1</span>) &#123;</span><br><span class="line">                    queue.add(num);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (num &lt; queue.peek()) &#123;</span><br><span class="line">                        queue.poll();</span><br><span class="line">                        queue.add(num);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> queue.peek();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>小顶堆</p>
+<p>维护一个大小为k的小顶堆，当遍历到的元素大于堆顶元素的时候，则放进来</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">            <span class="comment">//3. 小顶堆</span></span><br><span class="line">            <span class="keyword">int</span> size = nums.length;</span><br><span class="line">            PriorityQueue&lt;Integer&gt; queue = <span class="keyword">new</span> PriorityQueue&lt;&gt;(k);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">                <span class="keyword">if</span> (queue.size() &lt; k) &#123;</span><br><span class="line">                    queue.add(num);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (num &gt; queue.peek()) &#123;</span><br><span class="line">                        queue.poll();</span><br><span class="line">                        queue.add(num);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> queue.peek();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>快速选择</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">                <span class="keyword">int</span> index = find_index(nums, left, right);</span><br><span class="line">                <span class="keyword">if</span> (index == k - <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (index &lt; k) &#123;</span><br><span class="line">                    left = index + <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    right = index - <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> nums[k - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">find_index</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (left &gt; right) &#123;</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> pivot = nums[left];</span><br><span class="line">            <span class="keyword">int</span> i = left;</span><br><span class="line">            <span class="keyword">int</span> j = right;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">                <span class="keyword">while</span> (nums[j] &lt;= pivot &amp;&amp; i &lt; j) &#123;</span><br><span class="line">                    j--;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span> (nums[i] &gt;= pivot &amp;&amp; i &lt; j) &#123;</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (i &lt; j) &#123;</span><br><span class="line">                    swap(nums, i, j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            swap(nums, i, left);</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> temp = nums[i];</span><br><span class="line">            nums[i] = nums[j];</span><br><span class="line">            nums[j] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>注意一定要先j–后i++</strong></p>
+</li>
+</ul>
+
+        <h1 id="4-前K个高频元素"   >
+          <a href="#4-前K个高频元素" class="heading-link"><i class="fas fa-link"></i></a>4. 前K个高频元素</h1>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200713104638593.png" alt="image-20200713135030823"></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span>[] topKFrequent(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k) &#123;</span><br><span class="line">            Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (map.containsKey(nums[i])) &#123;</span><br><span class="line">                    map.put(nums[i], map.get(nums[i]) + <span class="number">1</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    map.put(nums[i], <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            HashSet&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">            PriorityQueue&lt;Pair&lt;Integer, Integer&gt;&gt; bigHeap = <span class="keyword">new</span> PriorityQueue&lt;&gt;(k, <span class="keyword">new</span> Comparator&lt;Pair&lt;Integer, Integer&gt;&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Pair&lt;Integer, Integer&gt; o1, Pair&lt;Integer, Integer&gt; o2)</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> o1.getValue() - o2.getValue();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">for</span> (Integer item : map.keySet()) &#123;</span><br><span class="line">                <span class="keyword">if</span> (bigHeap.size() &lt; k) &#123;</span><br><span class="line">                    Pair&lt;Integer, Integer&gt; pair = <span class="keyword">new</span> Pair&lt;&gt;(item, map.get(item));</span><br><span class="line">                    bigHeap.add(pair);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (map.get(item) &gt; bigHeap.peek().getValue()) &#123;</span><br><span class="line">                        bigHeap.poll();</span><br><span class="line">                        Pair&lt;Integer, Integer&gt; pair = <span class="keyword">new</span> Pair&lt;&gt;(item, map.get(item));</span><br><span class="line">                        bigHeap.add(pair);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[k];</span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (Pair&lt;Integer, Integer&gt; pair : bigHeap) &#123;</span><br><span class="line">                res[i] = pair.getKey();</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/07/10/%E7%94%B1IO%E5%BC%80%E5%A7%8B%E8%AF%B4%E8%B5%B7/">由IO开始说起</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-07-10</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-07-10</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h1 id="1-流的概念与作用"   >
+          <a href="#1-流的概念与作用" class="heading-link"><i class="fas fa-link"></i></a>1. 流的概念与作用</h1>
+      <p>在《Java编程思想》中，流被定义为代表任何有能力产出数据的数据源对象或者有能力接受数据的接收端对象。</p>
+<p>也就是说，流的本质其实就是<strong>数据传输，是计算机各部件之间的数据流动</strong>。</p>
+<p>流的作用其实也就是<strong>为数据源和目的建立一个传输管道</strong>。</p>
+
+        <h1 id="2-IO的分类与特性"   >
+          <a href="#2-IO的分类与特性" class="heading-link"><i class="fas fa-link"></i></a>2. IO的分类与特性</h1>
+      <p>按照不同的分类方式，可以将把流分为不同的类型。常用的分类有三种：</p>
+<ul>
+<li>按流的流向划分</li>
+<li>按操作单元划分</li>
+<li>按流的角色划分</li>
+</ul>
+
+        <h2 id="2-1-按流的流向划分，可以分为输入流和输出流"   >
+          <a href="#2-1-按流的流向划分，可以分为输入流和输出流" class="heading-link"><i class="fas fa-link"></i></a>2.1 按流的流向划分，可以分为输入流和输出流</h2>
+      <p><strong>输入流</strong>：将数据从外设或外村（如键盘、鼠标、文件等）传递到应用程序的称为输入流（Input Stream）；</p>
+<p><strong>输出流</strong>：将数据从应用程序传递到外设或外存（如屏幕、打印机、文件等）的流（OutputStream）。</p>
+<p>可以看到，输入流和输出流都涉及到一个方向的问题。举个栗子，如果数据从内存到硬盘，那么传输过程中的数据流是输入流还是输出流？</p>
+<p><img   src="https://mmbiz.qpic.cn/mmbiz_jpg/SHN22OeaUN8XibGEqP8EB79yA6HsO8KdQSuZF17rJksYj94PsXAK60xQv3vY848t1kL9hHn8XSVV8zDRCQbefnw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" style=""  alt="img"></p>
+<p>答案是输出流。也就是说这里所说的<strong>输入、输出都是从程序运行所在的内存的角度来进行划分</strong>。</p>
+<p>再看个例子，数据从服务器（Server）传送到客户端（Client），在这个过程中服务器和客户端的程序分别使用什么流向的流？</p>
+<p><img   src="https://mmbiz.qpic.cn/mmbiz_jpg/SHN22OeaUN8XibGEqP8EB79yA6HsO8KdQTPmNmb4834KyUicYQpWsiaQtAvciajnsq5qxMKTCbJiaicofXF989gpaksA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" style=""  alt="img"></p>
+<p>其实，在这个过程中因为服务器是从数据库取出数据，数据通过内存经由指定程序发送到流上，所以服务器端的程序使用的是输出流；而客户端是从流上获取数据，内存接受到数据之后交给CPU进行处理，所以客户端的程序使用的是输入流。</p>
+<blockquote>
+<p>在Java中，输入流主要是InputStream和Reader作为基类，而输出流则主要是OutputStream和Writer作为基类。它们都是一些抽象基类，并不能直接用于创建对象实例。</p>
+</blockquote>
+
+        <h2 id="2-2-按操作单元划分，可以划分为字节流和字符流"   >
+          <a href="#2-2-按操作单元划分，可以划分为字节流和字符流" class="heading-link"><i class="fas fa-link"></i></a>2.2 按操作单元划分，可以划分为字节流和字符流</h2>
+      <p>在介绍字节流和字符流之前，我们需要知道字节和字符之间的关系：</p>
+<ul>
+<li>1字符 = 2字节</li>
+<li>1字节 = 8位</li>
+<li>一个汉字占两个字节长度（因为汉字博大精深，所以有些汉字也会占到三个字节的长度）</li>
+</ul>
+<p><strong>字节流</strong>：处理字节数据。每次读取（写出）一个字节，当传输的资源文件中有中文时，就会出现乱码；</p>
+<p><strong>字符流</strong>：处理字符数据。每次读取（写出）两个字节时，有中文时使用该留就可以正确传输显示文字。</p>
+<blockquote>
+<p>在Java中，字节流主要是由InputStream和OutputStream作为基类，而字符流则主要有Reader和Writer作为基类。</p>
+</blockquote>
+
+        <h2 id="2-3-按流的角色，可划分为节点流和处理流"   >
+          <a href="#2-3-按流的角色，可划分为节点流和处理流" class="heading-link"><i class="fas fa-link"></i></a>2.3 按流的角色，可划分为节点流和处理流</h2>
+      <p><strong>节点流</strong>，就是可以从/向一个特定的IO设备（如磁盘、网络）读/写数据的流。</p>
+<p><img   src="https://mmbiz.qpic.cn/mmbiz_jpg/SHN22OeaUN8XibGEqP8EB79yA6HsO8KdQfh0iaQWRTsKesZcTGl59ePm7hOpsv8uK8oAYvBxZJMIdVQd2icKTFF0g/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" style=""  alt="img"></p>
+<p>可以从上图看出，<strong>当使用节点流进行输入和输出数据过程中，程序直接连接到实际的数据源，和实际的输入/输出节点连接</strong>。节点流也被称为低级流。</p>
+<p><strong>处理流</strong>：对一个已存在的流进行连接和封装，通过所封装的流的功能调用实现数据读写。</p>
+<p><img   src="https://mmbiz.qpic.cn/mmbiz_jpg/SHN22OeaUN8XibGEqP8EB79yA6HsO8KdQIqpWD0VF6cxTcdwLTewqCibflDsp6s0CbkBZkWRFT2v4Y6PGzrNZc3w/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" style=""  alt="img"></p>
+<p><strong>当使用处理流进行输入/输出操作时，程序并不会直接连接到实际的数据源，没有与实际的输入和输出节点连接</strong>。只要使用相同的处理流，程序就可以采用完全相同的输入/输出代码来访问不同的数据源，随着处理流所包装的节点流的变化，程序实际访问的数据源也会相应地发生变化。</p>
+
+        <h2 id="2-4-IO流的特性"   >
+          <a href="#2-4-IO流的特性" class="heading-link"><i class="fas fa-link"></i></a>2.4 IO流的特性</h2>
+      <p>Java的IO流涉及到了40多个类，但其实都是从如下4个抽象基类中派生出来的：</p>
+<ul>
+<li><strong>InputStream/Reader：所有的输入流的基类，前者是字节输入流，后者是字符输入流；</strong></li>
+<li><strong>OutputStream/Writer：所有的输出流的基类，前者是字节输出流，后者是字符输出流。</strong></li>
+</ul>
+<p>我们知道，流的作用就像是一个数据管道，而数据就像是管道中的一滴滴水。字符流和字节流的处理单位不同，但处理方式相似。</p>
+<p><img src="C:%5Cblog%5Csource_posts%5C%E7%94%B1IO%E5%BC%80%E5%A7%8B%E8%AF%B4%E8%B5%B7.assets%5C640" alt="img"></p>
+<p>输入流使用隐式的记录指针来表示当前正准备从哪个“水滴”开始读取，每当程序从InputStream或Reader中取出“水滴”之后，记录指针自己向后移动，除此之外，InputStream和Reader里面都提供了一些方法来控制记录指针的移动。</p>
+<p>而对于输出流OutputStream和Writer而言，它们同样是把输出设备抽象成一个“水管”，当执行输出的时候，程序相当于把水管中的“水滴”依次放出。输出流同样采用隐式指针来表示当前输出水滴的位置，每当程序从OutputStream或Writer中取出水滴的时候，指针也会自动向后移动。</p>
+<p>以上展示了JavaIO的基本概念模型，但Java的处理流模型则给我们另一种输入/输出流设计的角度：</p>
+<p><img src="C:%5Cblog%5Csource_posts%5C%E7%94%B1IO%E5%BC%80%E5%A7%8B%E8%AF%B4%E8%B5%B7.assets%5C640" alt="img"></p>
+<p><strong>处理流可以在任何已存在的流的基础之上，这就允许Java应用程序采用相同的代码，透明的方式来访问不同的输入和输出设备的数据流</strong>。而在处理流中主要是以增加缓冲的方式来提供输入和输出的效率，且可能提供了一系列便捷的方法来一次性输入和输出大批量的内容，而不是输入/输出一个或多个“水滴”。</p>
+<p>在处理流中有一个专门提供了一个内存区域用于输入和输出大批量内容的流——<strong>缓冲流（Buffered Stream）</strong>。</p>
+<p>如果每次操作都是以一个字节/字符为单位，显然这样的数据传输效率很低。为了提高数据传输效率，通常使用缓冲流，即为一个流配有一个<strong>缓冲区</strong>（Buffer），这个缓冲区就是专门用于传送数据的一块内存。</p>
+<p><strong>当向一个缓冲流写入数据时，系统将数据发送到缓冲区，而不是直接发送到外部设备。缓冲区自动记录数据，当缓冲区满时，系统将数据全部发送到相应的外部设备</strong>。而且当从一个缓冲流中读取数据时，系统实际是从缓冲区中读取数据。当缓冲区空时，系统就会从相关外部设备自动读取数据，并读取尽可能多的数据填满缓冲区。由此可见，缓冲流提供了内存与外部设备之间的数据传输效率。</p>
+<p>从上述我们其实可以窥见<strong>JavaIO的特性</strong>：</p>
+<ul>
+<li><strong>先进先出</strong>，最先写入输出流的数据最先被输入流读取；</li>
+<li><strong>顺序存取</strong>，数据的获取和发送是沿着数据序列顺序进行，不能随机访问中间的数据。（但RandomAccessFile可以从文件的任意位置进行存取（输入输出）操作）；</li>
+<li><strong>只读或只写</strong>，每个流只能是输入流或输出流的一种，不能同时具备两个功能。</li>
+</ul>
+
+        <h2 id="2-5-小结"   >
+          <a href="#2-5-小结" class="heading-link"><i class="fas fa-link"></i></a>2.5 小结</h2>
+      <p>可能看了上面的分类，会有读者不清楚什么时候使用字节流，什么时候用输出流。笔者在此整理这几个步骤：</p>
+<blockquote>
+<ol>
+<li>首先要知道自己选择<strong>输入流还是输出流</strong>（请站在<strong>内存的角度</strong>考虑）；</li>
+<li>在考虑传输数据时，通过判断<strong>是否有中文</strong>来决定是<strong>使用字节流传输还是字符流</strong>；</li>
+<li><strong>通过前面两步就可以选出一个合适的节点流</strong>了，如字节输入流InputStream，如果要在此基础上<strong>增强功能</strong>，那么在<strong>处理流</strong>中选择一个合适的即可。</li>
+</ol>
+</blockquote>
+<p>而在JavaIO中常用的流的类型有以下这些（<strong>粗体所标出的类代表节点流，必须直接与指定的物理节点关联；斜体标出的类代表抽象类，不能直接创建实例</strong>）：</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th align="left">分类</th>
+<th align="left">字节输入流</th>
+<th align="left">字节输出流</th>
+<th align="left">字符输入流</th>
+<th align="left">字符输出流</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">抽象基类</td>
+<td align="left"><em>InputStream</em></td>
+<td align="left"><em>OutputStream</em></td>
+<td align="left"><em>Reader</em></td>
+<td align="left"><em>Writer</em></td>
+</tr>
+<tr>
+<td align="left">访问文件</td>
+<td align="left"><strong>FileInputStream</strong></td>
+<td align="left"><strong>FileOutputStream</strong></td>
+<td align="left"><strong>FileReader</strong></td>
+<td align="left"><strong>FileWriter</strong></td>
+</tr>
+<tr>
+<td align="left">访问数组</td>
+<td align="left"><strong>ByteArrayInputStream</strong></td>
+<td align="left"><strong>ByteArrayOutputStream</strong></td>
+<td align="left"><strong>CharArrayReader</strong></td>
+<td align="left"><strong>CharArrayWriter</strong></td>
+</tr>
+<tr>
+<td align="left">访问管道</td>
+<td align="left"><strong>PipedInputStream</strong></td>
+<td align="left"><strong>PipedOutputStream</strong></td>
+<td align="left"><strong>PipedReader</strong></td>
+<td align="left"><strong>PipedWriter</strong></td>
+</tr>
+<tr>
+<td align="left">访问字符串</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"><strong>StringReader</strong></td>
+<td align="left"><strong>StringWriter</strong></td>
+</tr>
+<tr>
+<td align="left">缓冲流</td>
+<td align="left">BufferedInputStream</td>
+<td align="left">BufferedOutputStream</td>
+<td align="left">BufferedReader</td>
+<td align="left">BufferedWriter</td>
+</tr>
+<tr>
+<td align="left">转换流</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">InputStreamReader</td>
+<td align="left">OutputStreamWriter</td>
+</tr>
+<tr>
+<td align="left">对象流</td>
+<td align="left">ObjectInputStream</td>
+<td align="left">ObjectOutputStream</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">抽象基类</td>
+<td align="left"><em>FilterInputStream</em></td>
+<td align="left"><em>FileOutputStream</em></td>
+<td align="left"><em>FilterReader</em></td>
+<td align="left"><em>FilterWriter</em></td>
+</tr>
+<tr>
+<td align="left">打印流</td>
+<td align="left"></td>
+<td align="left">PrintStream</td>
+<td align="left"></td>
+<td align="left">PrintWriter</td>
+</tr>
+<tr>
+<td align="left">推回输入流</td>
+<td align="left">PushbackInputStream</td>
+<td align="left"></td>
+<td align="left">PushbackReader</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">特殊流</td>
+<td align="left">DataInputStream</td>
+<td align="left">DataOutputStream</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table></div>
+
+        <h1 id="3-从操作系统开始"   >
+          <a href="#3-从操作系统开始" class="heading-link"><i class="fas fa-link"></i></a>3. 从操作系统开始</h1>
+      <p>为了保护操作系统的安全，会将内存分为<strong>用户空间和内核空间</strong>两个部分。<strong>如果用户想要操作内核空间的数据，则需要把数据从内核空间拷贝到用户空间</strong>。</p>
+<p>举个栗子，如果服务器收到了从客户端过来的请求，并且想要进行处理，那么需要经过这几个步骤：</p>
+<ul>
+<li>服务器的网络驱动接受到消息之后，向内核申请空间，并在收到完整的数据包（这个过程会产生延时，因为有可能是通过分组传送过来的）后，将其复制到内核空间；</li>
+<li>数据从内核空间拷贝到用户空间；</li>
+<li>用户程序进行处理。</li>
+</ul>
+<p><img src="C:%5Cblog%5Csource_posts%5C%E7%94%B1IO%E5%BC%80%E5%A7%8B%E8%AF%B4%E8%B5%B7.assets%5C640" alt="img">￼</p>
+<p>因此我们可以将服务器接收消息理解为两个阶段：</p>
+<ul>
+<li><strong>等待数据到达</strong></li>
+<li><strong>将数据从内核空间拷贝到用户空间</strong></li>
+</ul>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/07/10/leetcode%E5%8F%8C%E6%8C%87%E9%92%88/">leetcode双指针</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-07-10</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-07-10</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>双指针主要有两种：<strong>快慢指针和左右指针</strong></p>
 
         <h1 id="1-有序数组的TwoSum（167）"   >
           <a href="#1-有序数组的TwoSum（167）" class="heading-link"><i class="fas fa-link"></i></a>1. 有序数组的TwoSum（167）</h1></div><div class="post-readmore"><a class="post-readmore__link" href="/2020/07/10/leetcode%E5%8F%8C%E6%8C%87%E9%92%88/"><span class="post-readmore__text">Read More</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/07/10/leetcode%E6%9C%80%E4%BD%B3%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E6%97%B6%E6%9C%BA/">leetcode最佳买卖股票时机</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-07-10</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-07-10</span></span></div></header><div class="post-body"><div class="post-excerpt"><h1 id="1-leetcode的一个模板框架"   >
@@ -53,4 +317,4 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><lin
       
         <h1 id="1-数组中的重复数字"   >
           <a href="#1-数组中的重复数字" class="heading-link"><i class="fas fa-link"></i></a>1. 数组中的重复数字</h1>
-      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200628221404676.png" alt="image-20200628221404676"></p></div><div class="post-readmore"><a class="post-readmore__link" href="/2020/06/28/%E5%89%91%E6%8C%87offer%2006.28/"><span class="post-readmore__text">Read More</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/06/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%95%B4%E7%90%86/">操作系统整理</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-06-28</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-06-28</span></span></div></header><div class="post-body"><div class="post-excerpt"><p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200628133806433.png" alt="image-20200628133806433"></p></div><div class="post-readmore"><a class="post-readmore__link" href="/2020/06/28/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%95%B4%E7%90%86/"><span class="post-readmore__text">Read More</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/06/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%BA%95%E5%B1%82%E7%9F%A5%E8%AF%86%E5%88%9D%E6%AD%A5/">计算机底层知识初步</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-06-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-06-27</span></span></div></header><div class="post-body"><div class="post-excerpt"><p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200627212947660.png" alt="image-20200627212947660"></p></div><div class="post-readmore"><a class="post-readmore__link" href="/2020/06/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%BA%95%E5%B1%82%E7%9F%A5%E8%AF%86%E5%88%9D%E6%AD%A5/"><span class="post-readmore__text">Read More</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-right"></i></a></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/me.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">我们必须习惯，站在人生的交叉路口，却没有红绿灯的事实。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/pawnbrokers" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/mu-rong-xue-hen-46" target="_blank" rel="noopener" data-popover="Zhihu" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="assets/wechat.jpg" target="_blank" rel="noopener" data-popover="Wechat" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="assets/qq.jpg" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">52</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">38</div><div class="sidebar-ov-state-item__name">Categories</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">49</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Pawnbrokers</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v4.2.1</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script></body></html>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200628221404676.png" alt="image-20200628221404676"></p></div><div class="post-readmore"><a class="post-readmore__link" href="/2020/06/28/%E5%89%91%E6%8C%87offer%2006.28/"><span class="post-readmore__text">Read More</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-right"></i></a></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/me.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">我们必须习惯，站在人生的交叉路口，却没有红绿灯的事实。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/pawnbrokers" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/mu-rong-xue-hen-46" target="_blank" rel="noopener" data-popover="Zhihu" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="assets/wechat.jpg" target="_blank" rel="noopener" data-popover="Wechat" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="assets/qq.jpg" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">54</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">39</div><div class="sidebar-ov-state-item__name">Categories</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">51</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Pawnbrokers</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v4.2.1</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script></body></html>
