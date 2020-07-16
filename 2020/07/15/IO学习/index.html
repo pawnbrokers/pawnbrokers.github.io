@@ -1,0 +1,542 @@
+<!DOCTYPE html><html lang="cn"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0" type="image/png" sizes="32x32"><meta name="description" content="参考自： https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;B1piL5efE61zjZoe3_Zo2w">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IO学习">
+<meta property="og:url" content="http://yoursite.com/2020/07/15/IO%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="节能主义">
+<meta property="og:description" content="参考自： https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;B1piL5efE61zjZoe3_Zo2w">
+<meta property="og:locale" content="cn">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716094928789.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716095831549.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716095159547.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716100606374.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716100829261.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/123">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716162532954.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716170244297.png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/xNxVTXtCCA5dyYvhSAaDDlekbXCM9vvmicTck8nL9AkmOWcFpj5xCrGL2uvp6rxC45uiapT2NPBjulP3fTuplQ0A/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716170659169.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716170604662.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716171142895.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716174105936.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716175009607.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716174404687.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716193436621.png">
+<meta property="article:published_time" content="2020-07-15T14:33:31.000Z">
+<meta property="article:modified_time" content="2020-07-16T12:12:41.183Z">
+<meta property="article:author" content="Pawnbrokers">
+<meta property="article:tag" content="IO">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716094928789.png"><meta name="keywords" content="Pawnbrokers, 节能主义"><meta name="description" content=""><title>IO学习 | 节能主义</title><link ref="canonical" href="http://yoursite.com/2020/07/15/IO%E5%AD%A6%E4%B9%A0/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="节能主义" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">节能主义</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">IO学习</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-07-15</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-07-16</span></span></div></header><div class="post-body"><p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716094928789.png" alt="image-20200716094928789"></p>
+<p>参考自： <span class="exturl"><a class="exturl__link"   href="https://mp.weixin.qq.com/s/B1piL5efE61zjZoe3_Zo2w"  target="_blank" rel="noopener">https://mp.weixin.qq.com/s/B1piL5efE61zjZoe3_Zo2w</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<a id="more"></a>
+
+
+        <h1 id="1-什么是Socket"   >
+          <a href="#1-什么是Socket" class="heading-link"><i class="fas fa-link"></i></a>1. 什么是Socket</h1>
+      
+        <h2 id="1-1-概念"   >
+          <a href="#1-1-概念" class="heading-link"><i class="fas fa-link"></i></a>1.1 概念</h2>
+      <p><strong>所谓套接字(Socket)，就是对网络中不同主机上的应用进程之间进行双向通信的端点的抽象。</strong>一个套接字就是网络上进程通信的一端<strong>，提供了应用层进程利用网络协议交换数据的机制。从所处的地位来讲，</strong>套接字上联应用进程，下联网络协议栈，是应用程序通过网络协议进行通信的接口，是应用程序与网络协议根进行交互的接口。</p>
+<p>通过 socket 这种约定，一台计算机可以接收其他计算机的数据，也可以向其他计算机发送数据。</p>
+
+        <h2 id="1-2-表示方法"   >
+          <a href="#1-2-表示方法" class="heading-link"><i class="fas fa-link"></i></a>1.2 表示方法</h2>
+      <p><strong>套接字Socket=（IP地址：端口号）</strong>，套接字的表示方法是点分十进制的lP地址后面写上端口号，中间用冒号或逗号隔开。每一个传输层连接唯一地被通信两端的两个端点（即两个套接字）所确定。例如：如果IP地址是210.37.145.1，而端口号是23，那么得到套接字就是(210.37.145.1：23)</p>
+
+        <h2 id="1-3-网络中如何通信"   >
+          <a href="#1-3-网络中如何通信" class="heading-link"><i class="fas fa-link"></i></a>1.3 网络中如何通信</h2>
+      <p>既然Socket主要是用来解决网络通信的，那么我们就来理解网络中进程是如何通信的。</p>
+
+        <h3 id="1-3-1-本地进程间通信"   >
+          <a href="#1-3-1-本地进程间通信" class="heading-link"><i class="fas fa-link"></i></a>1.3.1 本地进程间通信</h3>
+      <ol>
+<li>消息传递（管道、消息队列、FIFO）</li>
+<li>同步（互斥量、条件变量、读写锁、文件和写记录锁、信号量)</li>
+<li>共享内存（匿名的和具名的，eg:channel）</li>
+<li>远程过程调用(RPC)</li>
+</ol>
+
+        <h3 id="1-3-2-网络中进程如何通信"   >
+          <a href="#1-3-2-网络中进程如何通信" class="heading-link"><i class="fas fa-link"></i></a>1.3.2 网络中进程如何通信</h3>
+      <p>我们要理解网络中进程如何通信，得解决两个问题：<br> 　ａ、<strong>我们要如何标识一台主机</strong>，即怎样确定我们将要通信的进程是在那一台主机上运行。<br> 　ｂ、<strong>我们要如何标识唯一进程，本地通过pid标识，网络中应该怎样标识？</strong><br> <strong>解决办法：</strong><br> 　ａ、TCP/IP协议族已经帮我们解决了这个问题，<strong>网络层的“ip地址”可以唯一标识网络中的主机</strong><br> 　ｂ、<strong>传输层的“协议+端口”可以唯一标识主机中的应用程序（进程）</strong>，因此，我们利用三元组<strong>（ip地址，协议，端口）就可以标识网络的进程了</strong>，网络中的进程通信就可以利用这个标志与其它进程进行交互</p>
+
+        <h2 id="1-4-工作流程"   >
+          <a href="#1-4-工作流程" class="heading-link"><i class="fas fa-link"></i></a>1.4 工作流程</h2>
+      <p>要通过互联网进行通信，至少需要一对套接字，其中一个运行于客户端，我们称之为 <strong>Client Socket</strong>，另一个运行于服务器端，我们称之为 <strong>Server Socket</strong> 。</p>
+<p>根据连接启动的方式以及本地套接字要连接的目标，套接字之间的连接过程可以分为三个步骤 ：</p>
+<p><strong>(1)服务器监听。</strong></p>
+<p><strong>(2)客户端请求。</strong></p>
+<p><strong>(3)连接确认。</strong></p>
+<p><strong>1.服务器监听</strong></p>
+<p>所谓服务器监听，是指服<strong>务器端套接字并不定位具体的客户端套接字</strong>，而是处于等待连接的状态，实时监控网络状态 。</p>
+<p><strong>2.客户端请求</strong></p>
+<p>所调客户端请求，是指<strong>由客户端的套接字提出连接请求，要连接的目标是服务器端的套接字</strong>。为此，客户端的套接字必须首先描述它要连接的服务器的套接字，指出服务器端套接字的地址和端口号，然后就向服务器端接字提出连接请求。</p>
+<p><strong>3.连接确认</strong></p>
+<p>所谓连接确认，<strong>是指当服务器端套接字监听到或者说接收到客户端套接字的连接请求，就会响应客户端套接字的请求，建立一个新的线程，并把服务器端套接字的描述发送给客户端。一旦客户端确认了此描述，连接就建立好了。而服务器端套接字继续处于监听状态，接收其他客户端套接字的连接请求</strong> 。</p>
+
+        <h2 id="1-5-主要特点"   >
+          <a href="#1-5-主要特点" class="heading-link"><i class="fas fa-link"></i></a>1.5 主要特点</h2>
+      <p>根据套接字的不同类型，可以将套接字调用分为<strong>面向连接服务和无连接服务</strong>  。</p>
+<p><strong>面向连接服务</strong>的主要特点如下：</p>
+<ul>
+<li><p>数据传输过程必须经过建立连接、维护连接和释放连接<strong>3个阶段</strong>  ；</p>
+</li>
+<li><p>在传输过程中，各<strong>分组不需要携带目的主机的地址</strong> ；</p>
+</li>
+<li><p><strong>可靠性好，但由于协议复杂，通信效率不高</strong> 。</p>
+</li>
+</ul>
+<p><strong>面向无连接服务</strong>的主要特点如下：</p>
+<p>(1)不需要连接的各个阶段  ；</p>
+<p>(2)每个分组都携带完整的目的主机地址，在系统中独立传送 ；</p>
+<p>(3)由于没有顺序控制，所以接收方的分组可能出现乱序、重复和丢失现象  ；</p>
+<p>(4)通信效率高，但可靠性不能确保 。</p>
+
+        <h1 id="2-IO模型"   >
+          <a href="#2-IO模型" class="heading-link"><i class="fas fa-link"></i></a>2. IO模型</h1>
+      
+        <h2 id="2-0-文件描述符"   >
+          <a href="#2-0-文件描述符" class="heading-link"><i class="fas fa-link"></i></a>2.0 文件描述符</h2>
+      <p>是内核为了高效管理已被打开的文件所创建的索引，用于指向被打开的文件，所有执行I/O操作的系统调用都通过文件描述符；</p>
+
+        <h2 id="2-1-什么是IO"   >
+          <a href="#2-1-什么是IO" class="heading-link"><i class="fas fa-link"></i></a>2.1 什么是IO</h2>
+      <p>IO在计算机中指<strong>输入(Input)和输出(Output)</strong>，由于程序和运行时数据是在内存中停留，由计算机中的CPU(central processing unit)这个超快的计算核心来执行，<strong>涉及到数据交换的地方，通常是磁盘、网络等数据交换的地方，就需要IO接口。系统为每一个进程维护了一个文件描述符表，该表的值都是从0开始的，所以在不同的进程中你会看到相同的文件描述符，这种情况下相同文件描述符有可能指向同一个文件，也有可能指向不同的文件。</strong></p>
+
+        <h2 id="2-2-IO操作时候的数据流程"   >
+          <a href="#2-2-IO操作时候的数据流程" class="heading-link"><i class="fas fa-link"></i></a>2.2 IO操作时候的数据流程</h2>
+      <p>在引入IO模型前，必须得对某一段数据的整个【经历】做一番解释。如图：</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716095831549.png" alt="image-20200716095159547"></p>
+<blockquote>
+<p>当某个程序或已存在的<strong>进程/线程(后文将不加区分的只认为是进程)需要某段数据时</strong>，它只能在<strong>用户空间中属于它自己的内存中访问、修改</strong>，这段内存暂且称之为<strong>app buffer</strong>。假设需要的数据在磁盘上，那么<strong>进程首先得发起相关系统调用，通知内核去加载磁盘上的文件</strong>。但正常情况下，<strong>数据只能加载到内核的缓冲区，暂且称之为kernel buffer</strong>。数据加载到kernel buffer之后，还需将<strong>数据复制到app buffer。到了这里，进程就可以对数据进行访问、修改了</strong>。</p>
+</blockquote>
+<p>现在有几个需要说明的问题。</p>
+
+        <h3 id="2-2-1-为什么不能直接将数据加载到app-buffer呢？"   >
+          <a href="#2-2-1-为什么不能直接将数据加载到app-buffer呢？" class="heading-link"><i class="fas fa-link"></i></a>2.2.1 为什么不能直接将数据加载到app buffer呢？</h3>
+      <p>实际上是可以的，<strong>有些程序或者硬件为了提高效率和性能，可以实现内核旁路的功能，避过内核的参与，直接在存储设备和app buffer之间进行数据传输</strong>，例如RDMA技术就需要实现这样的内核旁路功能。</p>
+<p>但是，<strong>最普通也是绝大多数的情况下，为了安全和稳定性</strong>，数据必须先拷入内核空间的kernel buffer，再复制到app buffer，以防止进程串进内核空间进行破坏。</p>
+
+        <h3 id="2-2-2-上面提到的数据几次拷贝过程，拷贝方式是一样的吗？"   >
+          <a href="#2-2-2-上面提到的数据几次拷贝过程，拷贝方式是一样的吗？" class="heading-link"><i class="fas fa-link"></i></a>2.2.2 上面提到的数据几次拷贝过程，拷贝方式是一样的吗？</h3>
+      <p>不一样。现在的存储设备(包括网卡)基本上都支持DMA操作。<strong>什么是DMA(direct memory access，直接内存访问)</strong>？简单地说，<strong>就是内存和设备之间的数据交互可以直接传输，不再需要计算机的CPU参与，而是通过硬件上的芯片(可以简单地认为是一个小cpu)进行控制。</strong></p>
+<p>假设，存储设备不支持DMA，那么数据在内存和存储设备之间的传输，必须由内核线程占用CPU去完成数据拷贝(比如网卡不支持DMA时，内核负责将数据从网卡拷贝到kernel buffer)。而DMA就释放了计算机的CPU，让它可以去处理其他任务，DMA也释放了从用户进程切换到内核的过程，从而避免了用户进程在这个拷贝阶段被阻塞。</p>
+<p>再说kernel buffer和app buffer之间的复制方式，<strong>这是两段内存空间的数据传输，只能由内核占用CPU来完成拷贝</strong>。</p>
+<p>所以，<strong>在加载硬盘数据到kernel buffer的过程是DMA拷贝方式，而从kernel buffer到app buffer的过程是CPU参与的拷贝方式。</strong></p>
+<ul>
+<li><p>DMA原理</p>
+<blockquote>
+<p><strong>DMA 传输将数据从一个地址空间复制到另外一个地址空间</strong>。当CPU 初始化这个传输动作，传输动作本身是由 DMA 控制器来实行和完成。典型的例子就是移动一个外部内存的区块到芯片内部更快的内存区。像是这样的操作并没有让处理器工作拖延，反而可以被重新排程去处理其他的工作。DMA 传输对于高效能嵌入式系统算法和网络是很重要的。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716095159547.png" alt="image-20200716095831549"></p>
+<p><strong>在实现DMA传输时，是由DMA控制器直接掌管总线，因此，存在着一个总线控制权转移问题。即DMA传输前，CPU要把总线控制权交给DMA控制器，而在结束DMA传输后，DMA控制器应立即把总线控制权再交回给CPU。</strong>一个完整的DMA传输过程必须经过DMA请求、DMA响应、DMA传输、DMA结束4个步骤。</p>
+<ul>
+<li>请求</li>
+</ul>
+<p><strong>CPU对DMA控制器初始化，并向I/O接口发出操作命令，I/O接口提出DMA请求</strong>。</p>
+<ul>
+<li>响应</li>
+</ul>
+<p><strong>DMA控制器对DMA请求判别优先级及屏蔽，向总线裁决逻辑提出总线请求。**</strong>当CPU执行完当前总线周期即可释放总线控制权**。此时，总线裁决逻辑输出总线应答，表示DMA已经响应，通过DMA控制器通知I/O接口开始DMA传输。</p>
+<ul>
+<li>传输</li>
+</ul>
+<p>DMA控制器获得总线控制权后<strong>，CPU即刻挂起或只执行内部操作，由DMA控制器输出读写命令，直接控制RAM与I/O接口进行DMA传输</strong>。</p>
+<p>在DMA控制器的控制下，在存储器和外部设备之间直接进行数据传送，在传送过程中不需要中央处理器的参与。<strong>开始时需提供要传送的数据的起始位置和数据长度。</strong></p>
+<ul>
+<li>结束</li>
+</ul>
+<p>当完成规定的成批数据传送后，<strong>DMA控制器即释放总线控制权，并向I/O接口发出结束信号。</strong>当I/O接口收到结束信号后，一方面停 止I/O设备的工作，另一方面向CPU提出中断请求，使CPU从不介入的状态解脱，并执行一段检查本次DMA传输操作正确性的代码。最后，带着本次操作结果及状态继续执行原来的程序。</p>
+<p>由此可见，DMA传输方式无需CPU直接控制传输，也没有中断处理方式那样保留现场和恢复现场的过程，通过硬件为RAM与I/O设备开辟一条直接传送数据的通路，使CPU的效率大为提高。</p>
+</blockquote>
+</li>
+</ul>
+
+        <h3 id="2-2-3-如果数据要通过TCP传输出去怎么办？"   >
+          <a href="#2-2-3-如果数据要通过TCP传输出去怎么办？" class="heading-link"><i class="fas fa-link"></i></a>2.2.3 如果数据要通过TCP传输出去怎么办？</h3>
+      <p>例如，web服务对客户端的响应数据，需要通过TCP连接传输给客户端。</p>
+<p>TCP/IP协议栈维护着两个缓冲区：<strong>send buffer和recv buffer，它们合称为socket buffer</strong>。<strong>需要通过TCP连接传输出去的数据，需要先复制到send buffer，再复制给网卡通过网络传输出去。如果通过TCP连接接收到数据，数据首先通过网卡进入recv buffer，再被复制到用户空间的app buffer。</strong></p>
+<p><strong>同样，在数据复制到send buffer或从recv buffer复制到app buffer时，是内核占用CPU来完成的数据拷贝。从send buffer复制到网卡或从网卡复制到recv buffer时，是DMA方式的拷贝，这个阶段不需要切换到内核，也不需要计算机自身的CPU。</strong></p>
+<p>如下图所示，是通过TCP连接传输数据时的过程。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716100606374.png" alt="image-20200716100606374"></p>
+
+        <h3 id="2-2-4-网络数据一定要从kernel-buffer复制到app-buffer再复制到send-buffer吗？"   >
+          <a href="#2-2-4-网络数据一定要从kernel-buffer复制到app-buffer再复制到send-buffer吗？" class="heading-link"><i class="fas fa-link"></i></a>2.2.4 网络数据一定要从kernel buffer复制到app buffer再复制到send buffer吗？</h3>
+      <p>不是。<strong>如果进程不需要修改数据，就直接发送给TCP连接的另一端，可以不用从kernel buffer复制到app buffer，而是直接复制到send buffer。</strong>这就是<strong>零复制</strong>技术。</p>
+<p>例如，如果httpd进程不需要访问和修改任何数据，那么将数据原原本本地复制到app buffer再原原本本地复制到send buffer然后传输出去的过程中，从kernel buffer复制到app buffer的过程是可以省略的。使用零复制技术，就可以减少一次拷贝过程，提升效率。</p>
+<p>以下是以httpd进程处理文件类请求时比较完整的数据操作流程。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716100829261.png" alt="image-20200716100829261"></p>
+<p>大致解释下：客户端发起对某个文件的请求，通过TCP连接，请求数据进入TCP的<strong>recv buffer，再通过recv()函数将数据读入到app buffer</strong>，此时httpd工作进程对数据进行一番解析，知道请求的是某个文件，<strong>于是发起read系统调用，于是内核加载该文件，数据从磁盘复制到kernel buffer再复制到app buffer，此时httpd就要开始构建响应数据了</strong>，可能会对数据进行一番修改，<strong>例如在响应首部中加一个字段，最后将修改或未修改的数据复制(例如send()函数)到send buffer中，再通过TCP连接传输给客户端。</strong></p>
+
+        <h2 id="2-33-操作系统的IO"   >
+          <a href="#2-33-操作系统的IO" class="heading-link"><i class="fas fa-link"></i></a>2.33 操作系统的IO</h2>
+      <p>为了保护操作系统的安全，会将内存分为<strong>用户空间和内核空间</strong>两个部分。<strong>如果用户想要操作内核空间的数据，则需要把数据从内核空间拷贝到用户空间</strong>。</p>
+<p>举个栗子，如果服务器收到了从客户端过来的请求，并且想要进行处理，那么需要经过这几个步骤：</p>
+<ul>
+<li><p>服务器的网络驱动接受到消息之后，向内核申请空间，并在收到完整的数据包（这个过程会产生延时，因为有可能是通过分组传送过来的）后，将其复制到内核空间；</p>
+</li>
+<li><p>数据从内核空间拷贝到用户空间；</p>
+</li>
+<li><p>用户程序进行处理。</p>
+<p>​    <img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/123" alt="img">￼</p>
+</li>
+</ul>
+<p>因此我们可以将服务器接收消息理解为两个阶段：</p>
+<ul>
+<li><strong>等待数据到达</strong></li>
+<li><strong>将数据从内核空间拷贝到用户空间</strong></li>
+<li></li>
+</ul>
+
+        <h3 id="2-3-1-实例Demo"   >
+          <a href="#2-3-1-实例Demo" class="heading-link"><i class="fas fa-link"></i></a>2.3.1 实例Demo</h3>
+      <p>在此以Linux操作系统为例。Linux是一个将所有的外部设备都看作是文件来操作的操作系统，在它看来：<strong>everything is a file</strong>，那么我们就把对与外部设备的操作都看作是对文件进行操作。而且我们对一个文件进行读写，都需要通过调用内核提供的系统调用。</p>
+<p>而在Linux中，一个基本的IO会涉及到两个系统对象：一个是调用这个IO的进程对象（用户进程），另一个是系统内核。也就是说，当一个read操作发生时，将会经历这些阶段：</p>
+<ul>
+<li>通过read系统调用，向内核发送读请求；</li>
+<li>内核向硬件发送读指令，并等待读就绪；</li>
+<li>DMA把将要读取的数据复制到指定的内核缓存区中；</li>
+<li><strong>内核将数据从内核缓存区拷贝到用户进程空间中</strong>。</li>
+</ul>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716162532954.png" alt="image-20200716162532954">￼</p>
+<p>在此期间会发生几种IO操作：</p>
+<ul>
+<li><strong>同步IO</strong>：当用户发出IO请求操作后，内核会去查看要读取的数据是否就绪，如果没有，就一直等待。期间用户线程或内存会不断地轮询数据是否就绪。当数据就绪时，再把数据从内核拷贝到用户空间。</li>
+<li><strong>异步IO</strong>：用户线程只需发出IO请求和接收IO操作完成通知，期间的IO操作由内核自动完成，并发送通知告知用户线程IO操作已经完成。也就是说，在异步IO中，并不会对用户线程产生任何阻塞。</li>
+<li><strong>阻塞IO</strong>：当用户线程发起一个IO请求操作，而内核要操作的数据还没就绪，则当前线程被挂起，阻塞等待结果返回。</li>
+<li><strong>非阻塞IO</strong>：如果数据没有就绪，就会返回一个标志信息告知用户线程，当前的数据还没有就绪。当前线程在获得此次请求结果的过程中，还可以做点其他事情。</li>
+</ul>
+
+        <h3 id="2-3-2-同步与异步"   >
+          <a href="#2-3-2-同步与异步" class="heading-link"><i class="fas fa-link"></i></a>2.3.2 同步与异步</h3>
+      <p>同步与异步主要是从<strong>消息通知</strong>的角度来说的，指的是在数据同步过程中的进程状态，<strong>同步是主动询问调用结果，异步是消息通知调用结果。</strong></p>
+<p><strong>同步就是当一个任务A的完成需要依赖另一个任务B时，只有等到B任务完成后，A才能成功地进行，这是一种可靠的任务队列</strong>。要么都成功，要么都失败，两个任务的状态可以保持一致。</p>
+<p><strong>异步是不需要等待任务B完成，只是通知任务B要完成什么工作，任务A也立即执行，只要任务A自己执行完了那么整个任务就算完成了</strong>。至于任务B最终是否真正完成，A任务无法确定，所以这是<strong>不可靠的一种任务队列</strong>。</p>
+<p>举个栗子，假如小J要去银行柜台办事，拿号排队。如果他只盯着号码提示牌，还时不时问是否到他了，这就是<strong>同步</strong>；如果他拿了号之后就去打电话了，等到排到他的时候柜员通知他去办理业务，这就是<strong>异步</strong>。他们之间的区别就在于，等待消息通知的方式不同。</p>
+
+        <h3 id="2-3-3-阻塞与非阻塞"   >
+          <a href="#2-3-3-阻塞与非阻塞" class="heading-link"><i class="fas fa-link"></i></a>2.3.3 阻塞与非阻塞</h3>
+      <p>阻塞与非阻塞主要是从<strong>等待消息通知时的状态</strong>角度来说的。</p>
+<p><strong>阻塞就是指在调用结果返回之前，当前线程会被挂起，一直处于等待消息通知的状态，不能执行其他业务</strong>。只有当调用结果返回之后才能进行其他操作。</p>
+<p><strong>非阻塞</strong>与阻塞的概念相对应，就是指<strong>不能立即得到结果之前，该函数不会阻塞当前线程，而是会立即返回</strong>。虽然非阻塞的方式看上去可以明显提高CPU的利用率，但是也会使系统的线程切换增加，需要好好评估增加的CPU执行时间能不能步长系统的切换成本。</p>
+<p>我们继续用上面的栗子，小J无论是在排队还是拿号等通知，如果在这个等待的过程中，小J除了等待消息通知之外就做不了其他的事情，那么该机制就是阻塞的。如果他可以一边打电话一边等待，这个状态就是非阻塞的。</p>
+
+        <h3 id="2-3-4-同步、异步与阻塞、非阻塞"   >
+          <a href="#2-3-4-同步、异步与阻塞、非阻塞" class="heading-link"><i class="fas fa-link"></i></a>2.3.4 同步、异步与阻塞、非阻塞</h3>
+      <p>于同步来说，很多时候当前线程还是在激活状态，只是逻辑上当前函数没有返回而已，此时，线程也会去处理其他的消息。也就是说，<strong>同步、阻塞其实是在消息通知机制下从不同角度对当前线程状态的描述</strong>。</p>
+
+        <h4 id="1）-同步阻塞形式"   >
+          <a href="#1）-同步阻塞形式" class="heading-link"><i class="fas fa-link"></i></a>1） 同步阻塞形式</h4>
+      <p>这是效率最低的一种方式，拿上面的栗子来说，就是<strong>小J心无旁骛地排队，什么别的事都不做</strong>。</p>
+<p>在这里，同步与阻塞体现在：</p>
+<ul>
+<li><strong>同步</strong>：小J等待队伍排到他办理业务；</li>
+<li><strong>阻塞</strong>：小J在等待队伍排到他的过程中，不做其他任务处理。</li>
+</ul>
+
+        <h4 id="2）-异步阻塞形式"   >
+          <a href="#2）-异步阻塞形式" class="heading-link"><i class="fas fa-link"></i></a>2） 异步阻塞形式</h4>
+      <p>如果小J在银行等待办理业务的时候，<strong>领了号，这时候就采用了异步的方式去等待消息被触发（通知），等着柜员喊他的号而不是时刻盯着是不是排到他了</strong>。但是在这段时间里，<strong>他还是不能离开银行去做其他的事情</strong>，那么很显然，他被阻塞在这个等待喊号的操作上了。</p>
+<p>在这里，异步与阻塞体现在：</p>
+<ul>
+<li><strong>异步</strong>：排到小J的话柜员会喊他的号码；</li>
+<li><strong>阻塞</strong>：等待喊号的过程中，不能做其他事情。</li>
+</ul>
+
+        <h4 id="3）-同步非阻塞形式"   >
+          <a href="#3）-同步非阻塞形式" class="heading-link"><i class="fas fa-link"></i></a>3） 同步非阻塞形式</h4>
+      <p>实际上效率也是低下。小J在排队的过程中可以打电话，但是要边打电话边看看还有多久才排到他。如果将打电话和观察排队情况看成是程序中的两个操作的话，这个程序需要在这两个不同的行为之间来回切换。</p>
+<p>在这里，同步与非阻塞体现在：</p>
+<ul>
+<li><strong>同步</strong>：排队等待轮到他办理业务；</li>
+<li><strong>非阻塞</strong>：可以在排队的过程中打电话，只不过要时不时看看还要多久才排到他办理业务。</li>
+</ul>
+
+        <h4 id="4）-异步非阻塞形式"   >
+          <a href="#4）-异步非阻塞形式" class="heading-link"><i class="fas fa-link"></i></a>4） 异步非阻塞形式</h4>
+      <p>这是一个效率更高的模式。小J在拿号之后可以去打电话，只要等待柜员喊号就可以了，在这里打电话是等待者的事情，而通知小J办理业务是柜员的事情。</p>
+<p>在这里，异步和非阻塞体现在：</p>
+<ul>
+<li><strong>异步</strong>：柜员喊小J去办理业务；</li>
+<li><strong>非阻塞</strong>：在等待喊号的过程中，小J去打电话，只要接收到柜员喊号的通知即可，无需关注是否队伍的进度。</li>
+</ul>
+<p>也就是说，同步和异步仅需关注消息如何通知的机制，而阻塞和非阻塞关注的是在等待消息通知的过程中能不能去做别的事。在同步情况下，是由处理者自己去等待消息是否被触发，而异步情况下是由触发机制来通知处理者处理业务。</p>
+
+        <h2 id="2-4-IO模型"   >
+          <a href="#2-4-IO模型" class="heading-link"><i class="fas fa-link"></i></a>2.4 IO模型</h2>
+      <p><strong>所谓的IO模型，描述的是出现I/O等待时进程的状态以及处理数据的方式</strong>。围绕着进程的状态、数据准备到kernel buffer再到app buffer的两个阶段展开。其中数据复制到kernel buffer的过程称为<strong>数据准备</strong>阶段，数据从kernel buffer复制到app buffer的过程称为<strong>数据复制</strong>阶段。请记住这两个概念，后面描述I/O模型时会一直用这两个概念。</p>
+<p>本文某些地方以httpd进程的TCP连接方式处理本地文件为例，请无视httpd是否真的实现了如此、那般的功能，也请无视TCP连接处理数据的细节，这里仅仅只是作为方便解释的示例而已。</p>
+<p>再次说明，<strong>从硬件设备到内存的数据传输过程是不需要CPU参与的，而内存间传输数据是需要内核线程占用CPU来参与的。</strong></p>
+
+        <h3 id="2-4-1-Blocking-I-O模型（同步并阻塞）"   >
+          <a href="#2-4-1-Blocking-I-O模型（同步并阻塞）" class="heading-link"><i class="fas fa-link"></i></a>2.4.1 Blocking I/O模型（同步并阻塞）</h3>
+      <p>如图：</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716170244297.png" alt="image-20200716170244297"></p>
+<p>假设客户端发起index.html的文件请求，httpd需要将index.html的数据从磁盘中加载到自己的httpd app buffer中，然后复制到send buffer中发送出去。</p>
+<p><strong>但是在httpd想要加载index.html时，它首先检查自己的app buffer中是否有index.html对应的数据，没有就发起系统调用让内核去加载数据，例如read()，内核会先检查自己的kernel buffer中是否有index.html对应的数据，如果没有，则从磁盘中加载，然后将数据准备到kernel buffer，再复制到app buffer中，最后被httpd进程处理。</strong></p>
+<p>如果使用Blocking I/O模型：</p>
+<p>(1).当设置为blocking i/o模型，<strong>httpd进程从①到③都是被阻塞的</strong>（从发起系统调用到数据成功放置到用户空间）。<br>(2).只有当数据复制到app buffer完成后，或者发生了错误，httpd才被唤醒处理它app buffer中的数据。<br>(3).<strong>cpu会经过两次上下文切换：用户空间到内核空间再到用户空间，第一次是发起系统调用的切换，第二次是内核将数据拷贝到app buffer完成后的切换</strong>。<br>(4).由于②阶段的拷贝不需要CPU参与，所以在②阶段准备数据的过程中，cpu可以去处理其它进程的任务，这里主要由DMA完成IO设备到内核空间的复制。<br>(5).③阶段的数据复制需要CPU参与，将httpd阻塞。<br>(6).这是最省事、最简单的IO模式。</p>
+<p>如下图：</p>
+<p><img   src="https://mmbiz.qpic.cn/mmbiz_jpg/xNxVTXtCCA5dyYvhSAaDDlekbXCM9vvmicTck8nL9AkmOWcFpj5xCrGL2uvp6rxC45uiapT2NPBjulP3fTuplQ0A/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" style=""  alt="img"></p>
+
+        <h3 id="2-4-2-Non-Blocking-I-O模型（同步非阻塞）"   >
+          <a href="#2-4-2-Non-Blocking-I-O模型（同步非阻塞）" class="heading-link"><i class="fas fa-link"></i></a>2.4.2 Non-Blocking I/O模型（同步非阻塞）</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716170659169.png" alt="image-20200716170659169"></p>
+<p>(1).当设置为non-blocking时，httpd第一次发起系统调用(如read())后，立即返回一个错误值EWOULDBLOCK，而不是让httpd进入睡眠状态。</p>
+<p>(2).虽然read()立即返回了，但httpd还要不断地去发送read()检查内核：数据是否已经成功拷贝到kernel buffer了？<strong>这称为轮询(polling)</strong>。每次轮询时，<strong>只要内核没有把数据准备好，read()就返回错误信息EWOULDBLOCK</strong>。<br>(3).直到kernel buffer中数据准备完成，<strong>再去轮询时不再返回EWOULDBLOCK，而是将httpd阻塞，以等待数据复制到app buffer</strong>。<br>(4).httpd在①到②阶段不被阻塞，但是会不断去发送read()轮询。<strong>在③被阻塞，将cpu交给内核把数据copy到app buffer</strong>。</p>
+<p>如下图：</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716170604662.png" alt="image-20200716170604662"></p>
+
+        <h3 id="2-4-3-I-O-Multiplexing模型（多路复用）"   >
+          <a href="#2-4-3-I-O-Multiplexing模型（多路复用）" class="heading-link"><i class="fas fa-link"></i></a>2.4.3 I/O Multiplexing模型（多路复用）</h3>
+      <p><strong>称为多路IO模型或IO复用</strong>，意思是<strong>可以检查多个IO等待的状态</strong>。有三种IO复用模型：select、poll和epoll。**其实它们都是一种函数，用于监控指定文件描述符的数据是否就绪，所谓监控就是DMA是否已经将数据读取到内核空间了。（linux中一切皆文件，所有的连接都会以文件描述符的方式进行标识，硬盘，U盘）。</p>
+<p><strong>在IO复用模型中，调用recv之前会先调用select或poll，这两个系统调用都可以在内核准备好数据（网络数据已经到达内核了）时告知用户进程，它准备好了，这时候再调用recv时是一定有数据的。因此在这一模型中，进程阻塞于select或poll，而没有阻塞在recv上</strong>。</p>
+<p>就相当于，小J来银行办理业务，大堂经理告诉他现在所有柜台都有人在办理业务，等有空位再告诉他。于是小J就等啊等（select或poll调用中），过了一会儿大堂经理告诉他有柜台空出来可以办理业务了，但是具体是几号柜台，你自己找下吧，于是小J就只能挨个柜台地找。</p>
+<p><strong>就绪指的是对某个系统调用不再阻塞了，可以直接执行IO。</strong>例如对于read()来说，数据准备好了就是就绪状态，此时read()可以直接去读取数据且能立即读取到数据，对write()来说，就是有空间可以写入数据了(比如缓冲区未满)，此时write()可以直接写入。</p>
+<p>就绪种类包括是否可读、是否可写以及是否异常，其中可读条件中就包括了数据是否准备好，也即数据是否已经在kernel buffer中。当就绪之后，将通知进程，进程再发送对数据操作的系统调用，如read()。</p>
+<p>所以，这三个函数仅仅只是处理了数据是否准备好以及如何通知进程的问题。可以将这几个函数结合阻塞和非阻塞IO模式使用，但通常IO复用都会结合非阻塞IO模式。</p>
+<p>select()和poll()差不多，它们的监控和通知手段是类似的，只不过poll()要更聪明一点，某些时候效率也更高些，<strong>此处仅以select()</strong>监控单个文件请求为例简单介绍IO复用，至于更具体的、监控多个文件以及epoll的方式，在本文的最后专门解释。</p>
+<p>(1).当想要加载某个文件时，假如httpd要发起read()系统调用，如果是阻塞或者非阻塞情形，那么read()会根据数据是否准备好而决定是否返回。<strong>是否可以主动去监控这个数据是否准备到了kernel buffer中呢，亦或者是否可以监控send buffer中是否有新数据进入呢？这就是select()/poll()/epoll的作用。</strong><br>(2).当使用select()时，进程被select()所『阻塞』，之所以阻塞要加上引号，是因为select()有时间间隔选项可用控制阻塞时长，如果该选项设置为0，则select不阻塞而是立即返回，还可以设置为永久阻塞。<br>(3).当select()的监控对象就绪时，httpd进程通过轮询判断知道可以执行read()了，于是httpd再发起read()系统调用，此时数据会从kernel buffer复制到app buffer中并read()成功。<br>(4).httpd发起read()系统调用后切换到内核，由内核占用CPU来复制数据到app buffer，所以httpd进程被阻塞。</p>
+<p>上面的描述可能还太过抽象，这里用shell伪代码来简单描述select()的工作方式(细节并非准确，但易于理解)。假设有一个select命令，作用和select()函数相同。伪代码如下：</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> select监控指定的文件描述符，并返回已就绪的描述符数量给x</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 进程将阻塞在select命令上，直到select返回</span></span><br><span class="line">x=$(select fd1 fd2 fd3)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果x大于0，说明有文件描述符数据就绪，于是遍历所有fd，</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 并分别使用<span class="built_in">read</span>去读取这些fd，但并不知道具体是哪个fd已</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 就绪，所以<span class="built_in">read</span>时最好是非阻塞的读取，否则<span class="built_in">read</span>对每一个</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 未就绪的fd都会阻塞</span></span><br><span class="line">if [ $x -gt 0 ];then</span><br><span class="line">  for fd in fd1 fd2 fd3;do</span><br><span class="line">    read -t 0 -u $fd  # read操作最好是非阻塞的</span><br><span class="line">  done</span><br><span class="line">fi</span><br></pre></td></tr></table></div></figure>
+
+<p>所以，在使用IO复用模型时，真正的IO操作(比如read)最好是非阻塞方式的，但并非必须。比如只监控一个文件描述符时，select能返回意味着这个文件描述符一定是就绪的(select还有其它返回值，但这里不考虑其它返回值。</p>
+<p>IO多路复用时，模型如图：</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716171142895.png" alt="image-20200716171142895"></p>
+
+        <h3 id="select-poll的性能问题"   >
+          <a href="#select-poll的性能问题" class="heading-link"><i class="fas fa-link"></i></a>select/poll的性能问题</h3>
+      <p>select()/poll()的性能会随着监控的文件描述符数量增多而快速下降。其原因是多方面的。</p>
+<p>其中一个原因是它们所监控的文件描述符会以某种数据结构全部传送给内核，让内核负责监控这些文件描述符，当内核发现某个文件描述符已经就绪时，会修改数据结构，然后将修改后的数据结构传回给进程。所以涉及了两次数据传输的过程。</p>
+<p>对于select()来说，每次传递的数据结构的大小是固定的，都是1024个描述符的大小。对于poll()来说，只会传递被监控的文件描述符，所以文件描述符少的时候，poll()的性能是可以的，此外poll()可以超出1024个文件描述符的监控数量限制，但随着描述符数量的增多，来回传递的数据量也是非常大的。</p>
+<p>基于这方面的性能考虑，更建议使用信号驱动IO或epoll模型，它们都是直接告诉内核要监控哪些文件描述符，内核会以合适的数据结构安排这些待监控的文件描述符(如epoll，内核采用红黑树的方式)，换句话说，它们不会传递一大片的文件描述符数据结构，效率更高。</p>
+
+        <h3 id="2-4-4-Signal-driven-I-O模型-信号驱动IO"   >
+          <a href="#2-4-4-Signal-driven-I-O模型-信号驱动IO" class="heading-link"><i class="fas fa-link"></i></a>2.4.4 Signal-driven I/O模型(信号驱动IO)</h3>
+      <p>即信号驱动IO模型。相比select()/poll()，信号驱动IO模型在监控大量文件描述符时，性能很好。</p>
+<p>当文件描述符上设置了<code>O_ASYNC</code>标记时，就表示该文件描述符是信号驱动的IO。</p>
+<p>当某个文件描述符使用信号驱动IO模型时，要求进程配置信号SIGIO的信号处理程序，然后进程就可以做其他任何事情。当该文件描述符就绪时，内核会向该进程发送SIGIO信号。该进程收到SIGIO信号后，就会去执行已经配置好的信号处理程序。</p>
+<p>通常来说，SIGIO的信号处理程序中会尽量简单，比如只是设置一个变量标记。在外部，可以判断该变量标记是否为true来决定是否开始read()。</p>
+<p>使用Shell伪代码如下：</p>
+<figure class="highlight shell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 在信号处理程序中设置变量标记，在外部执行IO操作</span></span><br><span class="line">trap 'a=1' SIGIO</span><br><span class="line">... other codes...</span><br><span class="line"><span class="meta">#</span><span class="bash"> </span></span><br><span class="line">while [ $a -eq 1 ];do</span><br><span class="line">  read...</span><br><span class="line">done</span><br></pre></td></tr></table></div></figure>
+
+<p>很明显，使用信号驱动IO模型时，进程对该描述符的读取是被动的，进程不会主动在描述符就绪前执行读取操作。</p>
+<p>其实信号驱动IO模型就像是小姐姐在闲逛，小姐姐本没有想过要买什么东西，但如果发现有合适的，也会去买下来，在逛了一段时间后，一件超短裙闪现到小姐姐的视线，小姐姐很喜欢这个款式，于是立即决定买下来。</p>
+<p><strong>并非所有文件描述符类型都能使用信号驱动的IO模型</strong>。如果某文件描述符想要开启信号驱动IO，对于读IO来说，要求有某个另一端会主动向该描述符发送数据，比如管道、套接字、终端等都符合这种要求。显然，普通文件系统上的文件IO是无法使用信号驱动IO的。</p>
+<p>回到信号驱动IO模型，由于进程没有主动执行IO操作，所以不会阻塞，当数据就绪后，进程收到内核发送的SIGIO信号，进程会去执行SIGIO的信号处理程序，当进程执行read()时，由于数据已经就绪，所以可以直接将数据从kernel buffer复制到app buffer，read()过程中，进程将被阻塞。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716174105936.png" alt="image-20200716174105936"></p>
+
+        <h3 id="2-4-5-异步IO"   >
+          <a href="#2-4-5-异步IO" class="heading-link"><i class="fas fa-link"></i></a>2.4.5 异步IO</h3>
+      <p>当进程执行异步IO函数aio_read()时，它会请求内核执行具体的IO操作，当数据已经就绪<strong>且从kernel buffer拷贝到app buffer</strong>后，内核认为IO操作已经完成，于是内核会根据调用异步IO函数时指定的通知方式来执行对应的操作：</p>
+<ul>
+<li>如果通知模式是信号通知方式(SIGEV_SIGNAL)，则在IO完成时，内核会向进程发送notify_value指定的信号</li>
+<li>如果通知模式是信号回调方式(SIGEV_THREAD)，则在IO完成时，内核会在一个独立的线程中执行notify_value指定的回调函数</li>
+</ul>
+<p>回顾一下信号驱动IO，信号驱动IO要求有另一端主动向文件描述符写入数据，所以它支持像socket、pipe、terminal这类文件描述符，但不支持普通文件IO的文件描述符。</p>
+<p>而异步IO则没有这个限制，异步IO操作借助的是那些具有神力的异步函数，只要文件描述符能读写，就能使用异步IO函数来实现异步IO。</p>
+<p>所以，异步IO在整个过程中都不会被阻塞。如图：</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716175009607.png" alt="image-20200716174404687"></p>
+<p>看上去异步很好，但是注意，<strong>在复制kernel buffer数据到app buffer中时是需要CPU参与的，这意味着不受阻的进程会和异步调用函数争用CPU。</strong>以httpd为例，如果并发量比较大，httpd接入的连接数可能就越多，CPU争用情况就越严重，异步函数返回成功信号的速度就越慢。如果不能很好地处理这个问题，异步IO模型也不一定就好。</p>
+
+        <h2 id="2-5-同步IO与异步IO、阻塞与非阻塞的区分"   >
+          <a href="#2-5-同步IO与异步IO、阻塞与非阻塞的区分" class="heading-link"><i class="fas fa-link"></i></a>2.5 同步IO与异步IO、阻塞与非阻塞的区分</h2>
+      <p><strong>阻塞和非阻塞，体现在当前进程是否可执行，是否能获取到CPU。</strong></p>
+<p>当阻塞和非阻塞的概念体现在IO模型上：</p>
+<ul>
+<li><strong>阻塞IO：从开始发起IO操作开始就阻塞</strong>，直到IO完成才返回，所以进程会立即进入睡眠态</li>
+<li><strong>非阻塞IO</strong>：发起IO操作时，如果当前数据已就绪，则切换到内核态由内核完成数据拷贝(从kernel buffer拷贝到app buffer)，此时进程被阻塞，因为它的CPU已经被内核抢走了。如果发起IO操作时数据未就绪，则立即返回而不阻塞，即进程继续享有CPU，可以继续任务。但进程不知道数据何时就绪，所以通常会采用轮循代码(比如while循环)不断判断数据是否就绪，当数据最终就绪后，<strong>切换到内核态，进程仍然被阻塞</strong></li>
+</ul>
+<p><strong>同步和异步，考虑的是两边数据是否同步(比如kernel buffer和app buffer之间数据是否同步)。同步和异步的区别体现在两边数据尚未完成同步时的行为：</strong></p>
+<ul>
+<li><strong>同步</strong>：在保持两边数据同步的过程中，进程被阻塞，由内核抢占其CPU去完成数据同步，直到两边数据同步，进程才被唤醒</li>
+<li><strong>异步</strong>：在保持两边数据同步的过程中，由内核默默地在后台完成数据同步(如果不理解，可认为是单独开了一个内核线程负责数据同步)，内核不会抢占进程的CPU，所以进程自身不被阻塞，当内核完成两端数据同步时，通知进程已同步完成</li>
+</ul>
+<p><strong>阻塞、非阻塞、IO复用、信号驱动都是同步IO模型。</strong>需注意，<strong>虽然不同IO模型在加载数据到kernel buffer的数据准备过程中可能阻塞、可能不阻塞</strong>，<strong>但kernel buffer才是read()函数读取数据时的对象，同步的意思是让kernel buffer和app buffer数据同步</strong>。在保持kernel buffer和app buffer同步的过程中，CPU将从执行read()操作的进程切换到内核态，内核获取CPU拷贝数据到app buffer，<strong>所以执行read()操作的进程在这个同步的阶段中是被阻塞的</strong>。</p>
+<p>只有异步IO模型才是异步的，因为它调用的是具有【神力】的异步IO函数(如aio_read())，调用这些函数时会请求内核，当<strong>数据已经拷贝到app buffer后，通知进程并执行指定的操作。</strong></p>
+<p>需要注意的是，无论是哪种IO模型，在将数据从kernel buffer拷贝到app buffer的这个阶段，都是需要CPU参与的。只不过，同步IO模型和异步IO模型中，CPU参与的方式不一样:</p>
+<ul>
+<li><strong>同步IO模型中，调用read()的进程会切换到内核，由内核占用CPU来执行数据拷贝，所以原进程在此阶段一直被阻塞</strong></li>
+<li><strong>异步IO模型中，由内核在后台默默的执行数据拷贝，所以原进程在此阶段不被阻塞</strong></li>
+</ul>
+<p>如图：</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716174404687.png" alt="image-20200716175009607"></p>
+
+        <h2 id="2-6-select-、poll-和epoll"   >
+          <a href="#2-6-select-、poll-和epoll" class="heading-link"><i class="fas fa-link"></i></a>2.6 select()、poll()和epoll</h2>
+      
+        <h3 id="2-6-0-背景"   >
+          <a href="#2-6-0-背景" class="heading-link"><i class="fas fa-link"></i></a>2.6.0 背景</h3>
+      <p>假设我们一个服务器要管理多个连接应该如何管理？</p>
+<p>每一个连接都是一个文件描述符，我们可以在while（true）的时候，遍历这样的一个文件描述符集合，在其中有请求的时候进行读取数据并处理。</p>
+
+        <h3 id="2-6-1-理解IO复用"   >
+          <a href="#2-6-1-理解IO复用" class="heading-link"><i class="fas fa-link"></i></a>2.6.1 理解IO复用</h3>
+      <p><strong>I/O的含义：</strong>在计算机领域常说的IO包括<strong>磁盘 IO 和网络 IO</strong>，我们所说的IO复用主要是指网络 IO ，在Linux中一切皆文件，因此网络IO也经常用文件描述符 FD 来表示。</p>
+<p><strong>复用的含义：</strong>那么这些文件描述符 FD 要复用什么呢？在网络场景中复用的就是任务处理线程，所以简单理解就是<strong>多个IO共用1个处理线程</strong>。</p>
+<p><strong>IO复用的可行性：</strong>IO请求的基本操作包括read和write，由于网络交互的本质性，必然存在等待，换言之就是整个网络连接中FD的读写是交替出现的，时而可读可写，时而空闲，所以IO复用是可用实现的。</p>
+<p>综上认为：<strong>IO复用技术就是协调多个可释放资源的FD交替共享任务处理线程完成通信任务，实现多个fd对应1个任务处理线程的复用场景</strong>。</p>
+<p>现实生活中IO复用就像一只边牧管理几百只绵羊一样：</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716193436621.png" alt="image-20200716193436621"></p>
+
+        <h3 id="2-6-2-select（）"   >
+          <a href="#2-6-2-select（）" class="heading-link"><i class="fas fa-link"></i></a>2.6.2 select（）</h3>
+      <p>select（）是内嵌在我们的程序中的。</p>
+<ul>
+<li><p>首先我们将fd组成一个集合，假设为1，2，5，7，9五个文件描述符</p>
+</li>
+<li><p>使用一个fdset（是一个bitmap [0110010001]）,将需要监听的文件描述符位置为1</p>
+</li>
+<li><p>将fdset作为参数传递给select（），select函数是由内核态进行执行的，select将fdset拷贝到了内核态，其实我们自己也可以实现这样的功能，但是执行效率是低于内核态的，<strong>没有数据来或者说没有数据准备好的时候，我们的程序就会阻塞在select（）函数这里进行轮询</strong></p>
+</li>
+<li><p>有数据来了，或者说有数据准备好的时候，内核会将有数据的fd置位，select函数会返回，不再阻塞（这里假如5，7准备就绪，则bitmap变成了[0110000001]，则5和7位被重新置零）</p>
+</li>
+<li><p>然后我们继续执行下一行，遍历fd集合，判断哪一个被置位了，然后就进行处理。</p>
+</li>
+</ul>
+<p>总结：select（）函数就是干了这样一件事情：我们将文件描述符收集起来交给内核，让内核来帮我们判断哪一个有数据，当一个或多个有数据或者说准备就绪的时候，select（）函数会返回，并且有数据的fd会被置位，程序返回，然后遍历fd的集合，进行后续处理。</p>
+<p><strong>优点：</strong></p>
+<p>将监控文件描述符的工作直接交由内核来处理，提高了效率。</p>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>bitmap的默认大小是1024，具有上限，即内核监控的数目是有限的</li>
+<li>每一次的fdset（bitmap）是不可重用的，也就是说我们每次监控的时候，都会生成一个新的fdset（bigmap），每次完成监控需要再次重新传入并且分事件传入 操作冗余</li>
+<li>fdset的拷贝过程仍然会有较大的开销，涉及大量kernel和用户态拷贝 消耗大</li>
+<li>在有数据发生的时候，我们并不知道具体是哪几个文件描述符被置位了，需要再次遍历，也就需要O（n）的复杂度</li>
+</ol>
+
+        <h3 id="2-6-3-poll（）"   >
+          <a href="#2-6-3-poll（）" class="heading-link"><i class="fas fa-link"></i></a>2.6.3 poll（）</h3>
+      <p>不同的是我们这里采用的是链表的数据结构，然后就是我们在每次发现有事件发生并进行处理的时候，会将这样的一个用于监控的文件描述符集合进行复位，也就是说实现了复用。</p>
+<p><strong>优点：</strong></p>
+<ol>
+<li>解决了1024的问题</li>
+<li>实现了监控集合的可重用性</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>依旧需要复制</li>
+<li>依旧需要遍历</li>
+</ol>
+
+        <h3 id="2-6-4-select（）与poll（）的比较"   >
+          <a href="#2-6-4-select（）与poll（）的比较" class="heading-link"><i class="fas fa-link"></i></a>2.6.4 select（）与poll（）的比较</h3>
+      <p><strong>1. 功能</strong></p>
+<p>select 和 poll 的功能基本相同，不过在一些实现细节上有所不同。</p>
+<ul>
+<li><strong>select 会修改描述符，而 poll 不会</strong>；</li>
+<li>select 的描述符类型使用数组实现，FD_SETSIZE 大小默认为 1024，因此默认只能监听少于 1024 个描述符。如果要监听更多描述符的话，需要修改 FD_SETSIZE 之后重新编译；而 poll 没有描述符数量的限制；</li>
+<li>poll 提供了更多的事件类型，并且对描述符的重复利用上比 select 高。</li>
+<li>如果一个线程对某个描述符调用了 select 或者 poll，另一个线程关闭了该描述符，会导致调用结果不确定。</li>
+</ul>
+<p><strong>2. 速度</strong></p>
+<p>select 和 poll 速度都比较慢，<strong>每次调用都需要将全部描述符从应用进程缓冲区复制到内核缓冲区</strong>。</p>
+<p><strong>3. 可移植性</strong></p>
+<p>几乎所有的系统都支持 select，但是只有比较新的系统支持 poll。</p>
+
+        <h3 id="2-6-5-epoll（）"   >
+          <a href="#2-6-5-epoll（）" class="heading-link"><i class="fas fa-link"></i></a>2.6.5 epoll（）</h3>
+      <figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">epoll_create</span><span class="params">(<span class="keyword">int</span> <span class="built_in">size</span>)</span></span>;</span><br><span class="line">int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event)；</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">epoll_wait</span><span class="params">(<span class="keyword">int</span> epfd, struct epoll_event * events, <span class="keyword">int</span> maxevents, <span class="keyword">int</span> timeout)</span></span>;</span><br></pre></td></tr></table></div></figure>
+
+<p>epoll_ctl() 用于向内核注册新的描述符或者是改变某个文件描述符的状态。已注册的描述符在内核中会被维护在一棵红黑树上，通过回调函数内核会将 I/O 准备好的描述符加入到一个链表中管理，进程调用 epoll_wait() 便可以得到事件完成的描述符。</p>
+<p>从上面的描述可以看出，<strong>epoll 只需要将描述符从进程缓冲区向内核缓冲区拷贝一次，并且进程不需要通过轮询来获得事件完成的描述符。</strong></p>
+<p>epoll 仅适用于 Linux OS。</p>
+<p>epoll 比 select 和 poll 更加灵活而且没有描述符数量限制。</p>
+
+        <h4 id="1）epoll的基础API和数据结构"   >
+          <a href="#1）epoll的基础API和数据结构" class="heading-link"><i class="fas fa-link"></i></a>1）epoll的基础API和数据结构</h4>
+      <p>epoll主要包括epoll_data、epoll_event、三个api,如下所示：</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用户数据载体</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">union</span> epoll_data &#123;</span><br><span class="line">   <span class="keyword">void</span>    *ptr;</span><br><span class="line">   <span class="keyword">int</span>      fd;</span><br><span class="line">   <span class="keyword">uint32_t</span> u32;</span><br><span class="line">   <span class="keyword">uint64_t</span> u64;</span><br><span class="line">&#125; <span class="keyword">epoll_data_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//fd装载入内核的载体</span></span><br><span class="line"> <span class="class"><span class="keyword">struct</span> <span class="title">epoll_event</span> &#123;</span></span><br><span class="line">     <span class="keyword">uint32_t</span>     events;    <span class="comment">/* Epoll events */</span></span><br><span class="line">     <span class="keyword">epoll_data_t</span> data;      <span class="comment">/* User data variable */</span></span><br><span class="line"> &#125;;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//三板斧api</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">epoll_create</span><span class="params">(<span class="keyword">int</span> <span class="built_in">size</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">epoll_ctl</span><span class="params">(<span class="keyword">int</span> epfd, <span class="keyword">int</span> op, <span class="keyword">int</span> fd, struct epoll_event *event)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">epoll_wait</span><span class="params">(<span class="keyword">int</span> epfd, struct epoll_event *events,</span></span></span><br><span class="line"><span class="function"><span class="params">                 <span class="keyword">int</span> maxevents, <span class="keyword">int</span> timeout)</span></span>;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h4 id="2-epoll三级火箭的科班理解"   >
+          <a href="#2-epoll三级火箭的科班理解" class="heading-link"><i class="fas fa-link"></i></a>2) epoll三级火箭的科班理解</h4>
+      <ul>
+<li><strong>epoll_create</strong><br>该接口是在内核区创建一个epoll相关的一些列结构，<strong>并且将一个句柄fd返回给用户态，后续的操作都是基于此fd的，</strong>参数size是告诉内核这个结构的元素的大小，类似于stl的vector动态数组，如果size不合适会涉及复制扩容，不过貌似4.1.2内核之后size已经没有太大用途了；</li>
+<li><strong>epoll_ctl</strong><br>该接口是将fd添加/删除于epoll_create返回的epfd中，其中<strong>epoll_event是用户态和内核态交互的结构，定义了用户态关心的事件类型和触发时数据的载体epoll_data；</strong></li>
+<li><strong>epoll_wait</strong><br>该接口是阻塞等待内核返回的可读写事件，epfd还是epoll_create的返回值，events是个结构体数组指针存储epoll_event，也就是将内核返回的待处理epoll_event结构都存储下来，maxevents告诉内核本次返回的最大fd数量，这个和events指向的数组是相关的；</li>
+</ul>
+<p>其中三个api中贯穿了一个数据结构：<strong>epoll_event，它可以说是用户态需监控fd的代言人，后续用户程序对fd的操作都是基于此结构的</strong>；</p>
+
+        <h4 id="3-4-3-epoll三级火箭的通俗解释"   >
+          <a href="#3-4-3-epoll三级火箭的通俗解释" class="heading-link"><i class="fas fa-link"></i></a>3) 4.3 epoll三级火箭的通俗解释</h4>
+      <p>可能上面的描述有些抽象，举个现实中的例子，来帮助大家理解：</p>
+<ul>
+<li><strong>epoll_create场景</strong><br>大学开学第一周，你作为班长需要帮全班同学领取相关物品，你在学生处告诉工作人员，我是xx学院xx专业xx班的班长，这时工作人员确定你的身份并且给了你凭证，后面办的事情都需要用到(也就是调用epoll_create向内核申请了epfd结构，内核返回了epfd句柄给你使用)；</li>
+<li><strong>epoll_ctl场景</strong><br>你拿着凭证在办事大厅开始办事，分拣办公室工作人员说班长你把所有需要办理事情的同学的学生册和需要办理的事情都记录下来吧，于是班长开始在每个学生手册单独写对应需要办的事情：李明需要开实验室权限、孙大熊需要办游泳卡……就这样班长一股脑写完并交给了工作人员(也就是告诉内核哪些fd需要做哪些操作)；</li>
+<li><strong>epoll_wait场景</strong><br>你拿着凭证在领取办公室门前等着，这时候广播喊xx班长你们班孙大熊的游泳卡办好了速来领取、李明实验室权限卡办好了速来取….还有同学的事情没办好，所以班长只能继续(也就是调用epoll_wait等待内核反馈的可读写事件发生并处理)；</li>
+</ul>
+
+        <h4 id="4-优点"   >
+          <a href="#4-优点" class="heading-link"><i class="fas fa-link"></i></a>4) 优点</h4>
+      <p>(1).epoll_create()创建的epoll实例可以随时通过epoll_ctl()来新增和删除感兴趣的文件描述符，不用再和select()每个循环后都要使用FD_SET更新描述符集合的数据结构。<br>(2).在epoll_create()创建epoll实例时，还创建了一个epoll就绪链表list。而epoll_ctl()每次向epoll实例添加描述符时，还会注册该描述符的回调函数。<strong>当epoll实例中的描述符满足就绪条件时将触发回调函数，被移入到就绪链表list中。</strong><br>(3).<strong>当调用epoll_wait()进行监控时，它只需确定就绪链表中是否有数据即可，如果有，将复制到用户空间以被进程处理，如果没有，它将被阻塞。当然，如果监控的对象设置为非阻塞模式，它将不会被阻塞，而是不断地去检查。</strong></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://yoursite.com">Pawnbrokers</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://yoursite.com/2020/07/15/IO%E5%AD%A6%E4%B9%A0/">http://yoursite.com/2020/07/15/IO%E5%AD%A6%E4%B9%A0/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://yoursite.com/tags/IO/">IO</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2020/07/15/%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/"><span class="paginator-prev__text">二叉排序树</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-什么是Socket"><span class="toc-number">1.</span> <span class="toc-text">
+          1. 什么是Socket</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-概念"><span class="toc-number">1.1.</span> <span class="toc-text">
+          1.1 概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-表示方法"><span class="toc-number">1.2.</span> <span class="toc-text">
+          1.2 表示方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-网络中如何通信"><span class="toc-number">1.3.</span> <span class="toc-text">
+          1.3 网络中如何通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1-本地进程间通信"><span class="toc-number">1.3.1.</span> <span class="toc-text">
+          1.3.1 本地进程间通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-2-网络中进程如何通信"><span class="toc-number">1.3.2.</span> <span class="toc-text">
+          1.3.2 网络中进程如何通信</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-工作流程"><span class="toc-number">1.4.</span> <span class="toc-text">
+          1.4 工作流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-主要特点"><span class="toc-number">1.5.</span> <span class="toc-text">
+          1.5 主要特点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-IO模型"><span class="toc-number">2.</span> <span class="toc-text">
+          2. IO模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-0-文件描述符"><span class="toc-number">2.1.</span> <span class="toc-text">
+          2.0 文件描述符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-什么是IO"><span class="toc-number">2.2.</span> <span class="toc-text">
+          2.1 什么是IO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-IO操作时候的数据流程"><span class="toc-number">2.3.</span> <span class="toc-text">
+          2.2 IO操作时候的数据流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-为什么不能直接将数据加载到app-buffer呢？"><span class="toc-number">2.3.1.</span> <span class="toc-text">
+          2.2.1 为什么不能直接将数据加载到app buffer呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-上面提到的数据几次拷贝过程，拷贝方式是一样的吗？"><span class="toc-number">2.3.2.</span> <span class="toc-text">
+          2.2.2 上面提到的数据几次拷贝过程，拷贝方式是一样的吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-如果数据要通过TCP传输出去怎么办？"><span class="toc-number">2.3.3.</span> <span class="toc-text">
+          2.2.3 如果数据要通过TCP传输出去怎么办？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-4-网络数据一定要从kernel-buffer复制到app-buffer再复制到send-buffer吗？"><span class="toc-number">2.3.4.</span> <span class="toc-text">
+          2.2.4 网络数据一定要从kernel buffer复制到app buffer再复制到send buffer吗？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-33-操作系统的IO"><span class="toc-number">2.4.</span> <span class="toc-text">
+          2.33 操作系统的IO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-实例Demo"><span class="toc-number">2.4.1.</span> <span class="toc-text">
+          2.3.1 实例Demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-同步与异步"><span class="toc-number">2.4.2.</span> <span class="toc-text">
+          2.3.2 同步与异步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-3-阻塞与非阻塞"><span class="toc-number">2.4.3.</span> <span class="toc-text">
+          2.3.3 阻塞与非阻塞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-4-同步、异步与阻塞、非阻塞"><span class="toc-number">2.4.4.</span> <span class="toc-text">
+          2.3.4 同步、异步与阻塞、非阻塞</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1）-同步阻塞形式"><span class="toc-number">2.4.4.1.</span> <span class="toc-text">
+          1） 同步阻塞形式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2）-异步阻塞形式"><span class="toc-number">2.4.4.2.</span> <span class="toc-text">
+          2） 异步阻塞形式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3）-同步非阻塞形式"><span class="toc-number">2.4.4.3.</span> <span class="toc-text">
+          3） 同步非阻塞形式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4）-异步非阻塞形式"><span class="toc-number">2.4.4.4.</span> <span class="toc-text">
+          4） 异步非阻塞形式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-IO模型"><span class="toc-number">2.5.</span> <span class="toc-text">
+          2.4 IO模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-1-Blocking-I-O模型（同步并阻塞）"><span class="toc-number">2.5.1.</span> <span class="toc-text">
+          2.4.1 Blocking I&#x2F;O模型（同步并阻塞）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-2-Non-Blocking-I-O模型（同步非阻塞）"><span class="toc-number">2.5.2.</span> <span class="toc-text">
+          2.4.2 Non-Blocking I&#x2F;O模型（同步非阻塞）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-3-I-O-Multiplexing模型（多路复用）"><span class="toc-number">2.5.3.</span> <span class="toc-text">
+          2.4.3 I&#x2F;O Multiplexing模型（多路复用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#select-poll的性能问题"><span class="toc-number">2.5.4.</span> <span class="toc-text">
+          select&#x2F;poll的性能问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-4-Signal-driven-I-O模型-信号驱动IO"><span class="toc-number">2.5.5.</span> <span class="toc-text">
+          2.4.4 Signal-driven I&#x2F;O模型(信号驱动IO)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-5-异步IO"><span class="toc-number">2.5.6.</span> <span class="toc-text">
+          2.4.5 异步IO</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-同步IO与异步IO、阻塞与非阻塞的区分"><span class="toc-number">2.6.</span> <span class="toc-text">
+          2.5 同步IO与异步IO、阻塞与非阻塞的区分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-select-、poll-和epoll"><span class="toc-number">2.7.</span> <span class="toc-text">
+          2.6 select()、poll()和epoll</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-0-背景"><span class="toc-number">2.7.1.</span> <span class="toc-text">
+          2.6.0 背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-1-理解IO复用"><span class="toc-number">2.7.2.</span> <span class="toc-text">
+          2.6.1 理解IO复用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-2-select（）"><span class="toc-number">2.7.3.</span> <span class="toc-text">
+          2.6.2 select（）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-3-poll（）"><span class="toc-number">2.7.4.</span> <span class="toc-text">
+          2.6.3 poll（）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-4-select（）与poll（）的比较"><span class="toc-number">2.7.5.</span> <span class="toc-text">
+          2.6.4 select（）与poll（）的比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-5-epoll（）"><span class="toc-number">2.7.6.</span> <span class="toc-text">
+          2.6.5 epoll（）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1）epoll的基础API和数据结构"><span class="toc-number">2.7.6.1.</span> <span class="toc-text">
+          1）epoll的基础API和数据结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-epoll三级火箭的科班理解"><span class="toc-number">2.7.6.2.</span> <span class="toc-text">
+          2) epoll三级火箭的科班理解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-3-epoll三级火箭的通俗解释"><span class="toc-number">2.7.6.3.</span> <span class="toc-text">
+          3) 4.3 epoll三级火箭的通俗解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-优点"><span class="toc-number">2.7.6.4.</span> <span class="toc-text">
+          4) 优点</span></a></li></ol></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/me.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">我们必须习惯，站在人生的交叉路口，却没有红绿灯的事实。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/pawnbrokers" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/mu-rong-xue-hen-46" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="assets/wechat.jpg" target="_blank" rel="noopener" data-popover="微信" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="assets/qq.jpg" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">57</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">40</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">53</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Pawnbrokers</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v4.2.1</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script></body></html>
