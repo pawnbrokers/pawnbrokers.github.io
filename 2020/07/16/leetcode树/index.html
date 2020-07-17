@@ -1,0 +1,281 @@
+<!DOCTYPE html><html lang="cn"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0" type="image/png" sizes="32x32"><meta name="description" content="1. 递归                           1.1 二叉树的最大深度(104)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode树">
+<meta property="og:url" content="http://yoursite.com/2020/07/16/leetcode%E6%A0%91/index.html">
+<meta property="og:site_name" content="节能主义">
+<meta property="og:description" content="1. 递归                           1.1 二叉树的最大深度(104)">
+<meta property="og:locale" content="cn">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716205226176.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716210934181.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716212611347.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716205713716.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717085528207.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717090057937.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717091520773.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717093724638.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717100513473.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717101224221.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717101844055.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717105853449.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717124815026.png">
+<meta property="article:published_time" content="2020-07-16T12:48:34.000Z">
+<meta property="article:modified_time" content="2020-07-17T05:23:50.699Z">
+<meta property="article:author" content="Pawnbrokers">
+<meta property="article:tag" content="树">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716205226176.png"><meta name="keywords" content="Pawnbrokers, 节能主义"><meta name="description" content=""><title>leetcode树 | 节能主义</title><link ref="canonical" href="http://yoursite.com/2020/07/16/leetcode%E6%A0%91/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="节能主义" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">节能主义</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">leetcode树</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-07-16</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-07-17</span></span></div></header><div class="post-body">
+        <h1 id="1-递归"   >
+          <a href="#1-递归" class="heading-link"><i class="fas fa-link"></i></a>1. 递归</h1>
+      
+        <h2 id="1-1-二叉树的最大深度-104"   >
+          <a href="#1-1-二叉树的最大深度-104" class="heading-link"><i class="fas fa-link"></i></a>1.1 二叉树的最大深度(104)</h2>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716205226176.png" alt="image-20200716205226176"></p>
+<a id="more"></a>
+
+<ul>
+<li><p>思路：</p>
+<ul>
+<li>假设root==null，return 0</li>
+<li>否则返回最大的左右子树的深度+1</li>
+</ul>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> Math.max(maxDepth(root.left), maxDepth(root.right)) + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+</li>
+</ul>
+
+        <h2 id="1-2-平衡二叉树（110）"   >
+          <a href="#1-2-平衡二叉树（110）" class="heading-link"><i class="fas fa-link"></i></a>1.2 平衡二叉树（110）</h2>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716210934181.png" alt="image-20200716205713716"></p>
+<ul>
+<li><p>思路：</p>
+<p>既然我们已经可以求出一棵树的深度，那么，就在root有左右子树的情况下判断深度即可</p>
+<p>但是这样却也不够，<strong>因为我们要的是每个节点的左右子树都必须如此</strong>，所以还必须<strong>&amp;&amp;</strong></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBalanced</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">return</span> (Math.abs(maxDepth(root.left) - maxDepth(root.right)) &lt;= <span class="number">1</span> ? <span class="keyword">true</span> : <span class="keyword">false</span>) &amp;&amp; isBalanced(root.right) &amp;&amp; isBalanced(root.left);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> Math.max(maxDepth(root.left), maxDepth(root.right)) + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+</li>
+</ul>
+
+        <h2 id="1-3-二叉树的直径（543）"   >
+          <a href="#1-3-二叉树的直径（543）" class="heading-link"><i class="fas fa-link"></i></a>1.3 二叉树的直径（543）</h2>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716212611347.png" alt="image-20200716210934181"></p>
+<ul>
+<li><p>思考：</p>
+<p>树的直径一定属于下列三种情况：</p>
+<ol>
+<li>左子树的直径</li>
+<li>右子树的直径</li>
+<li>穿越此节点的直径</li>
+</ol>
+<p><strong>三者取最大值</strong></p>
+<p>那么，穿越此节点的直径应该怎么取呢？</p>
+<p><strong>最大直径就是左子树的深度+ 右子树的深度+1</strong></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">diameterOfBinaryTree</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> max1 = maxDepth(root.left) + maxDepth(root.right);</span><br><span class="line">            <span class="keyword">int</span> max2 = Math.max(diameterOfBinaryTree(root.left), diameterOfBinaryTree(root.right));</span><br><span class="line">            <span class="keyword">return</span> Math.max(max1, max2);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//定义一个函数，返回从此节点向下的最大值，也就是二叉树的深度</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> Math.max(maxDepth(root.left), maxDepth(root.right)) + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+</li>
+</ul>
+
+        <h2 id="1-4-翻转树（226）"   >
+          <a href="#1-4-翻转树（226）" class="heading-link"><i class="fas fa-link"></i></a>1.4 翻转树（226）</h2>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200716205713716.png" alt="image-20200716212611347"></p>
+<ul>
+<li><p>思考：左右翻转即可</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> TreeNode <span class="title">invertTree</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            TreeNode left = invertTree(root.right);</span><br><span class="line">            TreeNode right = invertTree(root.left);</span><br><span class="line">            root.left = left;</span><br><span class="line">            root.right = right;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+</li>
+</ul>
+
+        <h2 id="1-5-归并两棵树（617）"   >
+          <a href="#1-5-归并两棵树（617）" class="heading-link"><i class="fas fa-link"></i></a>1.5 归并两棵树（617）</h2>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717085528207.png" alt="image-20200717085528207"></p>
+<ul>
+<li><p>思路：</p>
+<ul>
+<li>如果左右节点都已经叠加好了，那么我们就只需要将两个根节点叠加并重新挂载左右节点即可</li>
+</ul>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> TreeNode <span class="title">mergeTrees</span><span class="params">(TreeNode t1, TreeNode t2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (t1 == <span class="keyword">null</span> &amp;&amp; t2 == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">if</span> (t1 == <span class="keyword">null</span>) <span class="keyword">return</span> t2;</span><br><span class="line">            <span class="keyword">if</span> (t2 == <span class="keyword">null</span>) <span class="keyword">return</span> t1;</span><br><span class="line">            TreeNode new_root = <span class="keyword">new</span> TreeNode(t1.val + t2.val);</span><br><span class="line">            new_root.left = mergeTrees(t1.left, t2.left);</span><br><span class="line">            new_root.right = mergeTrees(t1.right, t2.right);</span><br><span class="line">            <span class="keyword">return</span> new_root;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+</li>
+</ul>
+
+        <h2 id="1-6-路径总和（112）"   >
+          <a href="#1-6-路径总和（112）" class="heading-link"><i class="fas fa-link"></i></a>1.6 路径总和（112）</h2>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717090057937.png" alt="image-20200717090057937"></p>
+<ul>
+<li><p>思路：</p>
+<ul>
+<li>先从左节点考虑，依次向下寻找，终止条件为到达根节点&amp;&amp;sum==0，否则返回上一节点（dfs）</li>
+</ul>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPathSum</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span> &amp;&amp; sum == root.val) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            sum -= root.val;</span><br><span class="line">            <span class="keyword">if</span> (hasPathSum(root.left, sum) || hasPathSum(root.right, sum)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            sum += root.val;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>这样的话我们就是在一直改变sum的值，递归回来的时候已经不是我们之前认识的sum了，所以最后要把它再+回来。</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPathSum</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> root.val == sum;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+</li>
+</ul>
+
+        <h2 id="1-7-路径总和III（437）"   >
+          <a href="#1-7-路径总和III（437）" class="heading-link"><i class="fas fa-link"></i></a>1.7 路径总和III（437）</h2>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717091520773.png" alt="image-20200717091520773"></p>
+<ul>
+<li>思考：<ul>
+<li>这里我们的路径就不需要到叶子节点结束，也不需要从根节点开始。</li>
+<li>那么就有三种情况：<ul>
+<li>从我们的根节点开始的</li>
+<li>不从我们的根节点开始的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pathSum</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span> helper(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//编写一个辅助函数，计算从根节点开始的路径和数目</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">helper</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> left_count = helper(root.left, sum - root.val);</span><br><span class="line">            <span class="keyword">int</span> right_count = helper(root.right, sum - root.val);</span><br><span class="line">            <span class="keyword">return</span> (root.val == sum) ? <span class="number">1</span> + left_count + right_count : left_count + right_count;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="1-8-另一个树的子树（572）"   >
+          <a href="#1-8-另一个树的子树（572）" class="heading-link"><i class="fas fa-link"></i></a>1.8 另一个树的子树（572）</h2>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717093724638.png" alt="image-20200717093724638"></p>
+<ul>
+<li><p>思考：</p>
+<ul>
+<li><p>是子树的前提是子子孙孙都是一样的，而不能只是中间的一部分</p>
+<p>这里就有两种情况：<strong>以我为根（即必须和我一模一样），或者不以我为根，那也一定要和我的一个子孙一样</strong></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSubtree</span><span class="params">(TreeNode s, TreeNode t)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (s == <span class="keyword">null</span> &amp;&amp; t == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (s == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (t == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">return</span> isValid(s, t) || isSubtree(s.left, t) || isSubtree(s.right, t);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//辅助函数：判断以当前节点为根是否是一样的</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(TreeNode s, TreeNode t)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (s == <span class="keyword">null</span> &amp;&amp; t == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (s == <span class="keyword">null</span> || t == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (s.val == t.val) <span class="keyword">return</span> isValid(s.left, t.left) &amp;&amp; isValid(s.right, t.right);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+
+        <h2 id="1-9-树的对称（101）"   >
+          <a href="#1-9-树的对称（101）" class="heading-link"><i class="fas fa-link"></i></a>1.9 树的对称（101）</h2>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717100513473.png" alt="image-20200717100513473"></p>
+<ul>
+<li><p>思考：</p>
+<ul>
+<li>如果根节点为null，则返回真</li>
+<li>如果不是，则判断左右节点是否对称</li>
+</ul>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSymmetric</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">return</span> isMirror(root.left,root.right);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//辅助函数：用于判断两棵树是不是镜像的</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMirror</span><span class="params">(TreeNode t1, TreeNode t2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (t1 == <span class="keyword">null</span> &amp;&amp; t2 == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (t1 == <span class="keyword">null</span> || t2 == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (t1.val != t2.val) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">return</span> isMirror(t1.left, t2.right) &amp;&amp; isMirror(t1.right, t2.left);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+</li>
+</ul>
+
+        <h2 id="1-10-二叉树的最小深度"   >
+          <a href="#1-10-二叉树的最小深度" class="heading-link"><i class="fas fa-link"></i></a>1.10 二叉树的最小深度</h2>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717101224221.png" alt="image-20200717101224221"></p>
+<ul>
+<li><p>思考： </p>
+<ul>
+<li>我们之前做过最大深度的题目，这里又有何不同呢？</li>
+</ul>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span> Math.min(minDepth(root.left), minDepth(root.right)) + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>但是这样写的话就大错特错了！！！！！</strong></p>
+</li>
+</ul>
+<p>我们的题目要求的是根节点到最近的叶子节点上的最小距离。假如有下面这样一个树：</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717101844055.png" alt="image-20200717101844055"></p>
+<p><strong>结果应该是2而不是1！</strong></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (root.left == <span class="keyword">null</span>) <span class="keyword">return</span> minDepth(root.right) + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (root.right == <span class="keyword">null</span>) <span class="keyword">return</span> minDepth(root.left) + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> Math.min(minDepth(root.left), minDepth(root.right)) + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+
+
+        <h2 id="1-11-左叶子之和（404）"   >
+          <a href="#1-11-左叶子之和（404）" class="heading-link"><i class="fas fa-link"></i></a>1.11 左叶子之和（404）</h2>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717105853449.png" alt="image-20200717105853449"></p>
+<ul>
+<li><p>思路：</p>
+<ul>
+<li><p>假如只有根节点有值应当如何处理？</p>
+</li>
+<li><p>结果应该是左子树的左叶子之和+ 右子树的左叶子之和</p>
+<p>假如当前节点的左节点为叶子节点，则加上对应的值，再加上当前节点右子节点的迭代</p>
+<p>假如不是，则返回当前节点的左右节点的迭代之和</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfLeftLeaves</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (root.left != <span class="keyword">null</span> &amp;&amp; root.left.right == <span class="keyword">null</span> &amp;&amp; root.left.left == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> root.left.val + sumOfLeftLeaves(root.right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+
+        <h2 id="1-12-最长同值路径"   >
+          <a href="#1-12-最长同值路径" class="heading-link"><i class="fas fa-link"></i></a>1.12 最长同值路径</h2>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200717124815026.png" alt="image-20200717124815026"></p>
+<p><strong>注意： 路径指的是边数，而不是节点数目</strong></p>
+<ul>
+<li><p>思路：</p>
+<ul>
+<li><p>最长路径有三种情况：</p>
+<ul>
+<li>左子树上的最长路径</li>
+<li>右子树上的最长路径</li>
+<li>穿越根节点的最长同值路径</li>
+</ul>
+<p>所以我们需要一个辅助函数，用于返回穿越根节点的最长路径</p>
+<p>​    这个穿越根节点的最长路径又可以分成：左边/右边/左右都有</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestUnivaluePath</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">            <span class="comment">/*思路：</span></span><br><span class="line"><span class="comment">             * 这里的最长路径可能是左边，也可能是右边，又或者左右都有</span></span><br><span class="line"><span class="comment">             * */</span></span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> max = Math.max(Math.max(helper(root), longestUnivaluePath(root.left)), longestUnivaluePath(root.right));</span><br><span class="line">            <span class="keyword">if</span> (root.left != <span class="keyword">null</span> &amp;&amp; root.right != <span class="keyword">null</span> &amp;&amp; root.val == root.left.val &amp;&amp; root.val == root.right.val) &#123;</span><br><span class="line">                <span class="keyword">return</span> Math.max(helper(root.left) + helper(root.right) + <span class="number">2</span>, max);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> max;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        [4,4,4,4,null,null,4,4,null,null,4]</span></span><br><span class="line"><span class="comment">//        [4,4,4,4,null,null,4,null,null,4,null,null,4]</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//返回的是从此节点向下的最长路径</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">helper</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (root.left == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> (root.right.val == root.val) ? <span class="number">1</span> + helper(root.right) : <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (root.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> (root.left.val == root.val) ? <span class="number">1</span> + helper(root.left) : <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> left_len = (root.left.val == root.val) ? <span class="number">1</span> + helper(root.left) : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> right_len = (root.right.val == root.val) ? <span class="number">1</span> + helper(root.right) : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span> Math.max(left_len, right_len);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://yoursite.com">Pawnbrokers</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://yoursite.com/2020/07/16/leetcode%E6%A0%91/">http://yoursite.com/2020/07/16/leetcode%E6%A0%91/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://yoursite.com/tags/%E6%A0%91/">树</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2020/07/15/IO%E5%AD%A6%E4%B9%A0/"><span class="paginator-prev__text">IO学习</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-递归"><span class="toc-number">1.</span> <span class="toc-text">
+          1. 递归</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-二叉树的最大深度-104"><span class="toc-number">1.1.</span> <span class="toc-text">
+          1.1 二叉树的最大深度(104)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-平衡二叉树（110）"><span class="toc-number">1.2.</span> <span class="toc-text">
+          1.2 平衡二叉树（110）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-二叉树的直径（543）"><span class="toc-number">1.3.</span> <span class="toc-text">
+          1.3 二叉树的直径（543）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-翻转树（226）"><span class="toc-number">1.4.</span> <span class="toc-text">
+          1.4 翻转树（226）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-归并两棵树（617）"><span class="toc-number">1.5.</span> <span class="toc-text">
+          1.5 归并两棵树（617）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-路径总和（112）"><span class="toc-number">1.6.</span> <span class="toc-text">
+          1.6 路径总和（112）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-路径总和III（437）"><span class="toc-number">1.7.</span> <span class="toc-text">
+          1.7 路径总和III（437）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8-另一个树的子树（572）"><span class="toc-number">1.8.</span> <span class="toc-text">
+          1.8 另一个树的子树（572）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-9-树的对称（101）"><span class="toc-number">1.9.</span> <span class="toc-text">
+          1.9 树的对称（101）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-10-二叉树的最小深度"><span class="toc-number">1.10.</span> <span class="toc-text">
+          1.10 二叉树的最小深度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-11-左叶子之和（404）"><span class="toc-number">1.11.</span> <span class="toc-text">
+          1.11 左叶子之和（404）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-12-最长同值路径"><span class="toc-number">1.12.</span> <span class="toc-text">
+          1.12 最长同值路径</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/me.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">我们必须习惯，站在人生的交叉路口，却没有红绿灯的事实。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/pawnbrokers" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/mu-rong-xue-hen-46" target="_blank" rel="noopener" data-popover="Zhihu" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="assets/wechat.jpg" target="_blank" rel="noopener" data-popover="Wechat" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="assets/qq.jpg" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">58</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">40</div><div class="sidebar-ov-state-item__name">Categories</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">54</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Pawnbrokers</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v4.2.1</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script></body></html>
