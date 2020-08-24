@@ -1,0 +1,728 @@
+<!DOCTYPE html><html lang="cn"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0" type="image/png" sizes="32x32"><meta name="description" content="大纲">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《网络是怎样连接的》笔记">
+<meta property="og:url" content="http://yoursite.com/2020/08/20/%E3%80%8A%E7%BD%91%E7%BB%9C%E6%98%AF%E6%80%8E%E6%A0%B7%E8%BF%9E%E6%8E%A5%E7%9A%84%E3%80%8B%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="节能主义">
+<meta property="og:description" content="大纲">
+<meta property="og:locale" content="cn">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820161311862.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820161822344.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820162046434.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820162116826.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820185550905.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820185739074.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190016443.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190156245.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190221782.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190238658.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190245331.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190536541.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190718860.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190806982.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190924365.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820191221940.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820191521295.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820191749852.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820191805810.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820191931949.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820192103202.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820192111011.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820192221878.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820192403488.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820192527131.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820193417490.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820193949055.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820193045610.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820193216820.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820193232094.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820193802146.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820193910647.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820194115784.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820194414703.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820211651459.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820212146953.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820212413193.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820212457796.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820212824483.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820213255620.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820213453994.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820213751342.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821095756523.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821095944910.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821100318341.png">
+<meta property="og:image" content="http://yoursite.com/2020/Users/yuan/AppData/Roaming/Typora/typora-user-images/image-20200821100448393.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821101228154.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821101255952.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821140612994.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821140844783.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821141009161.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821141121321.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821141554753.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821141739079.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821141922776.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821142652074.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821142938328.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821143113554.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821143544586.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821140612994.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821144316441.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821150529997.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821151840142.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821151945212.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821152021417.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824103054684.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824103153543.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824103334229.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824103548371.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824103624197.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824103802340.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824103942141.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104038291.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104135906.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104151250.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104314274.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104454430.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104545826.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104556879.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104723183.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104810316.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104844595.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824105251230.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824105316230.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824105503145.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824105709048.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824112031793.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824112130238.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824112233668.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824112338047.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824112600649.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824112750858.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824112949736.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824113636700.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824133600785.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824134800162.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824133711144.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824133921784.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824134506851.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824134607401.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824141236478.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824141509261.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824141526635.png">
+<meta property="og:image" content="http://yoursite.com/2020/Users/yuan/AppData/Roaming/Typora/typora-user-images/image-20200824141901966.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824142014180.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824142055508.png">
+<meta property="og:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824142125783.png">
+<meta property="article:published_time" content="2020-08-20T08:09:36.000Z">
+<meta property="article:modified_time" content="2020-08-24T06:26:11.197Z">
+<meta property="article:author" content="Pawnbrokers">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820161311862.png"><meta name="keywords" content="Pawnbrokers, 节能主义"><meta name="description" content=""><title>《网络是怎样连接的》笔记 | 节能主义</title><link ref="canonical" href="http://yoursite.com/2020/08/20/%E3%80%8A%E7%BD%91%E7%BB%9C%E6%98%AF%E6%80%8E%E6%A0%B7%E8%BF%9E%E6%8E%A5%E7%9A%84%E3%80%8B%E7%AC%94%E8%AE%B0/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="节能主义" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/reading/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">节能主义</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">《网络是怎样连接的》笔记</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2020-08-20</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2020-08-24</span></span></div></header><div class="post-body">
+        <h1 id="大纲"   >
+          <a href="#大纲" class="heading-link"><i class="fas fa-link"></i></a>大纲</h1>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820161311862.png" alt="image-20200820161311862"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820161822344.png" alt="image-20200820161822344"></p>
+<a id="more"></a>
+
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820162046434.png" alt="image-20200820162046434"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820162116826.png" alt="image-20200820162116826"></p>
+
+        <h1 id="第一章-Web浏览器"   >
+          <a href="#第一章-Web浏览器" class="heading-link"><i class="fas fa-link"></i></a>第一章 Web浏览器</h1>
+      
+        <h2 id="1-1-小知识点"   >
+          <a href="#1-1-小知识点" class="heading-link"><i class="fas fa-link"></i></a>1.1 小知识点</h2>
+      <p>浏览器等网络应用程序实际上并不具备网络控制功能，应用程序并不是自己去控制网络，而是委托操作系统来控制网络。</p>
+<p><strong>Web浏览器的工作：</strong></p>
+<ol>
+<li><p><strong>生成HTTP请求消息</strong></p>
+<ul>
+<li>解析网址</li>
+<li>根据网址的含义生成请求消息</li>
+</ul>
+</li>
+<li><p><strong>向DNS服务器查询Web服务器的IP地址</strong></p>
+<ul>
+<li>请求消息生成后<strong>，浏览器会委托操作系统发送请求，但是浏览器必须告诉操作系统接收方的IP地址</strong></li>
+<li>浏览器向DNS服务器查询域名对应的IP地址</li>
+</ul>
+</li>
+<li><p><strong>全世界DNS服务器的大接力</strong></p>
+</li>
+<li><p><strong>委托协议栈发送消息</strong></p>
+<ul>
+<li>查询到IP地址之后，浏览器委托操作系统将请求发送给Web服务器</li>
+</ul>
+</li>
+</ol>
+
+        <h2 id="1-2-生成HTTP消息"   >
+          <a href="#1-2-生成HTTP消息" class="heading-link"><i class="fas fa-link"></i></a>1.2 生成HTTP消息</h2>
+      <ol>
+<li><p><strong>浏览器的第一步是进行URL的解析</strong></p>
+</li>
+<li><p><strong>HTTP的基本思路</strong></p>
+<ul>
+<li><p>主要是“对什么”和“进行什么样子的操作”</p>
+</li>
+<li><p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820185550905.png" alt="image-20200820185550905"></p>
+</li>
+<li><p>POST方法</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820185739074.png" alt="image-20200820185739074"></p>
+</li>
+</ul>
+</li>
+<li><p><strong>生成HTTP请求消息</strong></p>
+</li>
+</ol>
+<p>在对URL进行解析之后，浏览器确定了Web服务器和文件名，接下来就是根据这些信息来生成HTTP请求消息了。</p>
+<ul>
+<li><p><strong>请求消息主要由请求行，请求头，请求空行和请求体构成。</strong></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190016443.png" alt="image-20200820190016443"></p>
+</li>
+</ul>
+<ol start="4">
+<li><p>发送请求之后会收到响应</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190156245.png" alt="image-20200820190156245"></p>
+</li>
+</ol>
+<ul>
+<li><p>注意：</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190221782.png" alt="image-20200820190221782"></p>
+</li>
+</ul>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190238658.png" alt="image-20200820190238658"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190245331.png" alt="image-20200820190245331"></p>
+
+        <h2 id="1-3-向DNS服务器查询Web服务器的IP地址"   >
+          <a href="#1-3-向DNS服务器查询Web服务器的IP地址" class="heading-link"><i class="fas fa-link"></i></a>1.3 向DNS服务器查询Web服务器的IP地址</h2>
+      
+        <h3 id="1-3-1-IP地址的基本知识"   >
+          <a href="#1-3-1-IP地址的基本知识" class="heading-link"><i class="fas fa-link"></i></a>1.3.1 IP地址的基本知识</h3>
+      
+        <h4 id="1-IP的基本思路"   >
+          <a href="#1-IP的基本思路" class="heading-link"><i class="fas fa-link"></i></a>1. IP的基本思路</h4>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190536541.png" alt="image-20200820190536541"></p>
+
+        <h4 id="2-域名与IP地址共用的理由"   >
+          <a href="#2-域名与IP地址共用的理由" class="heading-link"><i class="fas fa-link"></i></a>2. 域名与IP地址共用的理由</h4>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190718860.png" alt="image-20200820190718860"></p>
+
+        <h4 id="3-Socket库提供查询IP地址的功能"   >
+          <a href="#3-Socket库提供查询IP地址的功能" class="heading-link"><i class="fas fa-link"></i></a>3. Socket库提供查询IP地址的功能</h4>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190806982.png" alt="image-20200820190806982"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820190924365.png" alt="image-20200820190924365"></p>
+
+        <h4 id="4-通过解析器向DNS服务器发送查询"   >
+          <a href="#4-通过解析器向DNS服务器发送查询" class="heading-link"><i class="fas fa-link"></i></a>4. 通过解析器向DNS服务器发送查询</h4>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820191221940.png" alt="image-20200820191221940"></p>
+
+        <h4 id="5-解析器的内部原理"   >
+          <a href="#5-解析器的内部原理" class="heading-link"><i class="fas fa-link"></i></a>5. 解析器的内部原理</h4>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820191521295.png" alt="image-20200820191521295"></p>
+
+        <h3 id="1-4-全世界DNS服务器的大接力"   >
+          <a href="#1-4-全世界DNS服务器的大接力" class="heading-link"><i class="fas fa-link"></i></a>1.4 全世界DNS服务器的大接力</h3>
+      
+        <h4 id="1-DNS服务器的基本工作"   >
+          <a href="#1-DNS服务器的基本工作" class="heading-link"><i class="fas fa-link"></i></a>1. DNS服务器的基本工作</h4>
+      <p><strong>DNS服务器的基本工作就是就收来自客户端的查询信息，然后根据消息的内容返回响应。</strong></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820191749852.png" alt="image-20200820191749852"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820191805810.png" alt="image-20200820191805810"></p>
+
+        <h4 id="2-域名的层次结构"   >
+          <a href="#2-域名的层次结构" class="heading-link"><i class="fas fa-link"></i></a>2. 域名的层次结构</h4>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820191931949.png" alt="image-20200820191931949"></p>
+
+        <h4 id="3-寻找对应的DNS服务器并获取IP地址"   >
+          <a href="#3-寻找对应的DNS服务器并获取IP地址" class="heading-link"><i class="fas fa-link"></i></a>3. 寻找对应的DNS服务器并获取IP地址</h4>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820192103202.png" alt="image-20200820192103202"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820192111011.png" alt="image-20200820192111011"></p>
+<p><strong>首先访问最近的一台DNS服务器。如果没有存放信息，就一直想上找，直到找到根域，然后再由根域依次下发。</strong></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820192221878.png" alt="image-20200820192221878"></p>
+
+        <h4 id="4-通过缓存加快DNS服务器的响应"   >
+          <a href="#4-通过缓存加快DNS服务器的响应" class="heading-link"><i class="fas fa-link"></i></a>4. 通过缓存加快DNS服务器的响应</h4>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820192403488.png" alt="image-20200820192403488"></p>
+
+        <h2 id="1-4-委托协议栈发送消息"   >
+          <a href="#1-4-委托协议栈发送消息" class="heading-link"><i class="fas fa-link"></i></a>1.4 委托协议栈发送消息</h2>
+      
+        <h3 id="1-数据收发操作概览"   >
+          <a href="#1-数据收发操作概览" class="heading-link"><i class="fas fa-link"></i></a>1. 数据收发操作概览</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820192527131.png" alt="image-20200820192527131"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820193417490.png" alt="image-20200820193417490"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820193949055.png" alt="image-20200820193949055"></p>
+<p><strong>这四个操作都是由操作系统内部的协议栈来完成的，浏览器并不知道自己做了什么。</strong></p>
+
+        <h3 id="2-创建套接字阶段"   >
+          <a href="#2-创建套接字阶段" class="heading-link"><i class="fas fa-link"></i></a>2. 创建套接字阶段</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820193045610.png" alt="image-20200820193045610"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820193216820.png" alt="image-20200820193216820"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820193232094.png" alt="image-20200820193232094"></p>
+
+        <h3 id="3-连接阶段：把管道接上去"   >
+          <a href="#3-连接阶段：把管道接上去" class="heading-link"><i class="fas fa-link"></i></a>3. 连接阶段：把管道接上去</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820193802146.png" alt="image-20200820193802146"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820193910647.png" alt="image-20200820193910647"></p>
+
+        <h3 id="3-通信阶段"   >
+          <a href="#3-通信阶段" class="heading-link"><i class="fas fa-link"></i></a>3. 通信阶段</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820194115784.png" alt="image-20200820194115784"></p>
+<p><strong>即我们的应用程序将写好的HTTP消息交割协议栈，协议栈通过write操作将消息写道对应的指定描述符的套接字上，服务器那边接受处理并返回消息后，协议栈会将消息读到接收缓冲区上，此缓冲区是位于应用程序内部的内存空间。</strong></p>
+
+        <h3 id="4-断开连接：收发数据结束"   >
+          <a href="#4-断开连接：收发数据结束" class="heading-link"><i class="fas fa-link"></i></a>4. 断开连接：收发数据结束</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820194414703.png" alt="image-20200820194414703"></p>
+
+        <h1 id="第二章-用电信号传输TCP-IP数据（协议栈与网卡）"   >
+          <a href="#第二章-用电信号传输TCP-IP数据（协议栈与网卡）" class="heading-link"><i class="fas fa-link"></i></a>第二章 用电信号传输TCP/IP数据（协议栈与网卡）</h1>
+      <blockquote>
+<ol>
+<li>创建套接字</li>
+<li>连接服务器</li>
+<li>收发数据</li>
+<li>从服务器断开连接并删除谭洁仔</li>
+<li>IP与以太网的包收发操作</li>
+<li>用UDP协议收发数据的操作</li>
+</ol>
+</blockquote>
+
+        <h2 id="2-1-创建套接字"   >
+          <a href="#2-1-创建套接字" class="heading-link"><i class="fas fa-link"></i></a>2.1 创建套接字</h2>
+      
+        <h3 id="1-协议栈的内部结构"   >
+          <a href="#1-协议栈的内部结构" class="heading-link"><i class="fas fa-link"></i></a>1. 协议栈的内部结构</h3>
+      <p><strong>协议栈： 网络控制软件</strong></p>
+<p><strong>网络硬件： 网卡</strong></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820211651459.png" alt="image-20200820211651459"></p>
+<p>从上往下看：</p>
+<ul>
+<li><ol>
+<li>网络应用程序：他们会将收发数据等工作委托给下层的部分来完成</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>Socket库： 当然也包括解析器</li>
+</ol>
+</li>
+<li><ol start="3">
+<li><strong>下面就是操作系统内部的协议栈了（浏览器通过Socket库向协议栈发出委托）：</strong><ul>
+<li>上半部分是负责用TCP协议或者UDP协议来收发数据的部分，<strong>他们会接收应用程序的委托执行收发数据的操作。</strong></li>
+<li>下半部分是用IP协议控制<strong>网络包</strong>收发操作的部分。</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820212146953.png" alt="image-20200820212146953"></p>
+</li>
+<li><ol start="4">
+<li>IP下面就是网卡驱动程序负责控制网卡硬件，而最下面的网卡则负责完成实际的收发操作，也就是对网线中的信号执行发送和接受的操作。</li>
+</ol>
+</li>
+</ul>
+
+        <h3 id="2-套接字的实体就是通信控制信息"   >
+          <a href="#2-套接字的实体就是通信控制信息" class="heading-link"><i class="fas fa-link"></i></a>2. 套接字的实体就是通信控制信息</h3>
+      <p>我们的协议栈要运行，自然需要一定的信息以及执行步骤，所以在协议栈内部开辟了这样一段内存空间，用于存放控制通信操作的控制信息。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820212413193.png" alt="image-20200820212413193"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820212457796.png" alt="image-20200820212457796"></p>
+<p>下面的每一行相当于一个套接字，当创建套接字时，就会在这里增加一行新的控制信息，<strong>赋予“即将开始通信”的状态，并进行通信的准备工作，如分配用于临时存放收发数据的缓冲区空间。</strong></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820212824483.png" alt="image-20200820212824483"></p>
+
+        <h3 id="3-调用Socket时候的操作"   >
+          <a href="#3-调用Socket时候的操作" class="heading-link"><i class="fas fa-link"></i></a>3. 调用Socket时候的操作</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820213255620.png" alt="image-20200820213255620"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820213453994.png" alt="image-20200820213453994"></p>
+
+        <h2 id="2-2-连接服务器"   >
+          <a href="#2-2-连接服务器" class="heading-link"><i class="fas fa-link"></i></a>2.2 连接服务器</h2>
+      
+        <h3 id="1-连接是什么意思？"   >
+          <a href="#1-连接是什么意思？" class="heading-link"><i class="fas fa-link"></i></a>1. 连接是什么意思？</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200820213751342.png" alt="image-20200820213751342"></p>
+<p>最经典的例子就是：</p>
+<ul>
+<li><p><strong>对于客户端而言</strong>，在建立连接之前，也就是在套接字刚刚创建完成的时候，里面并没有存放任何数据，此时只有我们的浏览器知道对应的服务器的IP地址和端口号，<strong>而套接字中是没有对应的信息的，所以我们在建立连接的时候，需要将服务器的IP地址和端口号等信息告诉协议栈，这是连接操作的目的之一。</strong></p>
+</li>
+<li><p>而对于服务器而言，服务器上的套接字同样不知道自己应该和谁进行通<strong>信，但是不同的是服务器上的应用程序同样不知道客户端的IP地址和端口，所以我们在建立连接的时候需要将我们的IP地址和端口号告诉服务器，这样的话服务器就可以将需要的信息放入套接字</strong>，然后才可以与我们进行通信。</p>
+</li>
+</ul>
+<p>此外，我们还需要一块存放要收发的数据的内存空间，成为缓冲区，也是在建立连接的过程中分配的。</p>
+<p><strong>总之：连接实际上就是通信双方交换控制信息，互相告诉对方我是谁，并且让双方都做好相应的准备工作。</strong></p>
+
+        <h3 id="2-负责保存控制信息的头部"   >
+          <a href="#2-负责保存控制信息的头部" class="heading-link"><i class="fas fa-link"></i></a>2. 负责保存控制信息的头部</h3>
+      <p>控制信息的组成：</p>
+<p>​    <strong>第一类是客户端和服务器相互联络时交换的控制信息，这个信息在整个通信过程中都需要，称为头部。</strong></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821095756523.png" alt="image-20200821095756523"></p>
+<p><strong>第二类是保存在套接字内存空间中的，用来控制协议栈操作的信息。</strong></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821095944910.png" alt="image-20200821095944910"></p>
+
+        <h3 id="3-连接操作的实际过程"   >
+          <a href="#3-连接操作的实际过程" class="heading-link"><i class="fas fa-link"></i></a>3. 连接操作的实际过程</h3>
+      <p><strong>三次握手</strong></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821100318341.png" alt="image-20200821100318341"></p>
+<p>第一步:    发送方创建TCP头部，将SYN设置为1，表示正在连接。注意此时客户端的套接字中还没有写服务器端的Ip地址和端口号，只是写了TCP头部发送过去，在头部中卸载了服务器的IP地址和端口号。</p>
+<p>​    <img src="../../../Users/yuan/AppData/Roaming/Typora/typora-user-images/image-20200821100448393.png" alt="image-20200821100448393"></p>
+<p>第二步： 服务器收到网络包后，<strong>服务器的TCP模块根据TCP头部中的信息从处于等待状态的套接字中找到与TCP头部记录的端口号相同的套接字就可以了，</strong>当找到套接字后，套接字中会写入对应信息，并将状态改为正在连接。同样地，服务器也返回一个网络包，将SYN置位1，并且将ACK控制位置位1，表示已经接收到对应的网络包，然后TCP模块会将TCP头部传递给IP模块，并委托IP模块向客户端返回响应。</p>
+<p>第三步： 网络包返回客户端，客户端的TCP模块根据TCP头部的信息确认链接服务器的操作是否成功，如果SYN为1则表示成功。这时客户端才会向套接字中写入服务器的IP地址，端口号等信息，并将状态改为连接完毕。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821101228154.png" alt="image-20200821101228154"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821101255952.png" alt="image-20200821101255952"></p>
+
+        <h2 id="2-3-收发数据"   >
+          <a href="#2-3-收发数据" class="heading-link"><i class="fas fa-link"></i></a>2.3 收发数据</h2>
+      
+        <h3 id="1-将HTTP请求消息交给协议栈"   >
+          <a href="#1-将HTTP请求消息交给协议栈" class="heading-link"><i class="fas fa-link"></i></a>1. 将HTTP请求消息交给协议栈</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821140612994.png" alt="image-20200821140612994"></p>
+<p>由图可知，在connect结束之后，控制流程回到了应用程序手中，接下来就进入到了数据收发阶段。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821140844783.png" alt="image-20200821140844783"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821141009161.png" alt="image-20200821141009161"></p>
+
+        <h3 id="2-对较大的数据进行拆分"   >
+          <a href="#2-对较大的数据进行拆分" class="heading-link"><i class="fas fa-link"></i></a>2. 对较大的数据进行拆分</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821141121321.png" alt="image-20200821141121321"></p>
+
+        <h3 id="3-使用ACK确认网络包已经收到"   >
+          <a href="#3-使用ACK确认网络包已经收到" class="heading-link"><i class="fas fa-link"></i></a>3. 使用ACK确认网络包已经收到</h3>
+      <p><strong>我们发送数据的时候，需要确认对方有没有收到，如果没有收到的话就要及时进行重发操作。</strong></p>
+<p>实现方式是，我们再发送消息的时候，告诉对方当前消息的序号，对方收到后，将此序列号+1放到ACK中进行返回。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821141554753.png" alt="image-20200821141554753"></p>
+<p>但是数据是可以双向传输的，因此服务器一方也拥有自己的序列号。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821141739079.png" alt="image-20200821141739079"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821141922776.png" alt="image-20200821141922776"></p>
+
+        <h3 id="4-根据网络包平均往返时间来调整ACK号等待时间"   >
+          <a href="#4-根据网络包平均往返时间来调整ACK号等待时间" class="heading-link"><i class="fas fa-link"></i></a>4. 根据网络包平均往返时间来调整ACK号等待时间</h3>
+      <p><strong>ACK号等待时间也成为超时时间。</strong></p>
+<p>我们如果没有收到对方的回应，是要在什么时候进行重发操作呢？</p>
+<p>因为局域网中ACK返回很快，而互联网中ACK返回很慢，所以设定一个固定值并不是一个好方法，所以TCP采取了动态调整等待时间的方法。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821142652074.png" alt="image-20200821142652074"></p>
+<p><strong>05s-1s就是不同操作系统的等待时间的最小值。也就是超时时间的最小值。</strong></p>
+
+        <h3 id="5-使用滑动窗口有效管理ACK号"   >
+          <a href="#5-使用滑动窗口有效管理ACK号" class="heading-link"><i class="fas fa-link"></i></a>5. 使用滑动窗口有效管理ACK号</h3>
+      <p>我们上面所讲的都是一来一回的操作，但是这样的话，在等待ACK号码返回的这段时间如果什么都不做，真的是太浪费了。所以，TCP采取了滑动窗口的方式。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821142938328.png" alt="image-20200821142938328"></p>
+<p>但是我们想一下会有什么问题，假如客户端一股脑的发数据，每次都不等待服务器端返回就一直都发，<strong>那么服务器端的接收缓冲区一定会被立马填满！</strong></p>
+<p>所以，*<em>接收方需要告诉发送方自己最多能够接受多少数据。</em>，也就是我们的滑动窗口的大小。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821143113554.png" alt="image-20200821143113554"></p>
+
+        <h3 id="6-ACK与窗口的合并"   >
+          <a href="#6-ACK与窗口的合并" class="heading-link"><i class="fas fa-link"></i></a>6. ACK与窗口的合并</h3>
+      <p>我们现在发现，自己接收到消息后要回传两样东西，<strong>ACK号码与窗口大小。</strong></p>
+<p>我们先来对这两个数字的发送时机看一下：</p>
+<ul>
+<li>ACK号码： 我们接受到内容并确认内容没问题了，就需要回传ACK</li>
+<li>滑动窗口： 如果我们没有返回的话，由于事先告诉了发送方接收缓冲区的大小，所以并不需要再告诉，也就是说，<strong>只有接收方已经从接收缓冲区中提取出数据并交给了接收方的应用程序的时候，这个时候缓冲区的大小会增加，这个时候我们才需要更新窗口大小。</strong></li>
+</ul>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821143544586.png" alt=""></p>
+<p>但是每次都发两个包实在是太浪费了，<strong>我们在每次发送ACK或者更新窗口大小的时候都会等待一段时间，</strong>如果二者能凑到一起，就一起返回，如果有多个ACK就返回最后的ACK，如果更新了多次窗口大小，也就返回最后结果就好。</p>
+
+        <h3 id="7-接收HTTP消息"   >
+          <a href="#7-接收HTTP消息" class="heading-link"><i class="fas fa-link"></i></a>7. 接收HTTP消息</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821140612994.png" alt="image-20200821140612994"></p>
+<p>再来看这张图，我们的发送放在执行<code>write()</code>之后，协议栈就是交还控制权，应用程序就会执行<code>read()</code>，来获取响应消息。<strong>这个时候应用程序会再次把控制权交还给协议栈，协议栈会从接收消息缓冲区中取出消息交还给应用程序。</strong></p>
+<p>但是如果是刚发送消息的话，接收缓冲区中并不会立马接收到响应消息，所以协议栈会将此工作暂时挂起，执行其他应用程序的工作。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821144316441.png" alt="image-20200821144316441"></p>
+
+        <h2 id="2-4-从服务器断开连接并删除套接字"   >
+          <a href="#2-4-从服务器断开连接并删除套接字" class="heading-link"><i class="fas fa-link"></i></a>2.4 从服务器断开连接并删除套接字</h2>
+      
+        <h3 id="1-数据发送完毕后断开连接"   >
+          <a href="#1-数据发送完毕后断开连接" class="heading-link"><i class="fas fa-link"></i></a>1. 数据发送完毕后断开连接</h3>
+      <p>数据发送完毕的一方会发起断开连接，将FIN置位1，假设是服务器发起断开连接，之后就是客户端了，</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821150529997.png" alt="image-20200821150529997"></p>
+
+        <h3 id="2-删除套接字"   >
+          <a href="#2-删除套接字" class="heading-link"><i class="fas fa-link"></i></a>2. 删除套接字</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821151840142.png" alt="image-20200821151840142"></p>
+
+        <h3 id="3-数据收发操作小结"   >
+          <a href="#3-数据收发操作小结" class="heading-link"><i class="fas fa-link"></i></a>3. 数据收发操作小结</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821151945212.png" alt="image-20200821151945212"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200821152021417.png" alt="image-20200821152021417"></p>
+
+        <h2 id="2-5-IP与以太网的包收发操作"   >
+          <a href="#2-5-IP与以太网的包收发操作" class="heading-link"><i class="fas fa-link"></i></a>2.5 IP与以太网的包收发操作</h2>
+      
+        <h3 id="1-包的基本知识"   >
+          <a href="#1-包的基本知识" class="heading-link"><i class="fas fa-link"></i></a>1. 包的基本知识</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824103054684.png" alt="image-20200824103054684"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824103153543.png" alt="image-20200824103153543"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824103334229.png" alt="image-20200824103334229"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824103548371.png" alt="image-20200824103548371"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824103624197.png" alt="image-20200824103624197"></p>
+
+        <h3 id="2-包的收发操作概览"   >
+          <a href="#2-包的收发操作概览" class="heading-link"><i class="fas fa-link"></i></a>2. 包的收发操作概览</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824103802340.png" alt="image-20200824103802340"></p>
+<p>步骤是：</p>
+<pre><code>1. 接收TCP包
+ 2. 在TCP包上加上IP头部和Mac头部，并转交网卡进行发送
+ 3. 网卡接收数据发送给IP模块
+ 4. IP模块扒掉IP头部和Mac头部，还给TCP模块</code></pre><p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824103942141.png" alt="image-20200824103942141"></p>
+<p><strong>需要注意的一点是：</strong></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104038291.png" alt="image-20200824104038291"></p>
+
+        <h3 id="3-生成包含接收方IP的IP头部"   >
+          <a href="#3-生成包含接收方IP的IP头部" class="heading-link"><i class="fas fa-link"></i></a>3. 生成包含接收方IP的IP头部</h3>
+      <p>IP头部最重要的就是iIP地址，他表示这个包将要发到哪里去。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104135906.png" alt=""></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104151250.png" alt="image-20200824104151250"></p>
+<p>这里要注意的是接收方IP地址并不能说是接收方计算机的IP地址<strong>，因为IP地址是和网卡绑定的</strong>，所以：</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104314274.png" alt="image-20200824104314274"></p>
+<p>我们应该如何确定应该把包发送给哪个具体的网卡呢？——–“IP路由表”</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104454430.png" alt="image-20200824104454430"></p>
+
+        <h3 id="4-生成以太网用的MAC地址"   >
+          <a href="#4-生成以太网用的MAC地址" class="heading-link"><i class="fas fa-link"></i></a>4. 生成以太网用的MAC地址</h3>
+      <p><strong>MAC头部一共有三个字段。</strong></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104545826.png" alt="image-20200824104545826"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104556879.png" alt="image-20200824104556879"></p>
+<p>现在我们处于一个子网内，只知道路由器的IP地址，<strong>所以需要ARP寻址来完成IP地址和MAC地址的映射。</strong></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104723183.png" alt="image-20200824104723183"></p>
+
+        <h3 id="5-通过ARP寻址查询目标路由器的MAC地址"   >
+          <a href="#5-通过ARP寻址查询目标路由器的MAC地址" class="heading-link"><i class="fas fa-link"></i></a>5. 通过ARP寻址查询目标路由器的MAC地址</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104810316.png" alt="image-20200824104810316"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824104844595.png" alt="image-20200824104844595"></p>
+
+        <h2 id="2-6-UDP协议的收发操作"   >
+          <a href="#2-6-UDP协议的收发操作" class="heading-link"><i class="fas fa-link"></i></a>2.6 UDP协议的收发操作</h2>
+      
+        <h3 id="1-不需要重发的数据使用UDP发送更加高效"   >
+          <a href="#1-不需要重发的数据使用UDP发送更加高效" class="heading-link"><i class="fas fa-link"></i></a>1. 不需要重发的数据使用UDP发送更加高效</h3>
+      <p>首先我们思考一下为什么TCP协议要设置的这样复杂？</p>
+<p><strong>为的就是将数据高效而可靠地发送给对方。</strong>所以就需要序号和ACK。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824105251230.png" alt="image-20200824105251230"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824105316230.png" alt="image-20200824105316230"></p>
+
+        <h3 id="2-控制用的短数据"   >
+          <a href="#2-控制用的短数据" class="heading-link"><i class="fas fa-link"></i></a>2. 控制用的短数据</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824105503145.png" alt="image-20200824105503145"></p>
+<p>如果数据可以在一个包的大小内解决就可以使用UDP协议，由于UDP协议不需要建立连接，断开连接， 也不需要监控，知识长久不回复的话重发就好。</p>
+
+        <h3 id="3-音频和视频数据"   >
+          <a href="#3-音频和视频数据" class="heading-link"><i class="fas fa-link"></i></a>3. 音频和视频数据</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824105709048.png" alt="image-20200824105709048"></p>
+
+        <h1 id="第三章-请求达到Web服务器，相应返回浏览器"   >
+          <a href="#第三章-请求达到Web服务器，相应返回浏览器" class="heading-link"><i class="fas fa-link"></i></a>第三章 请求达到Web服务器，相应返回浏览器</h1>
+      <ul>
+<li>服务器概览</li>
+<li>服务器的接收操作</li>
+<li>Web服务器程序解释请求并作出相应</li>
+<li>浏览器接收响应消息并显示内容</li>
+</ul>
+
+        <h2 id="3-1-服务器概览"   >
+          <a href="#3-1-服务器概览" class="heading-link"><i class="fas fa-link"></i></a>3.1 服务器概览</h2>
+      
+        <h3 id="1-客户端与服务器的区别"   >
+          <a href="#1-客户端与服务器的区别" class="heading-link"><i class="fas fa-link"></i></a>1. 客户端与服务器的区别</h3>
+      <ul>
+<li><p>相同之处：<strong>网络相关的部分，如网卡、协议栈、Socket库等功能和客户端却并无二致。无论硬件和OS如何变化，TCP和IP的功能都是一样的，或者说这些功能规格都是统一的。</strong></p>
+</li>
+<li><p>不同之处：<strong>在连接过程中，客户端发起连接操作，而服务器则是等待连接操作，因此在Socket库的用法上还是有一些区别的，即应用程序调用的Socket库的程序组件不同。服务器的程序可以同时和多台客户端计算机进行通信，这也是一点区别。</strong></p>
+</li>
+</ul>
+
+        <h3 id="2-服务器程序的结构"   >
+          <a href="#2-服务器程序的结构" class="heading-link"><i class="fas fa-link"></i></a>2. 服务器程序的结构</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824112031793.png" alt="image-20200824112031793"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824112130238.png" alt="image-20200824112130238"></p>
+
+        <h3 id="3-服务器端的套接字和端口号"   >
+          <a href="#3-服务器端的套接字和端口号" class="heading-link"><i class="fas fa-link"></i></a>3. 服务器端的套接字和端口号</h3>
+      <p>从<strong>数据收发的角度</strong>来看，这就是客户端与服务器的区别，也就是说，<strong>发起连接的一方是客户端，等待连接的一方是服务器。</strong></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824112233668.png" alt="image-20200824112233668"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824112338047.png" alt="image-20200824112338047"></p>
+<p>步骤：</p>
+<p>​    1. 首先，协议栈调用<strong>socket创建套接字（图6.2（1））</strong>，这一步和客户端是相同的。</p>
+<pre><code>2. 接下来调用**bind将端口号写入套接字中（图6.2（2-1）**）**。在客户端发起连接的操作中，需要指定服务器端的端口号，这个端口号也就是在这一步设置的。**
+3. 设置好端口号之后，协议栈会调**用listen向套接字写入等待连接状态这一控制信息（图6.2（2-1））**。这样一来，套接字**就会开始等待**来自客户端的连接网络包。</code></pre><ol start="4">
+<li><p>然后，协议栈会<strong>调用accept来接受连接（图6.2（2-2））</strong>。</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824112600649.png" alt="image-20200824112600649"></p>
+</li>
+<li><p><strong>当accept结束之后，等待连接的过程也就结束了，这时等待连接模块会启动客户端通信模块</strong>，然后将连接好的新套接字转交给客户端通信模块，由这个模块来负责执行与客户端之间的通信操作。</p>
+<p><strong>注意：</strong>原来那个处于等待连接状态的套接字会怎么样呢？<strong>其实它还会以等待连接的状态继续存在。</strong></p>
+</li>
+</ol>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824112750858.png" alt="image-20200824112750858"></p>
+<p>话说我们之前说过描述符是应用程序用来识别套接字的机制，我们这里既然可以通过四种元素来确认套接字，<strong>为什么还需要描述符呢？</strong></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824112949736.png" alt="image-20200824112949736"></p>
+
+        <h2 id="3-2-服务器的接收操作"   >
+          <a href="#3-2-服务器的接收操作" class="heading-link"><i class="fas fa-link"></i></a>3.2 服务器的接收操作</h2>
+      
+        <h3 id="1-网卡将接收到的信号转换成数字信息"   >
+          <a href="#1-网卡将接收到的信号转换成数字信息" class="heading-link"><i class="fas fa-link"></i></a>1. 网卡将接收到的信号转换成数字信息</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824113636700.png" alt="image-20200824113636700"></p>
+<ul>
+<li>网卡会将网络包从信号转化为数字信息，并且校验FCS以及是否是发送给自己的，如果是的话，就存放到缓冲区。如果不是的话，就丢弃或者转发。</li>
+<li>但是CPU并不是一直监视着网络包的到达的，所以还需要中断提醒CPU网络包到达。网卡驱动程序从网卡缓冲区中取出对应的包，根据MAC头部的以太网类型来判断协议的种类，交给对应的协议栈。</li>
+</ul>
+
+        <h3 id="2-IP模块的接收操作"   >
+          <a href="#2-IP模块的接收操作" class="heading-link"><i class="fas fa-link"></i></a>2. IP模块的接收操作</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824133600785.png" alt="image-20200824133600785"></p>
+
+        <h3 id="3-TCP模块如何处理连接包"   >
+          <a href="#3-TCP模块如何处理连接包" class="heading-link"><i class="fas fa-link"></i></a>3. TCP模块如何处理连接包</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824134800162.png" alt="image-20200824134800162"></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824133711144.png" alt="image-20200824133711144"></p>
+<ol>
+<li><p>检查TCP头部的SYN控制位</p>
+</li>
+<li><p>检查接收方的端口号，并确认在该端口上有无与接收方端口号相同并且处于等待连接状态的套接字。如果没有对应的套接字，则向客户端返回错误通知的包。</p>
+</li>
+<li><p>如果存在等待连接的套接字：</p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824133921784.png" alt="image-20200824133921784"></p>
+</li>
+</ol>
+
+        <h3 id="4-TCP模块如何处理数据包"   >
+          <a href="#4-TCP模块如何处理数据包" class="heading-link"><i class="fas fa-link"></i></a>4. TCP模块如何处理数据包</h3>
+      <ol>
+<li>TCP模块根据发送方的IP和端口，接收方的IP和端口，确定唯一的套接字</li>
+<li>根据套接字中保存的上一个序号和数据长度计算下一个序号，并检查与收到的包的TCP头部的序号是否一致。</li>
+<li>如果一致，则说明包正常到达，没有丢失，TCP模块会将数据提取出来，并放在缓冲区中进行整合，并生成ACK返回。</li>
+<li>收到的数据进入缓冲区，应用程序会读取数据，也就是控制流程转移了。</li>
+</ol>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824134506851.png" alt="image-20200824134506851"></p>
+
+        <h3 id="5-TCP模块的断开操作"   >
+          <a href="#5-TCP模块的断开操作" class="heading-link"><i class="fas fa-link"></i></a>5. TCP模块的断开操作</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824134607401.png" alt="image-20200824134607401"></p>
+
+        <h2 id="3-3-Web服务器程序解释消息请求并作出响应"   >
+          <a href="#3-3-Web服务器程序解释消息请求并作出响应" class="heading-link"><i class="fas fa-link"></i></a>3.3 Web服务器程序解释消息请求并作出响应</h2>
+      
+        <h3 id="1-将请求的URI转换为实际的文件名"   >
+          <a href="#1-将请求的URI转换为实际的文件名" class="heading-link"><i class="fas fa-link"></i></a>1. 将请求的URI转换为实际的文件名</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824141236478.png" alt="image-20200824141236478"></p>
+<p>实际上，<strong>客户端看到的Web服务器目录是虚拟的，和实际的目录结构不同</strong>。Web服务器内部会将实际的目录名和供外部访问的虚拟目录名进行关联。</p>
+
+        <h3 id="2-运行CGI程序"   >
+          <a href="#2-运行CGI程序" class="heading-link"><i class="fas fa-link"></i></a>2. 运行CGI程序</h3>
+      <p>有的时候URI指定的内容不限于HTML文档，也有可能是一个程序，<strong>在这种情况下，服务器不会直接返回文件内容，而是会运行这个程序，然后将程序输出的数据返回给客户端。</strong></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824141509261.png" alt="image-20200824141509261"></p>
+
+        <h3 id="3-返回响应消息"   >
+          <a href="#3-返回响应消息" class="heading-link"><i class="fas fa-link"></i></a>3. 返回响应消息</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824141526635.png" alt="image-20200824141526635"></p>
+
+        <h2 id="3-4-浏览器接收响应消息并显示内容"   >
+          <a href="#3-4-浏览器接收响应消息并显示内容" class="heading-link"><i class="fas fa-link"></i></a>3.4 浏览器接收响应消息并显示内容</h2>
+      
+        <h3 id="1-根据响应的数据类型判断其中的内容"   >
+          <a href="#1-根据响应的数据类型判断其中的内容" class="heading-link"><i class="fas fa-link"></i></a>1. 根据响应的数据类型判断其中的内容</h3>
+      <p><img src="../../../Users/yuan/AppData/Roaming/Typora/typora-user-images/image-20200824141901966.png" alt="image-20200824141901966"></p>
+<p>但是，有时候Web服务器并不能总是正确设置Content-Type类型，<strong>所以还需要一些其他的判断方法，如后缀名或者文件内容。</strong></p>
+<p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824142014180.png" alt="image-20200824142014180"></p>
+
+        <h3 id="2-浏览器显示网页内容"   >
+          <a href="#2-浏览器显示网页内容" class="heading-link"><i class="fas fa-link"></i></a>2. 浏览器显示网页内容</h3>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824142055508.png" alt="image-20200824142055508"></p>
+
+        <h1 id="网络包的旅程"   >
+          <a href="#网络包的旅程" class="heading-link"><i class="fas fa-link"></i></a>网络包的旅程</h1>
+      <p><img src="https://yuancc.oss-cn-hangzhou.aliyuncs.com/typora/image-20200824142125783.png" alt="image-20200824142125783"></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://yoursite.com">Pawnbrokers</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://yoursite.com/2020/08/20/%E3%80%8A%E7%BD%91%E7%BB%9C%E6%98%AF%E6%80%8E%E6%A0%B7%E8%BF%9E%E6%8E%A5%E7%9A%84%E3%80%8B%E7%AC%94%E8%AE%B0/">http://yoursite.com/2020/08/20/%E3%80%8A%E7%BD%91%E7%BB%9C%E6%98%AF%E6%80%8E%E6%A0%B7%E8%BF%9E%E6%8E%A5%E7%9A%84%E3%80%8B%E7%AC%94%E8%AE%B0/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2020/08/18/%E3%80%8Aredis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E7%AC%94%E8%AE%B0/"><span class="paginator-prev__text">《redis设计与实现》笔记</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#大纲"><span class="toc-number">1.</span> <span class="toc-text">
+          大纲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一章-Web浏览器"><span class="toc-number">2.</span> <span class="toc-text">
+          第一章 Web浏览器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-小知识点"><span class="toc-number">2.1.</span> <span class="toc-text">
+          1.1 小知识点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-生成HTTP消息"><span class="toc-number">2.2.</span> <span class="toc-text">
+          1.2 生成HTTP消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-向DNS服务器查询Web服务器的IP地址"><span class="toc-number">2.3.</span> <span class="toc-text">
+          1.3 向DNS服务器查询Web服务器的IP地址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1-IP地址的基本知识"><span class="toc-number">2.3.1.</span> <span class="toc-text">
+          1.3.1 IP地址的基本知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-IP的基本思路"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">
+          1. IP的基本思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-域名与IP地址共用的理由"><span class="toc-number">2.3.1.2.</span> <span class="toc-text">
+          2. 域名与IP地址共用的理由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Socket库提供查询IP地址的功能"><span class="toc-number">2.3.1.3.</span> <span class="toc-text">
+          3. Socket库提供查询IP地址的功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-通过解析器向DNS服务器发送查询"><span class="toc-number">2.3.1.4.</span> <span class="toc-text">
+          4. 通过解析器向DNS服务器发送查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-解析器的内部原理"><span class="toc-number">2.3.1.5.</span> <span class="toc-text">
+          5. 解析器的内部原理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-全世界DNS服务器的大接力"><span class="toc-number">2.3.2.</span> <span class="toc-text">
+          1.4 全世界DNS服务器的大接力</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-DNS服务器的基本工作"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">
+          1. DNS服务器的基本工作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-域名的层次结构"><span class="toc-number">2.3.2.2.</span> <span class="toc-text">
+          2. 域名的层次结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-寻找对应的DNS服务器并获取IP地址"><span class="toc-number">2.3.2.3.</span> <span class="toc-text">
+          3. 寻找对应的DNS服务器并获取IP地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-通过缓存加快DNS服务器的响应"><span class="toc-number">2.3.2.4.</span> <span class="toc-text">
+          4. 通过缓存加快DNS服务器的响应</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-委托协议栈发送消息"><span class="toc-number">2.4.</span> <span class="toc-text">
+          1.4 委托协议栈发送消息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-数据收发操作概览"><span class="toc-number">2.4.1.</span> <span class="toc-text">
+          1. 数据收发操作概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-创建套接字阶段"><span class="toc-number">2.4.2.</span> <span class="toc-text">
+          2. 创建套接字阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-连接阶段：把管道接上去"><span class="toc-number">2.4.3.</span> <span class="toc-text">
+          3. 连接阶段：把管道接上去</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-通信阶段"><span class="toc-number">2.4.4.</span> <span class="toc-text">
+          3. 通信阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-断开连接：收发数据结束"><span class="toc-number">2.4.5.</span> <span class="toc-text">
+          4. 断开连接：收发数据结束</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二章-用电信号传输TCP-IP数据（协议栈与网卡）"><span class="toc-number">3.</span> <span class="toc-text">
+          第二章 用电信号传输TCP&#x2F;IP数据（协议栈与网卡）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-创建套接字"><span class="toc-number">3.1.</span> <span class="toc-text">
+          2.1 创建套接字</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-协议栈的内部结构"><span class="toc-number">3.1.1.</span> <span class="toc-text">
+          1. 协议栈的内部结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-套接字的实体就是通信控制信息"><span class="toc-number">3.1.2.</span> <span class="toc-text">
+          2. 套接字的实体就是通信控制信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-调用Socket时候的操作"><span class="toc-number">3.1.3.</span> <span class="toc-text">
+          3. 调用Socket时候的操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-连接服务器"><span class="toc-number">3.2.</span> <span class="toc-text">
+          2.2 连接服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-连接是什么意思？"><span class="toc-number">3.2.1.</span> <span class="toc-text">
+          1. 连接是什么意思？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-负责保存控制信息的头部"><span class="toc-number">3.2.2.</span> <span class="toc-text">
+          2. 负责保存控制信息的头部</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-连接操作的实际过程"><span class="toc-number">3.2.3.</span> <span class="toc-text">
+          3. 连接操作的实际过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-收发数据"><span class="toc-number">3.3.</span> <span class="toc-text">
+          2.3 收发数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-将HTTP请求消息交给协议栈"><span class="toc-number">3.3.1.</span> <span class="toc-text">
+          1. 将HTTP请求消息交给协议栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-对较大的数据进行拆分"><span class="toc-number">3.3.2.</span> <span class="toc-text">
+          2. 对较大的数据进行拆分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-使用ACK确认网络包已经收到"><span class="toc-number">3.3.3.</span> <span class="toc-text">
+          3. 使用ACK确认网络包已经收到</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-根据网络包平均往返时间来调整ACK号等待时间"><span class="toc-number">3.3.4.</span> <span class="toc-text">
+          4. 根据网络包平均往返时间来调整ACK号等待时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-使用滑动窗口有效管理ACK号"><span class="toc-number">3.3.5.</span> <span class="toc-text">
+          5. 使用滑动窗口有效管理ACK号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-ACK与窗口的合并"><span class="toc-number">3.3.6.</span> <span class="toc-text">
+          6. ACK与窗口的合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-接收HTTP消息"><span class="toc-number">3.3.7.</span> <span class="toc-text">
+          7. 接收HTTP消息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-从服务器断开连接并删除套接字"><span class="toc-number">3.4.</span> <span class="toc-text">
+          2.4 从服务器断开连接并删除套接字</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-数据发送完毕后断开连接"><span class="toc-number">3.4.1.</span> <span class="toc-text">
+          1. 数据发送完毕后断开连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-删除套接字"><span class="toc-number">3.4.2.</span> <span class="toc-text">
+          2. 删除套接字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-数据收发操作小结"><span class="toc-number">3.4.3.</span> <span class="toc-text">
+          3. 数据收发操作小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-IP与以太网的包收发操作"><span class="toc-number">3.5.</span> <span class="toc-text">
+          2.5 IP与以太网的包收发操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-包的基本知识"><span class="toc-number">3.5.1.</span> <span class="toc-text">
+          1. 包的基本知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-包的收发操作概览"><span class="toc-number">3.5.2.</span> <span class="toc-text">
+          2. 包的收发操作概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-生成包含接收方IP的IP头部"><span class="toc-number">3.5.3.</span> <span class="toc-text">
+          3. 生成包含接收方IP的IP头部</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-生成以太网用的MAC地址"><span class="toc-number">3.5.4.</span> <span class="toc-text">
+          4. 生成以太网用的MAC地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-通过ARP寻址查询目标路由器的MAC地址"><span class="toc-number">3.5.5.</span> <span class="toc-text">
+          5. 通过ARP寻址查询目标路由器的MAC地址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-UDP协议的收发操作"><span class="toc-number">3.6.</span> <span class="toc-text">
+          2.6 UDP协议的收发操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-不需要重发的数据使用UDP发送更加高效"><span class="toc-number">3.6.1.</span> <span class="toc-text">
+          1. 不需要重发的数据使用UDP发送更加高效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-控制用的短数据"><span class="toc-number">3.6.2.</span> <span class="toc-text">
+          2. 控制用的短数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-音频和视频数据"><span class="toc-number">3.6.3.</span> <span class="toc-text">
+          3. 音频和视频数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三章-请求达到Web服务器，相应返回浏览器"><span class="toc-number">4.</span> <span class="toc-text">
+          第三章 请求达到Web服务器，相应返回浏览器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-服务器概览"><span class="toc-number">4.1.</span> <span class="toc-text">
+          3.1 服务器概览</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-客户端与服务器的区别"><span class="toc-number">4.1.1.</span> <span class="toc-text">
+          1. 客户端与服务器的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-服务器程序的结构"><span class="toc-number">4.1.2.</span> <span class="toc-text">
+          2. 服务器程序的结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-服务器端的套接字和端口号"><span class="toc-number">4.1.3.</span> <span class="toc-text">
+          3. 服务器端的套接字和端口号</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-服务器的接收操作"><span class="toc-number">4.2.</span> <span class="toc-text">
+          3.2 服务器的接收操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-网卡将接收到的信号转换成数字信息"><span class="toc-number">4.2.1.</span> <span class="toc-text">
+          1. 网卡将接收到的信号转换成数字信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-IP模块的接收操作"><span class="toc-number">4.2.2.</span> <span class="toc-text">
+          2. IP模块的接收操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-TCP模块如何处理连接包"><span class="toc-number">4.2.3.</span> <span class="toc-text">
+          3. TCP模块如何处理连接包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-TCP模块如何处理数据包"><span class="toc-number">4.2.4.</span> <span class="toc-text">
+          4. TCP模块如何处理数据包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-TCP模块的断开操作"><span class="toc-number">4.2.5.</span> <span class="toc-text">
+          5. TCP模块的断开操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-Web服务器程序解释消息请求并作出响应"><span class="toc-number">4.3.</span> <span class="toc-text">
+          3.3 Web服务器程序解释消息请求并作出响应</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-将请求的URI转换为实际的文件名"><span class="toc-number">4.3.1.</span> <span class="toc-text">
+          1. 将请求的URI转换为实际的文件名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-运行CGI程序"><span class="toc-number">4.3.2.</span> <span class="toc-text">
+          2. 运行CGI程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-返回响应消息"><span class="toc-number">4.3.3.</span> <span class="toc-text">
+          3. 返回响应消息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-浏览器接收响应消息并显示内容"><span class="toc-number">4.4.</span> <span class="toc-text">
+          3.4 浏览器接收响应消息并显示内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-根据响应的数据类型判断其中的内容"><span class="toc-number">4.4.1.</span> <span class="toc-text">
+          1. 根据响应的数据类型判断其中的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-浏览器显示网页内容"><span class="toc-number">4.4.2.</span> <span class="toc-text">
+          2. 浏览器显示网页内容</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网络包的旅程"><span class="toc-number">5.</span> <span class="toc-text">
+          网络包的旅程</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/assets/me.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">我们必须习惯，站在人生的交叉路口，却没有红绿灯的事实。</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/pawnbrokers" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/mu-rong-xue-hen-46" target="_blank" rel="noopener" data-popover="Zhihu" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="assets/wechat.jpg" target="_blank" rel="noopener" data-popover="Wechat" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="assets/qq.jpg" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">85</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">42</div><div class="sidebar-ov-state-item__name">Categories</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">73</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Pawnbrokers</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v4.2.1</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script></body></html>
