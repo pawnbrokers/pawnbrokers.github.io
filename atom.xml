@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-10-23T09:48:43.346Z</updated>
+  <updated>2020-10-23T09:59:56.818Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,22 +21,30 @@
     <link href="http://yoursite.com/2020/10/23/1023%E6%91%98%E5%BD%95/"/>
     <id>http://yoursite.com/2020/10/23/1023%E6%91%98%E5%BD%95/</id>
     <published>2020-10-23T09:46:36.000Z</published>
-    <updated>2020-10-23T09:48:43.346Z</updated>
+    <updated>2020-10-23T09:59:56.818Z</updated>
     
-    <content type="html"><![CDATA[        <h1 id="1023摘录"   >          <a href="#1023摘录" class="heading-link"><i class="fas fa-link"></i></a>1023摘录</h1>      ]]></content>
+    <content type="html"><![CDATA[<ul><li><strong>爱自己是终身浪漫的开始。</strong><ul><li>王尔德</li></ul></li></ul><ul><li><strong>活在这珍贵的人间，太阳强烈，水波温柔。</strong><ul><li>海子</li></ul></li></ul><ul><li><strong>花店不开了，花继续开。</strong><ul><li>蔡仁伟</li></ul></li></ul><ul><li><strong>下次你路过，人间已无我。</strong><ul><li>余光中</li></ul></li></ul><ul><li><strong>山河远阔，人间烟火，无一是你，无一不是你。</strong><ul><li>《江海共余生》</li></ul></li></ul><ul><li><strong>你笑起来真像好天气。</strong><ul><li>简媜</li></ul></li></ul><ul><li><strong>你不愿意种花，你说，我不愿看见它一点点凋落。是的，为了避免结束，你避免了一切开始。</strong> <ul><li>顾城</li></ul></li></ul><ul><li><strong>你没有如期归来，这正是离别的意义。</strong><ul><li>北岛</li></ul></li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        
-        &lt;h1 id=&quot;1023摘录&quot;   &gt;
-          &lt;a href=&quot;#1023摘录&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;1023摘录&lt;/h1&gt;
-      
+        &lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;爱自己是终身浪漫的开始。&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;王尔德&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;活在这珍贵的人间，太阳强烈，水波温柔。&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;海子&lt;/li&gt;
+&lt;/ul
       
     
     </summary>
     
+    
+      <category term="reading" scheme="http://yoursite.com/categories/reading/"/>
     
     
   </entry>
