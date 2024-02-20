@@ -1,0 +1,666 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Pawnbrokers">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1. OSS工作原理OSS（Object Storage Service）是阿里云提供的一种可扩展的对象存储服务。它的工作原理可以总结如下：  数据模型：OSS是基于对象的存储服务，每个对象都有唯一的标识符（Object Key）和数据内容。对象可以是任意类型的文件，如文本文件、图片、视频等。 存储桶：OSS的存储单位是存储桶（Bucket），每个存储桶具有全局唯一的名称。用户可以在OSS上创建多">
+<meta property="og:type" content="article">
+<meta property="og:title" content="oss工作原理">
+<meta property="og:url" content="http://example.com/2024/02/20/oss%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="Cami">
+<meta property="og:description" content="1. OSS工作原理OSS（Object Storage Service）是阿里云提供的一种可扩展的对象存储服务。它的工作原理可以总结如下：  数据模型：OSS是基于对象的存储服务，每个对象都有唯一的标识符（Object Key）和数据内容。对象可以是任意类型的文件，如文本文件、图片、视频等。 存储桶：OSS的存储单位是存储桶（Bucket），每个存储桶具有全局唯一的名称。用户可以在OSS上创建多">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-02-20T11:14:33.000Z">
+<meta property="article:modified_time" content="2024-02-20T11:20:43.955Z">
+<meta property="article:author" content="Pawnbrokers">
+<meta property="article:tag" content="存储技术">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>oss工作原理 - Cami</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Pawnbrokers</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="oss工作原理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-02-20 19:14" pubdate>
+          2024年2月20日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          21 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">oss工作原理</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="1-OSS工作原理"><a href="#1-OSS工作原理" class="headerlink" title="1. OSS工作原理"></a>1. OSS工作原理</h1><p>OSS（Object Storage Service）是阿里云提供的一种可扩展的对象存储服务。它的工作原理可以总结如下：</p>
+<ol>
+<li><strong>数据模型</strong>：OSS是基于对象的存储服务，每个对象都有唯一的标识符（Object Key）和数据内容。对象可以是任意类型的文件，如文本文件、图片、视频等。</li>
+<li><strong>存储桶</strong>：OSS的存储单位是存储桶（Bucket），每个存储桶具有全局唯一的名称。用户可以在OSS上创建多个存储桶，并将对象存储在这些存储桶中。存储桶还具有访问权限控制和存储区域（Region）等属性。</li>
+<li><strong>API和SDK</strong>：OSS提供了丰富的API和SDK，使用户可以通过编程接口进行对象的上传、下载、删除等操作。用户可以使用各种编程语言（如Java、Python、Go等）来与OSS进行交互。</li>
+<li><strong>数据上传</strong>：用户可以将数据通过API或SDK上传到指定的存储桶中。在上传过程中，OSS会将数据切分成固定大小的数据块，并采用分布式存储的方式将这些数据块分散存储在多个物理节点上。OSS还提供了断点续传的功能，可以支持大文件的上传。</li>
+<li><strong>数据下载</strong>：用户可以通过API或SDK从存储桶中下载对象。OSS会根据用户的请求，将对象的数据块并行地从多个节点获取，并将数据块拼接成完整的对象返回给用户。</li>
+<li><strong>数据访问权限</strong>：OSS支持细粒度的数据访问权限控制。用户可以通过设置存储桶和对象的访问权限，控制谁可以读取和写入数据。</li>
+<li><strong>数据安全</strong>：OSS提供了多种数据安全机制，包括数据加密、访问日志记录、防盗链等功能，以保护数据的安全性和隐私性。</li>
+<li><strong>数据管理</strong>：OSS还提供了丰富的数据管理功能，如对象的复制、归档、生命周期管理等。用户可以根据需要对存储的对象进行管理和操作。</li>
+</ol>
+<p>总体而言，OSS的工作原理是基于分布式存储架构的对象存储服务。通过将对象切分、分布和冗余存储，OSS实现了高可用性、高可靠性和高性能的数据存储和访问能力。</p>
+<h1 id="2-OSS为什么可以实现快速读取"><a href="#2-OSS为什么可以实现快速读取" class="headerlink" title="2. OSS为什么可以实现快速读取"></a>2. OSS为什么可以实现快速读取</h1><p>OSS的快速读取能力主要归功于以下几个方面的工作原理：</p>
+<ol>
+<li><strong>分布式架构</strong>：OSS采用分布式架构，将数据在多个存储节点上进行分散存储。这种架构允许数据并行读取，从而提高了读取速度。同时，OSS还根据用户的地理位置和网络状况选择最近的节点进行读取，减少网络延迟，提高响应速度。</li>
+<li><strong>数据冗余备份</strong>：OSS在后台进行数据冗余备份，将数据存储在多个物理设备上，以防止数据丢失。这种冗余备份的方式不仅提高了数据的可靠性，还允许同时从多个设备读取数据，以提高读取性能。</li>
+<li><strong>数据分块和分段下载</strong>：当读取大文件时，OSS将文件分成多个块或段，并允许并行下载这些块或段。客户端可以同时从多个节点或线程下载数据，从而实现快速读取。</li>
+<li><strong>缓存机制</strong>：OSS提供了内置的缓存机制，可以缓存经常访问的数据。当有读取请求到达时，OSS首先检查缓存是否有相应的数据，如果有，则直接返回缓存数据，避免了对底层存储系统的访问，提高了读取速度。</li>
+<li><strong>智能优化</strong>：OSS还通过技术手段对数据进行智能优化，包括数据压缩、网络传输优化等。这些优化措施能够减少数据传输量和传输时间，提高读取效率。</li>
+</ol>
+<p>综上所述，OSS的快速读取能力得益于其分布式架构、数据冗余备份、数据分块和分段下载、缓存机制以及智能优化等工作原理的综合作用。这些机制和优化措施使得OSS能够高效地处理读取请求，并提供快速的数据访问速度。</p>
+<h1 id="3-OSS如何实现数据的并行读取"><a href="#3-OSS如何实现数据的并行读取" class="headerlink" title="3. OSS如何实现数据的并行读取"></a>3. OSS如何实现数据的并行读取</h1><p>OSS的分布式架构通过以下方式实现数据的并行读取：</p>
+<ol>
+<li><strong>数据切片和分布</strong>：当用户上传数据到OSS时，OSS会将数据切片成多个固定大小的块，并将这些块分散存储在不同的存储节点上。这样做可以将数据分布在多个节点上，实现数据的并行读取。</li>
+<li><strong>数据位置的映射</strong>：OSS会维护一个数据位置的映射表，记录每个数据块存储的节点和位置信息。当读取请求到达时，OSS根据请求的数据块标识符查找映射表，确定数据块所在的节点，然后并行从多个节点读取数据。</li>
+<li><strong>数据的多副本备份</strong>：为了提高数据的可靠性和读取性能，OSS会对数据进行多副本备份，将数据存储在多个物理节点上。当进行数据读取时，可以从多个副本中选择一个最近的节点进行读取，以减少网络延迟和提高读取速度。</li>
+<li><strong>负载均衡和调度</strong>：OSS会进行负载均衡和调度，根据节点的负载情况和网络状况，自动选择最优的节点进行数据读取。这样可以充分利用集群中各个节点的计算和存储资源，提高并行读取的效率。</li>
+</ol>
+<p>通过以上机制，OSS实现了数据的切片和分布、数据位置的映射、多副本备份以及负载均衡和调度等功能，从而实现了数据的并行读取。这样的分布式架构能够充分利用集群中的资源，提高读取性能和吞吐量，满足用户对快速读取的需求。</p>
+<h1 id="4-OSS的数据切片和分布是如何保证数据的完整性和一致性的"><a href="#4-OSS的数据切片和分布是如何保证数据的完整性和一致性的" class="headerlink" title="4. OSS的数据切片和分布是如何保证数据的完整性和一致性的"></a>4. OSS的数据切片和分布是如何保证数据的完整性和一致性的</h1><p>OSS通过以下方式来保证数据的完整性和一致性：</p>
+<ol>
+<li><strong>冗余备份</strong>：OSS采用多副本备份策略，将数据存储在多个物理节点上。每个数据块都会被复制到多个节点，通常是三个或更多副本。这样即使某个节点或磁盘发生故障，仍然可以从其他副本中恢复数据，确保数据的完整性。</li>
+<li><strong>数据校验和</strong>：OSS会为每个数据块计算校验和，并将校验和信息存储在元数据中。在读取数据时，OSS会验证读取的数据块的校验和是否与元数据中记录的一致，以确保数据的完整性。</li>
+<li><strong>一致性协议</strong>：OSS使用一致性协议来保证数据的一致性。一致性协议确保在数据写入完成之前，所有的副本都会被更新，从而保证了数据在不同节点之间的一致性。</li>
+<li><strong>数据修复</strong>：如果在读取数据时发现某个数据块损坏或丢失，OSS会自动进行数据修复。它会使用其他副本的数据来恢复丢失或损坏的数据块，并更新副本以确保数据的完整性。</li>
+<li><strong>写入确认机制</strong>：OSS在数据写入时采用写入确认机制，确保数据成功写入并在多个副本上复制。只有当所有的副本都成功写入后，写入操作才会返回成功，从而确保数据的一致性和完整性。</li>
+</ol>
+<p>综上所述，OSS通过冗余备份、数据校验和、一致性协议、数据修复以及写入确认机制等方式来保证数据的完整性和一致性。这些机制确保了数据在存储和读取过程中的可靠性，从而提供了高度可靠的数据存储服务。</p>
+<h1 id="5-数据校验如何实现？"><a href="#5-数据校验如何实现？" class="headerlink" title="5. 数据校验如何实现？"></a>5. 数据校验如何实现？</h1><p>OSS为每个数据块计算校验和的实现方式如下：</p>
+<ol>
+<li><strong>数据切片</strong>：在上传数据到OSS时，数据会被切分成固定大小的数据块。</li>
+<li><strong>校验和算法</strong>：OSS使用一种校验和算法（通常是MD5或CRC32）来计算数据块的校验和。这些算法能够将数据块的内容转换为唯一的校验和值。</li>
+<li><strong>校验和计算</strong>：在上传数据块到OSS时，OSS会对每个数据块进行校验和计算。它会读取数据块的内容，并使用选定的校验和算法对内容进行计算，生成唯一的校验和值。</li>
+<li><strong>校验和存储</strong>：OSS会将校验和值作为元数据与数据块一起存储。元数据是存储在OSS中的对象的附加信息，在校验和的情况下，它存储了数据块的校验和值。</li>
+<li><strong>校验和验证</strong>：在读取数据块时，OSS会同时读取保存的校验和值。一旦数据块被读取完毕，OSS会再次对读取的数据块进行校验和计算，得到一个新的校验和值。</li>
+<li><strong>校验和比较</strong>：OSS会将计算得到的校验和值与存储的校验和值进行比较。如果两个校验和值相匹配，则数据块被认为是完整和未损坏的；如果两个校验和值不匹配，则表示数据块可能已经损坏或发生了错误。</li>
+</ol>
+<p>通过以上方式，OSS能够计算和存储每个数据块的校验和，并在读取数据时验证校验和，以确保数据的完整性。校验和提供了一种简单而有效的机制，用于检测数据块是否被篡改或损坏。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AD%98%E5%82%A8%E6%8A%80%E6%9C%AF/" class="print-no-link">#存储技术</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>oss工作原理</div>
+      <div>http://example.com/2024/02/20/oss工作原理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Pawnbrokers</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年2月20日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/01/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="二分查找">
+                        <span class="hidden-mobile">二分查找</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
